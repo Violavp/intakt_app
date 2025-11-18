@@ -10,13 +10,15 @@
 void CreateAndAttachConsole() {
   if (::AllocConsole()) {
     FILE *unused;
-    if (freopen_s(&unused, "CONOUT$", "w", stdout)) {
+    // freopen_s returns 0 on success. Only proceed if it succeeded.
+    if (freopen_s(&unused, "CONOUT$", "w", stdout) == 0) {
       _dup2(_fileno(stdout), 1);
     }
-    if (freopen_s(&unused, "CONOUT$", "w", stderr)) {
-      _dup2(_fileno(stdout), 2);
+    if (freopen_s(&unused, "CONOUT$", "w", stderr) == 0) {
+      _dup2(_fileno(stderr), 2);
     }
-    std::ios::sync_with_stdio();
+    // sync_with_stdio expects a bool parameter
+    std::ios::sync_with_stdio(false);
     FlutterDesktopResyncOutputStreams();
   }
 }
