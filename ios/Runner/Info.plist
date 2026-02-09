@@ -26,6 +26,24 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Die App nutzt Bluetooth, um die Sensoren am Pferd zu verbinden und Daten einzulesen.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Die App nutzt Bluetooth, um die Sensoren am Pferd zu verbinden und Daten einzulesen.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Die App nutzt das lokale Netzwerk, um Debug- und Gerätedienste zu erreichen.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_dartobservatory._tcp</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
