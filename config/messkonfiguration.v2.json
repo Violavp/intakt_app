@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "configuration_id": "INTAKT-IMU-5S-V2",
+  "status": "field_verified_with_restrictions",
+  "coordinate_system": {
+    "frame": "sensor_local_raw",
+    "handedness": "right",
+    "positive_x": "same_device_axis_orientation_as_HL_for_all_limb_sensors",
+    "positive_y": "same_device_axis_orientation_as_HL_for_all_limb_sensors",
+    "positive_z": "up_in_documented_rest_orientation",
+    "rotation_sign": "right_hand_rule",
+    "limb_axis_reference": "HL",
+    "limb_axis_orientation_user_confirmed": ["VL", "VR", "HL", "HR"],
+    "left_right_mounting": "mirrored",
+    "raw_import_transform": "none",
+    "anatomical_horizontal_sign_mapping": "pending_directional_calibration_before_left_right_analysis",
+    "verification": "HL_and_SG_app_screenshots_plus_user_confirmation_for_VL_VR_HR"
+  },
+  "sampling": {
+    "nominal_rate_hz": 100,
+    "nominal_interval_ms": 10,
+    "sensor_bandwidth_hz": 44,
+    "bandwidth_source": "user_confirmed_operational_setting",
+    "actual_rate_source": "derive_per_sensor_from_original_export_timestamps",
+    "uncertainty": "actual_rate_jitter_duplicates_and_gaps_unknown_until_original_export_exists"
+  },
+  "channels": [
+    {
+      "names": ["a_x", "a_y", "a_z"],
+      "quantity": "acceleration",
+      "raw_unit": "g",
+      "unit_status": "manufacturer_documented_export_pending"
+    },
+    {
+      "names": ["omega_x", "omega_y", "omega_z"],
+      "quantity": "angular_velocity",
+      "raw_unit": "degree_per_second",
+      "unit_status": "manufacturer_documented_export_pending"
+    },
+    {
+      "names": ["roll", "pitch", "yaw"],
+      "quantity": "orientation_angle",
+      "raw_unit": "degree",
+      "unit_status": "manufacturer_documented_export_pending"
+    }
+  ],
+  "sensors": [
+    {
+      "label": "VL",
+      "name": "vorne links",
+      "hardware_id": "1B9D88FD0E8C",
+      "position": "lateral_left_metacarpus_midshaft",
+      "axis_orientation_reference": "HL",
+      "mounting_side": "left"
+    },
+    {
+      "label": "VR",
+      "name": "vorne rechts",
+      "hardware_id": "83FEC4707D1D",
+      "position": "lateral_right_metacarpus_midshaft",
+      "axis_orientation_reference": "HL",
+      "mounting_side": "right_mirrored_to_left"
+    },
+    {
+      "label": "HL",
+      "name": "hinten links",
+      "hardware_id": "1792A254366C",
+      "position": "lateral_left_metatarsus_midshaft",
+      "axis_orientation_reference": "HL",
+      "mounting_side": "left"
+    },
+    {
+      "label": "HR",
+      "name": "hinten rechts",
+      "hardware_id": "657910C7ECB7",
+      "position": "lateral_right_metatarsus_midshaft",
+      "axis_orientation_reference": "HL",
+      "mounting_side": "right_mirrored_to_left"
+    },
+    {
+      "label": "SG",
+      "name": "Sattelgurt",
+      "hardware_id": "C5C720831275",
+      "hardware_id_status": "confirmed_by_test01_axis_screenshot",
+      "position": "saddle_girth_center_position_to_be_confirmed_on_site"
+    }
+  ],
+  "raw_data_policy": {
+    "immutable": true,
+    "integrity_algorithm": "sha256",
+    "expected_app_exports": [".txt", ".wplay"],
+    "export_structure_status": "pending_original_export"
+  },
+  "evidence": {
+    "complete_test_recording_present": true,
+    "matching_video_present": true,
+    "axis_verification_present": true,
+    "mirror_transform_empirically_verified": false
+  }
+}

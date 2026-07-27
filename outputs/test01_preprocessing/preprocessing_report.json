@@ -1,0 +1,345 @@
+{
+  "report_version": 1,
+  "preprocessing": {
+    "status": "PREPROCESSING_REVIEW_REQUIRED",
+    "grid_sampling_rate_hz": 100.0,
+    "frame_count": 24910,
+    "config": {
+      "low_pass": {
+        "type": "zero_phase_butterworth",
+        "order_per_direction": 4,
+        "cutoff_hz": 20.0
+      },
+      "gravity_low_pass": {
+        "type": "zero_phase_butterworth",
+        "order_per_direction": 4,
+        "cutoff_hz": 0.5
+      },
+      "outliers": {
+        "method": "hampel_isolated_spikes",
+        "half_window_samples": 3,
+        "threshold_mad": 4.0,
+        "maximum_replaced_run_samples": 1,
+        "minimum_acceleration_mad_mps2": 0.02,
+        "minimum_angular_velocity_mad_radps": 0.002
+      },
+      "minimum_segment_samples": 20,
+      "orientation": {
+        "method": "stationary_gravity_roll_pitch_alignment",
+        "window_seconds": 2.0,
+        "maximum_gyro_rms_radps": 0.15,
+        "maximum_gravity_deviation_mps2": 1.5,
+        "standard_gravity_mps2": 9.80665,
+        "yaw": "unresolved"
+      },
+      "comparison_moving_average_window_samples": 5,
+      "minimum_event_peak_retention": 0.75
+    },
+    "assumptions": [
+      "Die Eingabe ist das unveränderte Ergebnis der separaten indexbasierten Zeitrekonstruktion.",
+      "Filter werden nur innerhalb lückenloser Segmente und niemals über fehlende Werte hinweg angewendet.",
+      "Der Hampel-Schritt ersetzt ausschließlich kurze statistische Spitzenkandidaten; längere Ereignisse bleiben erhalten.",
+      "Vorwärts-/Rückwärtsfilterung ist nullphasig, aber nicht kausal und daher für Offline-Analyse bestimmt.",
+      "Die Schwerkraftausrichtung bestimmt Roll und Pitch. Yaw sowie anatomische Vorwärts-/Seitwärtszeichen bleiben ohne gerichtete Kalibrierung unbestimmt.",
+      "Gravitations- und Bewegungsanteil sind filterbasierte technische Schätzungen, keine direkt getrennt gemessenen Größen.",
+      "Qualitätswerte und Schwellen sind technische Prüfgrößen und keine medizinischen oder physiologischen Referenzbereiche."
+    ],
+    "sensors": [
+      {
+        "sensor": "VL",
+        "input_samples": 24910,
+        "output_samples": 24910,
+        "gap_samples": 0,
+        "replaced_outlier_samples": 312,
+        "retained_candidate_outlier_samples": 52,
+        "orientation": {
+          "valid": true,
+          "window_start_s": 214.65,
+          "window_end_s": 216.64,
+          "gravity_sensor_frame_mps2": {
+            "x": -3.5808229475137767,
+            "y": -1.2084256958907198,
+            "z": 9.051247144515171
+          },
+          "gravity_magnitude_mps2": 9.808550377860342,
+          "gyro_rms_radps": 0.006048732995348104,
+          "gravity_residual_mps2": 0.0019003778603430277,
+          "rotation_sensor_to_gravity_frame": [
+            0.9306855401658218,
+            -0.023391654820175616,
+            0.36507157628474196,
+            -0.023391654820175616,
+            0.9921059831305726,
+            0.12320125292095693,
+            -0.36507157628474196,
+            -0.12320125292095693,
+            0.9227915232963945
+          ],
+          "resolved_axes": [
+            "vertical"
+          ],
+          "unresolved_axes": [
+            "anatomical_forward",
+            "anatomical_lateral"
+          ]
+        },
+        "filter_comparison": [
+          {
+            "method": "zero_phase_butterworth",
+            "roughness_rms_mps2": 4.802548795301547,
+            "peak_to_peak_retention": 0.8309934322096562,
+            "strongest_event_time_shift_ms": 0.0
+          },
+          {
+            "method": "centered_moving_average",
+            "roughness_rms_mps2": 2.247372614607188,
+            "peak_to_peak_retention": 0.6335739360342242,
+            "strongest_event_time_shift_ms": 34670.0
+          }
+        ],
+        "quality_score": 0.998733081426438,
+        "quality_score_definition": "output coverage multiplied by orientation confidence; technical only",
+        "uncertainty": "Vertikale Achse aus dem stabilsten technischen Ruhefenster; Yaw und anatomische Horizontalzeichen bleiben unbestimmt."
+      },
+      {
+        "sensor": "VR",
+        "input_samples": 24910,
+        "output_samples": 24910,
+        "gap_samples": 0,
+        "replaced_outlier_samples": 293,
+        "retained_candidate_outlier_samples": 80,
+        "orientation": {
+          "valid": true,
+          "window_start_s": 233.62,
+          "window_end_s": 235.61,
+          "gravity_sensor_frame_mps2": {
+            "x": 1.5108500676667223,
+            "y": -0.4813684180536577,
+            "z": 9.655688801070546
+          },
+          "gravity_magnitude_mps2": 9.78502476767367,
+          "gyro_rms_radps": 0.005478911785976553,
+          "gravity_residual_mps2": 0.02162523232632907,
+          "rotation_sensor_to_gravity_frame": [
+            0.988000349256345,
+            0.0038231807505493833,
+            -0.15440431716208294,
+            0.0038231807505493833,
+            0.9987819052934437,
+            0.04919439955266461,
+            0.15440431716208294,
+            -0.04919439955266461,
+            0.9867822545497886
+          ],
+          "resolved_axes": [
+            "vertical"
+          ],
+          "unresolved_axes": [
+            "anatomical_forward",
+            "anatomical_lateral"
+          ]
+        },
+        "filter_comparison": [
+          {
+            "method": "zero_phase_butterworth",
+            "roughness_rms_mps2": 4.40368127595901,
+            "peak_to_peak_retention": 0.9509444250116164,
+            "strongest_event_time_shift_ms": 10.0
+          },
+          {
+            "method": "centered_moving_average",
+            "roughness_rms_mps2": 2.1804554416608344,
+            "peak_to_peak_retention": 0.7251684820804294,
+            "strongest_event_time_shift_ms": 10.0
+          }
+        ],
+        "quality_score": 0.9855831784491139,
+        "quality_score_definition": "output coverage multiplied by orientation confidence; technical only",
+        "uncertainty": "Vertikale Achse aus dem stabilsten technischen Ruhefenster; Yaw und anatomische Horizontalzeichen bleiben unbestimmt."
+      },
+      {
+        "sensor": "HL",
+        "input_samples": 24910,
+        "output_samples": 24910,
+        "gap_samples": 0,
+        "replaced_outlier_samples": 263,
+        "retained_candidate_outlier_samples": 24,
+        "orientation": {
+          "valid": true,
+          "window_start_s": 222.51,
+          "window_end_s": 224.5,
+          "gravity_sensor_frame_mps2": {
+            "x": 2.4998895553925387,
+            "y": 0.7126516048346193,
+            "z": 9.427583627507035
+          },
+          "gravity_magnitude_mps2": 9.77939942699309,
+          "gyro_rms_radps": 0.0071427378385847335,
+          "gravity_residual_mps2": 0.027250573006909917,
+          "rotation_sensor_to_gravity_frame": [
+            0.9667286589418408,
+            -0.009484768856668142,
+            -0.25562812666106527,
+            -0.009484768856668142,
+            0.9972961462506976,
+            -0.07287273724269397,
+            0.25562812666106527,
+            0.07287273724269397,
+            0.9640248051925384
+          ],
+          "resolved_axes": [
+            "vertical"
+          ],
+          "unresolved_axes": [
+            "anatomical_forward",
+            "anatomical_lateral"
+          ]
+        },
+        "filter_comparison": [
+          {
+            "method": "zero_phase_butterworth",
+            "roughness_rms_mps2": 2.9191654034924936,
+            "peak_to_peak_retention": 0.8761625594514977,
+            "strongest_event_time_shift_ms": 0.0
+          },
+          {
+            "method": "centered_moving_average",
+            "roughness_rms_mps2": 1.8074369016394976,
+            "peak_to_peak_retention": 0.7365605955360056,
+            "strongest_event_time_shift_ms": 0.0
+          }
+        ],
+        "quality_score": 0.9818329513287267,
+        "quality_score_definition": "output coverage multiplied by orientation confidence; technical only",
+        "uncertainty": "Vertikale Achse aus dem stabilsten technischen Ruhefenster; Yaw und anatomische Horizontalzeichen bleiben unbestimmt."
+      },
+      {
+        "sensor": "HR",
+        "input_samples": 24910,
+        "output_samples": 24910,
+        "gap_samples": 0,
+        "replaced_outlier_samples": 306,
+        "retained_candidate_outlier_samples": 41,
+        "orientation": {
+          "valid": true,
+          "window_start_s": 235.88,
+          "window_end_s": 237.87,
+          "gravity_sensor_frame_mps2": {
+            "x": 0.8227903207430952,
+            "y": -1.5061258470924457,
+            "z": 9.64440915995472
+          },
+          "gravity_magnitude_mps2": 9.795918896346935,
+          "gyro_rms_radps": 0.004981067061348454,
+          "gravity_residual_mps2": 0.010731103653064622,
+          "rotation_sensor_to_gravity_frame": [
+            0.996445082078425,
+            0.0065073125327249105,
+            -0.08399317404005129,
+            0.0065073125327249105,
+            0.9880882998334326,
+            0.15375033858784862,
+            0.08399317404005129,
+            -0.15375033858784862,
+            0.9845333819118576
+          ],
+          "resolved_axes": [
+            "vertical"
+          ],
+          "unresolved_axes": [
+            "anatomical_forward",
+            "anatomical_lateral"
+          ]
+        },
+        "filter_comparison": [
+          {
+            "method": "zero_phase_butterworth",
+            "roughness_rms_mps2": 3.903545431896047,
+            "peak_to_peak_retention": 0.8886858533850678,
+            "strongest_event_time_shift_ms": 0.0
+          },
+          {
+            "method": "centered_moving_average",
+            "roughness_rms_mps2": 2.267108009558934,
+            "peak_to_peak_retention": 0.6439572278441406,
+            "strongest_event_time_shift_ms": 10.0
+          }
+        ],
+        "quality_score": 0.9928459308979569,
+        "quality_score_definition": "output coverage multiplied by orientation confidence; technical only",
+        "uncertainty": "Vertikale Achse aus dem stabilsten technischen Ruhefenster; Yaw und anatomische Horizontalzeichen bleiben unbestimmt."
+      },
+      {
+        "sensor": "SG",
+        "input_samples": 24910,
+        "output_samples": 24910,
+        "gap_samples": 0,
+        "replaced_outlier_samples": 151,
+        "retained_candidate_outlier_samples": 41,
+        "orientation": {
+          "valid": true,
+          "window_start_s": 235.68,
+          "window_end_s": 237.67,
+          "gravity_sensor_frame_mps2": {
+            "x": -0.31707320904889774,
+            "y": -0.013073352888486704,
+            "z": 9.588308223790593
+          },
+          "gravity_magnitude_mps2": 9.593558303719357,
+          "gyro_rms_radps": 0.012074623034120897,
+          "gravity_residual_mps2": 0.2130916962806424,
+          "rotation_sensor_to_gravity_frame": [
+            0.9994536782232354,
+            -0.00002252557824022196,
+            0.033050636584547634,
+            -0.00002252557824022196,
+            0.9999990712402532,
+            0.0013627219926748404,
+            -0.033050636584547634,
+            -0.0013627219926748404,
+            0.9994527494634886
+          ],
+          "resolved_axes": [
+            "vertical"
+          ],
+          "unresolved_axes": [
+            "anatomical_forward",
+            "anatomical_lateral"
+          ]
+        },
+        "filter_comparison": [
+          {
+            "method": "zero_phase_butterworth",
+            "roughness_rms_mps2": 0.8775136025992134,
+            "peak_to_peak_retention": 0.6613472349544445,
+            "strongest_event_time_shift_ms": 10.0
+          },
+          {
+            "method": "centered_moving_average",
+            "roughness_rms_mps2": 0.5274586703809455,
+            "peak_to_peak_retention": 0.42336835465389,
+            "strongest_event_time_shift_ms": 10.0
+          }
+        ],
+        "quality_score": 0.8579388691462384,
+        "quality_score_definition": "output coverage multiplied by orientation confidence; technical only",
+        "uncertainty": "Vertikale Achse aus dem stabilsten technischen Ruhefenster; Yaw und anatomische Horizontalzeichen bleiben unbestimmt."
+      }
+    ],
+    "issues": [
+      {
+        "code": "upstream_time_review_required",
+        "observation": "Die vorgelagerte Zeitrekonstruktion verlangt manuelle Prüfung.",
+        "uncertainty": "Die rekonstruierten Analysezeiten sind keine gemessenen Sensorabtastzeitpunkte.",
+        "recommendation": "Zeitrekonstruktionsbericht und Videoanker gemeinsam prüfen."
+      },
+      {
+        "code": "event_peak_attenuation",
+        "sensor": "SG",
+        "observation": "Die Peak-to-Peak-Erhaltung beträgt 0.661.",
+        "uncertainty": "Starke Einzelspitzen können technische Artefakte oder reale kurze Ereignisse sein.",
+        "recommendation": "Roh-/Filteroverlay und Videoereignisse manuell prüfen."
+      }
+    ]
+  }
+}

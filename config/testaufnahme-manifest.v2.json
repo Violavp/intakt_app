@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "recording_id": null,
+  "recorded_at": null,
+  "configuration_id": "INTAKT-IMU-5S-V2",
+  "app_name_and_version": null,
+  "bandwidth_hz": 44,
+  "sensors": [
+    {"label": "VL", "hardware_id": "1B9D88FD0E8C", "raw_files": [], "photo": null},
+    {"label": "VR", "hardware_id": "83FEC4707D1D", "raw_files": [], "photo": null},
+    {"label": "HL", "hardware_id": "1792A254366C", "raw_files": [], "photo": null},
+    {"label": "HR", "hardware_id": "657910C7ECB7", "raw_files": [], "photo": null},
+    {"label": "SG", "hardware_id": null, "raw_files": [], "photo": null}
+  ],
+  "saddle_girth_position": null,
+  "saddle_girth_orientation": null,
+  "recording": {
+    "sync_taps_visible_in_video": false,
+    "standing_start_present": false,
+    "walk_present": false,
+    "trot_present": false,
+    "standing_end_present": false
+  },
+  "video_file": null,
+  "sha256": {
+    "raw_files": [],
+    "video": null
+  },
+  "observed_export": {
+    "columns": [],
+    "units": [],
+    "timestamp_format": null,
+    "effective_rate_per_sensor_hz": []
+  },
+  "complete": false,
+  "uncertainties": []
+}

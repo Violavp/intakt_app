@@ -1,6 +1,6 @@
 {
-    "name": "intakt_app",
-    "short_name": "intakt_app",
+    "name": "HorseTrack",
+    "short_name": "HorseTrack",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

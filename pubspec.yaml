@@ -17,6 +17,8 @@ dependencies:
   path_provider: ^2.1.2
   flutter_foreground_task: ^6.1.2
   wakelock_plus: ^1.1.4
+  shared_preferences: ^2.3.2
+  provider: ^6.0.5
   # weitere dependencies hier...
 
 dev_dependencies:

@@ -1,0 +1,1743 @@
+{
+  "report_version": 1,
+  "segmentation": {
+    "status": "SEGMENTATION_REVIEW_REQUIRED",
+    "time_unit": "s",
+    "frequency_unit": "Hz",
+    "acceleration_unit": "m/s²",
+    "orientation_angle_unit": "degree",
+    "angle_z_trend_unit": "degree/s",
+    "config": {
+      "window_seconds": 4.0,
+      "step_seconds": 0.5,
+      "minimum_window_coverage": 0.9,
+      "movement_on_rms_mps2": 0.45,
+      "movement_off_rms_mps2": 0.3,
+      "minimum_frequency_hz": 0.5,
+      "maximum_frequency_hz": 4.5,
+      "frequency_resolution_hz": 0.05,
+      "minimum_spectral_confidence": 0.35,
+      "minimum_cluster_windows": 6,
+      "minimum_cluster_separation": 0.4,
+      "gait_clustering_feature": "frequency",
+      "enabled_movement_gaits": [
+        "WALK",
+        "TROT"
+      ],
+      "minimum_movement_bout_seconds": 3.0,
+      "gait_order_reset_standing_seconds": 5.0,
+      "minimum_gait_advance_windows": 6,
+      "enforce_configured_gait_order": true,
+      "minimum_direction_slope_degps": 2.0,
+      "direction_trend_window_seconds": 12.0,
+      "minimum_direction_agreement_sensors": 4,
+      "direction_change_confirmation_windows": 2,
+      "positive_angle_z_direction": "LEFT",
+      "maximum_interruption_seconds": 2.0,
+      "minimum_analyzable_seconds": 3.0,
+      "minimum_analyzable_confidence": 0.55,
+      "minimum_stable_windows": 2,
+      "required_leg_labels": [
+        "VL",
+        "VR",
+        "HL",
+        "HR"
+      ]
+    },
+    "assumptions": [
+      "analysis_time_s is the video-linked time produced by time reconstruction",
+      "vertical movement acceleration is comparable after gravity alignment",
+      "enabled movement gaits come from the documented recording protocol; disabled gaits are never inferred",
+      "movement gaits are ordered by recording-internal signal-frequency clusters, not by physiological reference ranges",
+      "gait remains frequency-based; AngleZ is used only for recording-calibrated line direction, signed bending rate and direction-change candidates",
+      "positive AngleZ trend means left and negative trend means right for the confirmed test01 mounting; every new mounting requires validation",
+      "confidence is a technical signal-quality score, not a probability of a medical or biomechanical diagnosis"
+    ],
+    "manual_corrections": [],
+    "gait_signal_clusters": [
+      {
+        "gait": "WALK",
+        "feature": "frequency",
+        "centroid": 1.8314049586776866,
+        "unit": "Hz",
+        "window_count": 121
+      },
+      {
+        "gait": "TROT",
+        "feature": "frequency",
+        "centroid": 2.390808823529408,
+        "unit": "Hz",
+        "window_count": 136
+      }
+    ],
+    "segments": [
+      {
+        "start_s": 0.0,
+        "end_s": 8.25,
+        "video_start_s": 0.0,
+        "video_end_s": 8.25,
+        "duration_s": 8.25,
+        "gait": "STANDING",
+        "confidence": 0.9130532164313008,
+        "uncertainty": 0.08694678356869923,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.05216807014121959,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "UNKNOWN",
+        "direction_valid": false,
+        "direction_invalid_reason": "four_leg_angle_z_consensus_not_reached_or_signal_missing",
+        "front_angle_z_trend_degps": 0.3133650324254147,
+        "hind_angle_z_trend_degps": 0.2146101939793845,
+        "mean_angle_z_trend_degps": null,
+        "line_bending_rate_degps": null,
+        "direction_confidence": 0.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2,
+            "last": 3971
+          },
+          "VR": {
+            "first": 22,
+            "last": 3991
+          },
+          "HL": {
+            "first": 10,
+            "last": 3979
+          },
+          "HR": {
+            "first": 6,
+            "last": 3975
+          }
+        }
+      },
+      {
+        "start_s": 8.25,
+        "end_s": 8.75,
+        "video_start_s": 8.25,
+        "video_end_s": 8.75,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.7749102033068734,
+        "uncertainty": 0.22508979669312656,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.13505387801587593,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "UNKNOWN",
+        "direction_valid": false,
+        "direction_invalid_reason": "four_leg_angle_z_consensus_not_reached_or_signal_missing",
+        "front_angle_z_trend_degps": -0.44334200434205107,
+        "hind_angle_z_trend_degps": -0.31465667971532774,
+        "mean_angle_z_trend_degps": null,
+        "line_bending_rate_degps": null,
+        "direction_confidence": 0.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2579,
+            "last": 4165
+          },
+          "VR": {
+            "first": 2599,
+            "last": 4180
+          },
+          "HL": {
+            "first": 2587,
+            "last": 4172
+          },
+          "HR": {
+            "first": 2583,
+            "last": 4168
+          }
+        }
+      },
+      {
+        "start_s": 8.75,
+        "end_s": 9.25,
+        "video_start_s": 8.75,
+        "video_end_s": 9.25,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.29894421133130183,
+        "uncertainty": 0.7010557886686981,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.150000000000001,
+        "diagonal_synchrony": -0.08651754282842855,
+        "movement_rms_mps2": 0.9185605527644556,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "UNKNOWN",
+        "direction_valid": false,
+        "direction_invalid_reason": "four_leg_angle_z_consensus_not_reached_or_signal_missing",
+        "front_angle_z_trend_degps": -1.0701179910912875,
+        "hind_angle_z_trend_degps": -0.8657289985651988,
+        "mean_angle_z_trend_degps": null,
+        "line_bending_rate_degps": null,
+        "direction_confidence": 0.25,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2769,
+            "last": 4362
+          },
+          "VR": {
+            "first": 2793,
+            "last": 4386
+          },
+          "HL": {
+            "first": 2789,
+            "last": 4382
+          },
+          "HR": {
+            "first": 2773,
+            "last": 4366
+          }
+        }
+      },
+      {
+        "start_s": 9.25,
+        "end_s": 10.25,
+        "video_start_s": 9.25,
+        "video_end_s": 10.25,
+        "duration_s": 1.0,
+        "gait": "UNKNOWN",
+        "confidence": 0.3568278502697194,
+        "uncertainty": 0.6431721497302806,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.075000000000001,
+        "diagonal_synchrony": -0.09472721910570539,
+        "movement_rms_mps2": 3.856860003986111,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "UNKNOWN",
+        "direction_valid": false,
+        "direction_invalid_reason": "four_leg_angle_z_consensus_not_reached_or_signal_missing",
+        "front_angle_z_trend_degps": -2.0295966521681703,
+        "hind_angle_z_trend_degps": -1.7801096180417906,
+        "mean_angle_z_trend_degps": null,
+        "line_bending_rate_degps": null,
+        "direction_confidence": 0.5,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2971,
+            "last": 4770
+          },
+          "VR": {
+            "first": 2990,
+            "last": 4769
+          },
+          "HL": {
+            "first": 2986,
+            "last": 4765
+          },
+          "HR": {
+            "first": 2982,
+            "last": 4761
+          }
+        }
+      },
+      {
+        "start_s": 10.25,
+        "end_s": 10.75,
+        "video_start_s": 10.25,
+        "video_end_s": 10.75,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.4594601632625859,
+        "uncertainty": 0.5405398367374141,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.2500000000000004,
+        "diagonal_synchrony": -0.06855759374328127,
+        "movement_rms_mps2": 8.125314376959084,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "UNKNOWN",
+        "direction_valid": false,
+        "direction_invalid_reason": "four_leg_angle_z_consensus_not_reached_or_signal_missing",
+        "front_angle_z_trend_degps": -3.078647356072849,
+        "hind_angle_z_trend_degps": -2.7939047386430986,
+        "mean_angle_z_trend_degps": null,
+        "line_bending_rate_degps": null,
+        "direction_confidence": 0.75,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 3374,
+            "last": 4959
+          },
+          "VR": {
+            "first": 3398,
+            "last": 4979
+          },
+          "HL": {
+            "first": 3394,
+            "last": 4987
+          },
+          "HR": {
+            "first": 3378,
+            "last": 4963
+          }
+        }
+      },
+      {
+        "start_s": 10.75,
+        "end_s": 11.25,
+        "video_start_s": 10.75,
+        "video_end_s": 11.25,
+        "duration_s": 0.5,
+        "gait": "WALK",
+        "confidence": 0.5024695883033027,
+        "uncertainty": 0.4975304116966973,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.550000000000001,
+        "diagonal_synchrony": -0.06568386487042445,
+        "movement_rms_mps2": 9.951436125873709,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "UNKNOWN",
+        "direction_valid": false,
+        "direction_invalid_reason": "four_leg_angle_z_consensus_not_reached_or_signal_missing",
+        "front_angle_z_trend_degps": -3.7421459857940436,
+        "hind_angle_z_trend_degps": -3.439106477302855,
+        "mean_angle_z_trend_degps": null,
+        "line_bending_rate_degps": null,
+        "direction_confidence": 0.75,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 3568,
+            "last": 5153
+          },
+          "VR": {
+            "first": 3583,
+            "last": 5173
+          },
+          "HL": {
+            "first": 3579,
+            "last": 5168
+          },
+          "HR": {
+            "first": 3571,
+            "last": 5157
+          }
+        }
+      },
+      {
+        "start_s": 11.25,
+        "end_s": 22.75,
+        "video_start_s": 11.25,
+        "video_end_s": 22.75,
+        "duration_s": 11.5,
+        "gait": "WALK",
+        "confidence": 0.6769896130719234,
+        "uncertainty": 0.3230103869280766,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.6543478260869577,
+        "diagonal_synchrony": -0.15243080074538773,
+        "movement_rms_mps2": 14.2861270279663,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -10.531911244803027,
+        "hind_angle_z_trend_degps": -10.512272314732098,
+        "mean_angle_z_trend_degps": -10.522091779767564,
+        "line_bending_rate_degps": -10.522091779767564,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": true,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 3761,
+            "last": 9727
+          },
+          "VR": {
+            "first": 3781,
+            "last": 9747
+          },
+          "HL": {
+            "first": 3777,
+            "last": 9742
+          },
+          "HR": {
+            "first": 3765,
+            "last": 9731
+          }
+        }
+      },
+      {
+        "start_s": 22.75,
+        "end_s": 23.25,
+        "video_start_s": 22.75,
+        "video_end_s": 23.25,
+        "duration_s": 0.5,
+        "gait": "WALK",
+        "confidence": 0.637435532204838,
+        "uncertainty": 0.36256446779516205,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.600000000000001,
+        "diagonal_synchrony": -0.06270050016495465,
+        "movement_rms_mps2": 14.828445736954675,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -13.840728263469458,
+        "hind_angle_z_trend_degps": -14.148198570119643,
+        "mean_angle_z_trend_degps": -13.99446341679455,
+        "line_bending_rate_degps": -13.99446341679455,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 8332,
+            "last": 9929
+          },
+          "VR": {
+            "first": 8355,
+            "last": 9940
+          },
+          "HL": {
+            "first": 8351,
+            "last": 9936
+          },
+          "HR": {
+            "first": 8335,
+            "last": 9917
+          }
+        }
+      },
+      {
+        "start_s": 23.25,
+        "end_s": 23.75,
+        "video_start_s": 23.25,
+        "video_end_s": 23.75,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.759282150325709,
+        "uncertainty": 0.240717849674291,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4499999999999997,
+        "diagonal_synchrony": -0.07133000269629464,
+        "movement_rms_mps2": 12.142414608854256,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -14.062477177175595,
+        "hind_angle_z_trend_degps": -14.303420954845777,
+        "mean_angle_z_trend_degps": -14.182949066010686,
+        "line_bending_rate_degps": -14.182949066010686,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 8525,
+            "last": 10131
+          },
+          "VR": {
+            "first": 8545,
+            "last": 10150
+          },
+          "HL": {
+            "first": 8540,
+            "last": 10138
+          },
+          "HR": {
+            "first": 8537,
+            "last": 10134
+          }
+        }
+      },
+      {
+        "start_s": 23.75,
+        "end_s": 32.75,
+        "video_start_s": 23.75,
+        "video_end_s": 32.75,
+        "duration_s": 9.0,
+        "gait": "TROT",
+        "confidence": 0.7014509305457085,
+        "uncertainty": 0.2985490694542915,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.333333333333334,
+        "diagonal_synchrony": -0.03332576061349618,
+        "movement_rms_mps2": 17.0092159056844,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -20.89215215658293,
+        "hind_angle_z_trend_degps": -21.26847229120826,
+        "mean_angle_z_trend_degps": -21.080312223895596,
+        "line_bending_rate_degps": -21.080312223895596,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": true,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 8739,
+            "last": 13693
+          },
+          "VR": {
+            "first": 8759,
+            "last": 13708
+          },
+          "HL": {
+            "first": 8746,
+            "last": 13739
+          },
+          "HR": {
+            "first": 8743,
+            "last": 13696
+          }
+        }
+      },
+      {
+        "start_s": 32.75,
+        "end_s": 33.25,
+        "video_start_s": 32.75,
+        "video_end_s": 33.25,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.7121006726581215,
+        "uncertainty": 0.2878993273418785,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4999999999999996,
+        "diagonal_synchrony": 0.2353871539424555,
+        "movement_rms_mps2": 28.766717547588414,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -31.19790825874262,
+        "hind_angle_z_trend_degps": -31.853631278796357,
+        "mean_angle_z_trend_degps": -31.525769768769486,
+        "line_bending_rate_degps": -31.525769768769486,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 12301,
+            "last": 13898
+          },
+          "VR": {
+            "first": 12324,
+            "last": 13918
+          },
+          "HL": {
+            "first": 12320,
+            "last": 13905
+          },
+          "HR": {
+            "first": 12305,
+            "last": 13910
+          }
+        }
+      },
+      {
+        "start_s": 33.25,
+        "end_s": 33.75,
+        "video_start_s": 33.25,
+        "video_end_s": 33.75,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.2500000000000007,
+        "diagonal_synchrony": 0.24936589959687655,
+        "movement_rms_mps2": 29.9467388285851,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -32.0204949429307,
+        "hind_angle_z_trend_degps": -32.71835782513113,
+        "mean_angle_z_trend_degps": -32.369426384030916,
+        "line_bending_rate_degps": -32.369426384030916,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 12515,
+            "last": 14096
+          },
+          "VR": {
+            "first": 12534,
+            "last": 14119
+          },
+          "HL": {
+            "first": 12509,
+            "last": 14107
+          },
+          "HR": {
+            "first": 12518,
+            "last": 14100
+          }
+        }
+      },
+      {
+        "start_s": 33.75,
+        "end_s": 35.25,
+        "video_start_s": 33.75,
+        "video_end_s": 35.25,
+        "duration_s": 1.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.2666666666666675,
+        "diagonal_synchrony": 0.269248012034718,
+        "movement_rms_mps2": 27.986905869568076,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -33.07896899994753,
+        "hind_angle_z_trend_degps": -33.767624398306204,
+        "mean_angle_z_trend_degps": -33.423296699126865,
+        "line_bending_rate_degps": -33.423296699126865,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 12708,
+            "last": 14685
+          },
+          "VR": {
+            "first": 12728,
+            "last": 14704
+          },
+          "HL": {
+            "first": 12715,
+            "last": 14700
+          },
+          "HR": {
+            "first": 12712,
+            "last": 14697
+          }
+        }
+      },
+      {
+        "start_s": 35.25,
+        "end_s": 35.75,
+        "video_start_s": 35.25,
+        "video_end_s": 35.75,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.2500000000000007,
+        "diagonal_synchrony": 0.2785230674657494,
+        "movement_rms_mps2": 26.802518635136057,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -33.746383526493815,
+        "hind_angle_z_trend_degps": -34.33354088129474,
+        "mean_angle_z_trend_degps": -34.03996220389428,
+        "line_bending_rate_degps": -34.03996220389428,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 13313,
+            "last": 14899
+          },
+          "VR": {
+            "first": 13309,
+            "last": 14914
+          },
+          "HL": {
+            "first": 13304,
+            "last": 14893
+          },
+          "HR": {
+            "first": 13301,
+            "last": 14902
+          }
+        }
+      },
+      {
+        "start_s": 35.75,
+        "end_s": 36.25,
+        "video_start_s": 35.75,
+        "video_end_s": 36.25,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.7766847510950374,
+        "uncertainty": 0.22331524890496257,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4499999999999997,
+        "diagonal_synchrony": 0.2824915775517069,
+        "movement_rms_mps2": 29.037933881281422,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -33.813848283741414,
+        "hind_angle_z_trend_degps": -34.33696247991405,
+        "mean_angle_z_trend_degps": -34.075405381827736,
+        "line_bending_rate_degps": -34.075405381827736,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 13503,
+            "last": 15088
+          },
+          "VR": {
+            "first": 13526,
+            "last": 15112
+          },
+          "HL": {
+            "first": 13522,
+            "last": 15107
+          },
+          "HR": {
+            "first": 13507,
+            "last": 15092
+          }
+        }
+      },
+      {
+        "start_s": 36.25,
+        "end_s": 58.25,
+        "video_start_s": 36.25,
+        "video_end_s": 58.25,
+        "duration_s": 22.0,
+        "gait": "TROT",
+        "confidence": 0.7304577145634934,
+        "uncertainty": 0.2695422854365066,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.364772727272728,
+        "diagonal_synchrony": 0.2623944151045584,
+        "movement_rms_mps2": 25.233899005501257,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -28.53526090536906,
+        "hind_angle_z_trend_degps": -28.235345653883016,
+        "mean_angle_z_trend_degps": -28.38530327962603,
+        "line_bending_rate_degps": -28.38530327962603,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": true,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 13693,
+            "last": 23834
+          },
+          "VR": {
+            "first": 13708,
+            "last": 23845
+          },
+          "HL": {
+            "first": 13739,
+            "last": 23839
+          },
+          "HR": {
+            "first": 13696,
+            "last": 23829
+          }
+        }
+      },
+      {
+        "start_s": 58.25,
+        "end_s": 58.75,
+        "video_start_s": 58.25,
+        "video_end_s": 58.75,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.7084861449949691,
+        "uncertainty": 0.2915138550050309,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4,
+        "diagonal_synchrony": -0.11898428076144715,
+        "movement_rms_mps2": 13.908959679981322,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -29.694744347190635,
+        "hind_angle_z_trend_degps": -28.816288718748662,
+        "mean_angle_z_trend_degps": -29.25551653296965,
+        "line_bending_rate_degps": -29.25551653296965,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 22442,
+            "last": 24035
+          },
+          "VR": {
+            "first": 22453,
+            "last": 24042
+          },
+          "HL": {
+            "first": 22448,
+            "last": 24029
+          },
+          "HR": {
+            "first": 22454,
+            "last": 24039
+          }
+        }
+      },
+      {
+        "start_s": 58.75,
+        "end_s": 59.25,
+        "video_start_s": 58.75,
+        "video_end_s": 59.25,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.650000000000001,
+        "diagonal_synchrony": -0.1838260918103596,
+        "movement_rms_mps2": 11.167016178865701,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -28.280551681977805,
+        "hind_angle_z_trend_degps": -27.85891678800759,
+        "mean_angle_z_trend_degps": -28.0697342349927,
+        "line_bending_rate_degps": -28.0697342349927,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 22644,
+            "last": 24229
+          },
+          "VR": {
+            "first": 22663,
+            "last": 24248
+          },
+          "HL": {
+            "first": 22650,
+            "last": 24235
+          },
+          "HR": {
+            "first": 22647,
+            "last": 24233
+          }
+        }
+      },
+      {
+        "start_s": 59.25,
+        "end_s": 63.25,
+        "video_start_s": 59.25,
+        "video_end_s": 63.25,
+        "duration_s": 4.0,
+        "gait": "UNKNOWN",
+        "confidence": 0.4912500000000001,
+        "uncertainty": 0.5087499999999999,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.725000000000001,
+        "diagonal_synchrony": -0.15976900323435247,
+        "movement_rms_mps2": 10.343423413948388,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -17.286073809704646,
+        "hind_angle_z_trend_degps": -18.557891618142424,
+        "mean_angle_z_trend_degps": -17.921982713923533,
+        "line_bending_rate_degps": -17.921982713923533,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 22837,
+            "last": 25822
+          },
+          "VR": {
+            "first": 22856,
+            "last": 25845
+          },
+          "HL": {
+            "first": 22843,
+            "last": 25820
+          },
+          "HR": {
+            "first": 22841,
+            "last": 25826
+          }
+        }
+      },
+      {
+        "start_s": 63.25,
+        "end_s": 63.75,
+        "video_start_s": 63.25,
+        "video_end_s": 63.75,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.700000000000001,
+        "diagonal_synchrony": -0.14845037483750328,
+        "movement_rms_mps2": 14.563933039863795,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "riding_direction": "RIGHT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": -3.2414686753352484,
+        "hind_angle_z_trend_degps": -5.677216641257067,
+        "mean_angle_z_trend_degps": -4.4593426582961575,
+        "line_bending_rate_degps": -4.4593426582961575,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 24431,
+            "last": 26016
+          },
+          "VR": {
+            "first": 24450,
+            "last": 26035
+          },
+          "HL": {
+            "first": 24428,
+            "last": 26030
+          },
+          "HR": {
+            "first": 24434,
+            "last": 26020
+          }
+        }
+      },
+      {
+        "start_s": 63.75,
+        "end_s": 64.75,
+        "video_start_s": 63.75,
+        "video_end_s": 64.75,
+        "duration_s": 1.0,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.700000000000001,
+        "diagonal_synchrony": -0.13530503015523934,
+        "movement_rms_mps2": 15.092078166775195,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "UNKNOWN",
+        "direction_valid": false,
+        "direction_invalid_reason": "four_leg_angle_z_consensus_not_reached_or_signal_missing",
+        "front_angle_z_trend_degps": 2.7005773346223867,
+        "hind_angle_z_trend_degps": 0.17746909451586113,
+        "mean_angle_z_trend_degps": null,
+        "line_bending_rate_degps": null,
+        "direction_confidence": 0.5,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 24620,
+            "last": 26419
+          },
+          "VR": {
+            "first": 24643,
+            "last": 26438
+          },
+          "HL": {
+            "first": 24638,
+            "last": 26413
+          },
+          "HR": {
+            "first": 24624,
+            "last": 26423
+          }
+        }
+      },
+      {
+        "start_s": 64.75,
+        "end_s": 65.25,
+        "video_start_s": 64.75,
+        "video_end_s": 65.25,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.650000000000001,
+        "diagonal_synchrony": -0.12877092960085895,
+        "movement_rms_mps2": 13.769105064363298,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 8.917668301999365,
+        "hind_angle_z_trend_degps": 6.391124455518142,
+        "mean_angle_z_trend_degps": 7.6543963787587534,
+        "line_bending_rate_degps": 7.6543963787587534,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 25028,
+            "last": 26613
+          },
+          "VR": {
+            "first": 25047,
+            "last": 26632
+          },
+          "HL": {
+            "first": 25021,
+            "last": 26619
+          },
+          "HR": {
+            "first": 25031,
+            "last": 26616
+          }
+        }
+      },
+      {
+        "start_s": 65.25,
+        "end_s": 66.75,
+        "video_start_s": 65.25,
+        "video_end_s": 66.75,
+        "duration_s": 1.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.6666666666666679,
+        "diagonal_synchrony": -0.11056671130776667,
+        "movement_rms_mps2": 13.607614296333315,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 17.072541618643047,
+        "hind_angle_z_trend_degps": 15.100690818629616,
+        "mean_angle_z_trend_degps": 16.086616218636333,
+        "line_bending_rate_degps": 16.086616218636333,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 25217,
+            "last": 27218
+          },
+          "VR": {
+            "first": 25240,
+            "last": 27217
+          },
+          "HL": {
+            "first": 25235,
+            "last": 27212
+          },
+          "HR": {
+            "first": 25221,
+            "last": 27209
+          }
+        }
+      },
+      {
+        "start_s": 66.75,
+        "end_s": 67.25,
+        "video_start_s": 66.75,
+        "video_end_s": 67.25,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.650000000000001,
+        "diagonal_synchrony": -0.03475033395006308,
+        "movement_rms_mps2": 13.36837413036424,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 24.172947928558933,
+        "hind_angle_z_trend_degps": 22.63139592061222,
+        "mean_angle_z_trend_degps": 23.40217192458558,
+        "line_bending_rate_degps": 23.40217192458558,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 25822,
+            "last": 27412
+          },
+          "VR": {
+            "first": 25845,
+            "last": 27431
+          },
+          "HL": {
+            "first": 25820,
+            "last": 27405
+          },
+          "HR": {
+            "first": 25826,
+            "last": 27415
+          }
+        }
+      },
+      {
+        "start_s": 67.25,
+        "end_s": 67.75,
+        "video_start_s": 67.25,
+        "video_end_s": 67.75,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.6015973608671454,
+        "uncertainty": 0.39840263913285456,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.35,
+        "diagonal_synchrony": 0.028833130609586838,
+        "movement_rms_mps2": 17.226136787832257,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 26.92473081611881,
+        "hind_angle_z_trend_degps": 25.75600639192031,
+        "mean_angle_z_trend_degps": 26.34036860401956,
+        "line_bending_rate_degps": 26.34036860401956,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 26016,
+            "last": 27601
+          },
+          "VR": {
+            "first": 26035,
+            "last": 27620
+          },
+          "HL": {
+            "first": 26030,
+            "last": 27615
+          },
+          "HR": {
+            "first": 26019,
+            "last": 27605
+          }
+        }
+      },
+      {
+        "start_s": 67.75,
+        "end_s": 97.75,
+        "video_start_s": 67.75,
+        "video_end_s": 97.75,
+        "duration_s": 30.0,
+        "gait": "TROT",
+        "confidence": 0.7050517227016841,
+        "uncertainty": 0.29494827729831585,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.3158333333333343,
+        "diagonal_synchrony": 0.2414060731506735,
+        "movement_rms_mps2": 24.738236126450563,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 31.10048830123555,
+        "hind_angle_z_trend_degps": 31.042502669293082,
+        "mean_angle_z_trend_degps": 31.071495485264318,
+        "line_bending_rate_degps": 31.071495485264318,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": true,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 26218,
+            "last": 39513
+          },
+          "VR": {
+            "first": 26229,
+            "last": 39536
+          },
+          "HL": {
+            "first": 26223,
+            "last": 39530
+          },
+          "HR": {
+            "first": 26213,
+            "last": 39529
+          }
+        }
+      },
+      {
+        "start_s": 97.75,
+        "end_s": 98.25,
+        "video_start_s": 97.75,
+        "video_end_s": 98.25,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.31869880038223625,
+        "uncertainty": 0.6813011996177638,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.150000000000001,
+        "diagonal_synchrony": -0.0461872477073333,
+        "movement_rms_mps2": 10.140415586092214,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 12.861901060191645,
+        "hind_angle_z_trend_degps": 12.527511932507792,
+        "mean_angle_z_trend_degps": 12.694706496349719,
+        "line_bending_rate_degps": 12.694706496349719,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 38142,
+            "last": 39731
+          },
+          "VR": {
+            "first": 38164,
+            "last": 39729
+          },
+          "HL": {
+            "first": 38138,
+            "last": 39723
+          },
+          "HR": {
+            "first": 38137,
+            "last": 39734
+          }
+        }
+      },
+      {
+        "start_s": 98.25,
+        "end_s": 98.75,
+        "video_start_s": 98.25,
+        "video_end_s": 98.75,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.23392135433032915,
+        "uncertainty": 0.7660786456696709,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.100000000000001,
+        "diagonal_synchrony": 0.0015469908106127694,
+        "movement_rms_mps2": 10.238674678805664,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 11.828453686138445,
+        "hind_angle_z_trend_degps": 11.544134478074355,
+        "mean_angle_z_trend_degps": 11.6862940821064,
+        "line_bending_rate_degps": 11.6862940821064,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 38331,
+            "last": 39921
+          },
+          "VR": {
+            "first": 38354,
+            "last": 39943
+          },
+          "HL": {
+            "first": 38328,
+            "last": 39917
+          },
+          "HR": {
+            "first": 38339,
+            "last": 39924
+          }
+        }
+      },
+      {
+        "start_s": 98.75,
+        "end_s": 127.25,
+        "video_start_s": 98.75,
+        "video_end_s": 127.25,
+        "duration_s": 28.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.4538310158804089,
+        "uncertainty": 0.5461689841195911,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.05877192982456,
+        "diagonal_synchrony": 0.04985840950170489,
+        "movement_rms_mps2": 9.575523652205987,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 8.998296855843504,
+        "hind_angle_z_trend_degps": 8.918695101623193,
+        "mean_angle_z_trend_degps": 8.958495978733348,
+        "line_bending_rate_degps": 8.958495978733348,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 38529,
+            "last": 51248
+          },
+          "VR": {
+            "first": 38567,
+            "last": 51278
+          },
+          "HL": {
+            "first": 38542,
+            "last": 51243
+          },
+          "HR": {
+            "first": 38532,
+            "last": 51251
+          }
+        }
+      },
+      {
+        "start_s": 127.25,
+        "end_s": 127.75,
+        "video_start_s": 127.25,
+        "video_end_s": 127.75,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.42633611346071737,
+        "uncertainty": 0.5736638865392827,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.100000000000001,
+        "diagonal_synchrony": 0.058795990916937005,
+        "movement_rms_mps2": 11.995534028441657,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 7.563191139852313,
+        "hind_angle_z_trend_degps": 7.591667700682978,
+        "mean_angle_z_trend_degps": 7.577429420267645,
+        "line_bending_rate_degps": 7.577429420267645,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 49860,
+            "last": 51454
+          },
+          "VR": {
+            "first": 49874,
+            "last": 51463
+          },
+          "HL": {
+            "first": 49852,
+            "last": 51437
+          },
+          "HR": {
+            "first": 49863,
+            "last": 51449
+          }
+        }
+      },
+      {
+        "start_s": 127.75,
+        "end_s": 128.25,
+        "video_start_s": 127.75,
+        "video_end_s": 128.25,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.4565307748538944,
+        "uncertainty": 0.5434692251461055,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.150000000000001,
+        "diagonal_synchrony": 0.03660090547313417,
+        "movement_rms_mps2": 8.99307482793597,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 7.743401027750327,
+        "hind_angle_z_trend_degps": 7.630170078958756,
+        "mean_angle_z_trend_degps": 7.686785553354541,
+        "line_bending_rate_degps": 7.686785553354541,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 50058,
+            "last": 51639
+          },
+          "VR": {
+            "first": 50072,
+            "last": 51657
+          },
+          "HL": {
+            "first": 50045,
+            "last": 51650
+          },
+          "HR": {
+            "first": 50053,
+            "last": 51646
+          }
+        }
+      },
+      {
+        "start_s": 128.25,
+        "end_s": 135.75,
+        "video_start_s": 128.25,
+        "video_end_s": 135.75,
+        "duration_s": 7.5,
+        "gait": "TROT",
+        "confidence": 0.4959069780682825,
+        "uncertainty": 0.5040930219317175,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.170000000000001,
+        "diagonal_synchrony": 0.024314723130229535,
+        "movement_rms_mps2": 10.546580312447183,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 7.2316011030940235,
+        "hind_angle_z_trend_degps": 7.447286918525876,
+        "mean_angle_z_trend_degps": 7.33944401080995,
+        "line_bending_rate_degps": 7.33944401080995,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 50252,
+            "last": 54624
+          },
+          "VR": {
+            "first": 50261,
+            "last": 54642
+          },
+          "HL": {
+            "first": 50255,
+            "last": 54619
+          },
+          "HR": {
+            "first": 50263,
+            "last": 54627
+          }
+        }
+      },
+      {
+        "start_s": 135.75,
+        "end_s": 136.25,
+        "video_start_s": 135.75,
+        "video_end_s": 136.25,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.4563080001281544,
+        "uncertainty": 0.5436919998718456,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.150000000000001,
+        "diagonal_synchrony": -0.006309840645375733,
+        "movement_rms_mps2": 10.776212543943851,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 6.277449550387903,
+        "hind_angle_z_trend_degps": 6.565124520253891,
+        "mean_angle_z_trend_degps": 6.421287035320897,
+        "line_bending_rate_degps": 6.421287035320897,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 53233,
+            "last": 54826
+          },
+          "VR": {
+            "first": 53250,
+            "last": 54835
+          },
+          "HL": {
+            "first": 53224,
+            "last": 54813
+          },
+          "HR": {
+            "first": 53235,
+            "last": 54821
+          }
+        }
+      },
+      {
+        "start_s": 136.25,
+        "end_s": 136.75,
+        "video_start_s": 136.25,
+        "video_end_s": 136.75,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.4228692103002505,
+        "uncertainty": 0.5771307896997495,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.100000000000001,
+        "diagonal_synchrony": -0.0102359123622533,
+        "movement_rms_mps2": 10.986389157408977,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 6.252210531932032,
+        "hind_angle_z_trend_degps": 6.570871710346525,
+        "mean_angle_z_trend_degps": 6.411541121139279,
+        "line_bending_rate_degps": 6.411541121139279,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 53442,
+            "last": 55020
+          },
+          "VR": {
+            "first": 53440,
+            "last": 55029
+          },
+          "HL": {
+            "first": 53429,
+            "last": 55022
+          },
+          "HR": {
+            "first": 53425,
+            "last": 55038
+          }
+        }
+      },
+      {
+        "start_s": 136.75,
+        "end_s": 139.74,
+        "video_start_s": 136.75,
+        "video_end_s": 139.74,
+        "duration_s": 2.990000000000009,
+        "gait": "UNKNOWN",
+        "confidence": 0.42591264903479154,
+        "uncertainty": 0.5740873509652085,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.100000000000001,
+        "diagonal_synchrony": -0.007308359280839195,
+        "movement_rms_mps2": 9.421826793094784,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "riding_direction": "LEFT",
+        "direction_valid": true,
+        "front_angle_z_trend_degps": 6.028645157229532,
+        "hind_angle_z_trend_degps": 6.385333189283325,
+        "mean_angle_z_trend_degps": 6.206989173256429,
+        "line_bending_rate_degps": 6.206989173256429,
+        "direction_confidence": 1.0,
+        "direction_interpretation": "recording-calibrated line direction and signed bending rate; not gait classification or geometric curvature",
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 53636,
+            "last": 55423
+          },
+          "VR": {
+            "first": 53662,
+            "last": 55432
+          },
+          "HL": {
+            "first": 53623,
+            "last": 55418
+          },
+          "HR": {
+            "first": 53639,
+            "last": 55426
+          }
+        }
+      }
+    ],
+    "analyzable_segment_count": 4,
+    "issues": [
+      {
+        "code": "upstream_preprocessing_review_required",
+        "observation": "Die Vorverarbeitung verlangt manuelle Prüfung.",
+        "uncertainty": "Zeit- oder Filterunsicherheit wirkt auf die Segmentgrenzen.",
+        "recommendation": "Vorverarbeitungsbericht zusammen mit Video prüfen."
+      },
+      {
+        "code": "uncertain_gait_windows",
+        "observation": "Mindestens ein Bewegungsfenster konnte keiner Gangart hinreichend sicher zugeordnet werden.",
+        "uncertainty": "Frequenzband oder Periodizität war nicht eindeutig.",
+        "recommendation": "UNKNOWN-Abschnitte im Video prüfen und begründet korrigieren oder von der Analyse ausschließen."
+      }
+    ]
+  }
+}

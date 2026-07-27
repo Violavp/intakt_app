@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "corrections": [
+    {
+      "start_s": 60.0,
+      "end_s": 64.0,
+      "gait": "WALK",
+      "exclude_from_analysis": false,
+      "reason": "Beispiel: im synchronisierten Video als Schritt bestätigt"
+    },
+    {
+      "start_s": 92.0,
+      "end_s": 94.0,
+      "transition": false,
+      "turn": true,
+      "exclude_from_analysis": true,
+      "reason": "Beispiel: Wendung im synchronisierten Video sichtbar"
+    }
+  ]
+}

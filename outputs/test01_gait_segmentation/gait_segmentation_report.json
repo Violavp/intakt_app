@@ -1,0 +1,2500 @@
+{
+  "report_version": 1,
+  "segmentation": {
+    "status": "SEGMENTATION_REVIEW_REQUIRED",
+    "time_unit": "s",
+    "frequency_unit": "Hz",
+    "acceleration_unit": "m/s²",
+    "config": {
+      "window_seconds": 4.0,
+      "step_seconds": 0.5,
+      "minimum_window_coverage": 0.9,
+      "movement_on_rms_mps2": 0.45,
+      "movement_off_rms_mps2": 0.3,
+      "minimum_frequency_hz": 0.5,
+      "maximum_frequency_hz": 4.5,
+      "frequency_resolution_hz": 0.05,
+      "minimum_spectral_confidence": 0.35,
+      "minimum_cluster_windows": 6,
+      "minimum_cluster_separation": 0.4,
+      "gait_clustering_feature": "frequency",
+      "enabled_movement_gaits": [
+        "WALK",
+        "TROT"
+      ],
+      "minimum_movement_bout_seconds": 3.0,
+      "gait_order_reset_standing_seconds": 5.0,
+      "minimum_gait_advance_windows": 6,
+      "enforce_configured_gait_order": true,
+      "turn_gyro_rms_radps": 0.55,
+      "turn_leg_activity_cv": 0.65,
+      "maximum_interruption_seconds": 2.0,
+      "minimum_analyzable_seconds": 3.0,
+      "minimum_analyzable_confidence": 0.55,
+      "minimum_stable_windows": 2,
+      "required_leg_labels": [
+        "VL",
+        "VR",
+        "HL",
+        "HR"
+      ],
+      "trunk_sensor_label": "SG"
+    },
+    "assumptions": [
+      "analysis_time_s is the video-linked time produced by time reconstruction",
+      "vertical movement acceleration is comparable after gravity alignment",
+      "enabled movement gaits come from the documented recording protocol; disabled gaits are never inferred",
+      "movement gaits are ordered by recording-internal signal-frequency clusters, not by physiological reference ranges",
+      "turn detection reports candidates, because anatomical yaw is unresolved",
+      "confidence is a technical signal-quality score, not a probability of a medical or biomechanical diagnosis"
+    ],
+    "manual_corrections": [],
+    "gait_signal_clusters": [
+      {
+        "gait": "WALK",
+        "feature": "frequency",
+        "centroid": 2.3299999999999987,
+        "unit": "Hz",
+        "window_count": 265
+      },
+      {
+        "gait": "TROT",
+        "feature": "frequency",
+        "centroid": 3.6565789473684194,
+        "unit": "Hz",
+        "window_count": 114
+      }
+    ],
+    "segments": [
+      {
+        "start_s": -4.8,
+        "end_s": -2.05,
+        "video_start_s": -4.8,
+        "video_end_s": -2.05,
+        "duration_s": 2.75,
+        "gait": "STANDING",
+        "confidence": 0.9057790434246659,
+        "uncertainty": 0.09422095657533414,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.05653257394520048,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 26,
+            "last": 2258
+          },
+          "VR": {
+            "first": 200,
+            "last": 2432
+          },
+          "HL": {
+            "first": 74,
+            "last": 2326
+          },
+          "HR": {
+            "first": 25,
+            "last": 2273
+          },
+          "SG": {
+            "first": 90,
+            "last": 2322
+          }
+        }
+      },
+      {
+        "start_s": -2.05,
+        "end_s": -1.5499999999999998,
+        "video_start_s": -2.05,
+        "video_end_s": -1.5499999999999998,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.27455532661369786,
+        "uncertainty": 0.7254446733863021,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.43526680403178125,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 505,
+            "last": 2500
+          },
+          "VR": {
+            "first": 704,
+            "last": 2669
+          },
+          "HL": {
+            "first": 586,
+            "last": 2568
+          },
+          "HR": {
+            "first": 533,
+            "last": 2523
+          },
+          "SG": {
+            "first": 582,
+            "last": 2564
+          }
+        }
+      },
+      {
+        "start_s": -1.5499999999999998,
+        "end_s": -1.0499999999999998,
+        "video_start_s": -1.5499999999999998,
+        "video_end_s": -1.0499999999999998,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 4.499999999999993,
+        "diagonal_synchrony": -0.08365003071499423,
+        "movement_rms_mps2": 2.204375740537568,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 755,
+            "last": 2741
+          },
+          "VR": {
+            "first": 941,
+            "last": 2939
+          },
+          "HL": {
+            "first": 815,
+            "last": 2805
+          },
+          "HR": {
+            "first": 782,
+            "last": 2764
+          },
+          "SG": {
+            "first": 831,
+            "last": 2801
+          }
+        }
+      },
+      {
+        "start_s": -1.0499999999999998,
+        "end_s": -0.04999999999999982,
+        "video_start_s": -1.0499999999999998,
+        "video_end_s": -0.04999999999999982,
+        "duration_s": 1.0,
+        "gait": "UNKNOWN",
+        "confidence": 0.4181180914965368,
+        "uncertainty": 0.5818819085034632,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.6249999999999956,
+        "diagonal_synchrony": -0.11624476550936028,
+        "movement_rms_mps2": 1.0582233935743397,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 1009,
+            "last": 3245
+          },
+          "VR": {
+            "first": 1199,
+            "last": 3430
+          },
+          "HL": {
+            "first": 1073,
+            "last": 3297
+          },
+          "HR": {
+            "first": 1036,
+            "last": 3272
+          },
+          "SG": {
+            "first": 1065,
+            "last": 3309
+          }
+        }
+      },
+      {
+        "start_s": -0.04999999999999982,
+        "end_s": 0.4500000000000002,
+        "video_start_s": -0.04999999999999982,
+        "video_end_s": 0.4500000000000002,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.2507560142810187,
+        "uncertainty": 0.7492439857189813,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.0499999999999976,
+        "diagonal_synchrony": -0.13072407815235756,
+        "movement_rms_mps2": 0.44344547640949006,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 1505,
+            "last": 3485
+          },
+          "VR": {
+            "first": 1699,
+            "last": 3679
+          },
+          "HL": {
+            "first": 1569,
+            "last": 3537
+          },
+          "HR": {
+            "first": 1524,
+            "last": 3512
+          },
+          "SG": {
+            "first": 1565,
+            "last": 3549
+          }
+        }
+      },
+      {
+        "start_s": 0.4500000000000002,
+        "end_s": 0.9500000000000002,
+        "video_start_s": 0.4500000000000002,
+        "video_end_s": 0.9500000000000002,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.594234936690112,
+        "uncertainty": 0.40576506330988804,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.24345903798593282,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": true,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 1767,
+            "last": 3747
+          },
+          "VR": {
+            "first": 1940,
+            "last": 3920
+          },
+          "HL": {
+            "first": 1815,
+            "last": 3795
+          },
+          "HR": {
+            "first": 1794,
+            "last": 3758
+          },
+          "SG": {
+            "first": 1831,
+            "last": 3811
+          }
+        }
+      },
+      {
+        "start_s": 0.9500000000000002,
+        "end_s": 1.4500000000000002,
+        "video_start_s": 0.9500000000000002,
+        "video_end_s": 1.4500000000000002,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.48102213892842693,
+        "uncertainty": 0.5189778610715731,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.5499999999999994,
+        "diagonal_synchrony": -0.15650580492644778,
+        "movement_rms_mps2": 2.849828432219245,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2008,
+            "last": 3988
+          },
+          "VR": {
+            "first": 2198,
+            "last": 4178
+          },
+          "HL": {
+            "first": 2056,
+            "last": 4037
+          },
+          "HR": {
+            "first": 2035,
+            "last": 4016
+          },
+          "SG": {
+            "first": 2072,
+            "last": 4053
+          }
+        }
+      },
+      {
+        "start_s": 1.4500000000000002,
+        "end_s": 1.9500000000000002,
+        "video_start_s": 1.4500000000000002,
+        "video_end_s": 1.9500000000000002,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.4177574642593074,
+        "uncertainty": 0.5822425357406926,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.649999999999999,
+        "diagonal_synchrony": -0.10436388769757961,
+        "movement_rms_mps2": 4.314154479064473,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2258,
+            "last": 4242
+          },
+          "VR": {
+            "first": 2432,
+            "last": 4415
+          },
+          "HL": {
+            "first": 2326,
+            "last": 4294
+          },
+          "HR": {
+            "first": 2273,
+            "last": 4253
+          },
+          "SG": {
+            "first": 2322,
+            "last": 4306
+          }
+        }
+      },
+      {
+        "start_s": 1.9500000000000002,
+        "end_s": 2.45,
+        "video_start_s": 1.9500000000000002,
+        "video_end_s": 2.45,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.41083749394292524,
+        "uncertainty": 0.5891625060570748,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.649999999999999,
+        "diagonal_synchrony": -0.02671483219341733,
+        "movement_rms_mps2": 0.5658469339686275,
+        "coverage": 0.98,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2500,
+            "last": 4480
+          },
+          "VR": {
+            "first": 2669,
+            "last": 4653
+          },
+          "HL": {
+            "first": 2568,
+            "last": 4548
+          },
+          "HR": {
+            "first": 2523,
+            "last": 4503
+          },
+          "SG": {
+            "first": 2564,
+            "last": 4544
+          }
+        }
+      },
+      {
+        "start_s": 2.45,
+        "end_s": 2.95,
+        "video_start_s": 2.45,
+        "video_end_s": 2.95,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.4195393241494938,
+        "uncertainty": 0.5804606758505062,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.649999999999999,
+        "diagonal_synchrony": 0.004545482193933151,
+        "movement_rms_mps2": 0.49025260352964906,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 2741,
+            "last": 4721
+          },
+          "VR": {
+            "first": 2939,
+            "last": 4918
+          },
+          "HL": {
+            "first": 2805,
+            "last": 4794
+          },
+          "HR": {
+            "first": 2764,
+            "last": 4745
+          },
+          "SG": {
+            "first": 2801,
+            "last": 4810
+          }
+        }
+      },
+      {
+        "start_s": 2.95,
+        "end_s": 3.45,
+        "video_start_s": 2.95,
+        "video_end_s": 3.45,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.34780968409780305,
+        "uncertainty": 0.6521903159021969,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.649999999999999,
+        "diagonal_synchrony": 0.02085617485521611,
+        "movement_rms_mps2": 0.3108691924411763,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 3007,
+            "last": 4987
+          },
+          "VR": {
+            "first": 3180,
+            "last": 5160
+          },
+          "HL": {
+            "first": 3055,
+            "last": 5035
+          },
+          "HR": {
+            "first": 3026,
+            "last": 5010
+          },
+          "SG": {
+            "first": 3067,
+            "last": 5051
+          }
+        }
+      },
+      {
+        "start_s": 3.45,
+        "end_s": 3.95,
+        "video_start_s": 3.45,
+        "video_end_s": 3.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.5776890410458213,
+        "uncertainty": 0.4223109589541787,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.2533865753725072,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 3245,
+            "last": 5225
+          },
+          "VR": {
+            "first": 3430,
+            "last": 5410
+          },
+          "HL": {
+            "first": 3297,
+            "last": 5277
+          },
+          "HR": {
+            "first": 3272,
+            "last": 5252
+          },
+          "SG": {
+            "first": 3309,
+            "last": 5289
+          }
+        }
+      },
+      {
+        "start_s": 3.95,
+        "end_s": 5.45,
+        "video_start_s": 3.95,
+        "video_end_s": 5.45,
+        "duration_s": 1.5,
+        "gait": "STANDING",
+        "confidence": 0.48965345664887,
+        "uncertainty": 0.51034654335113,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.306207926010678,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 3485,
+            "last": 5982
+          },
+          "VR": {
+            "first": 3679,
+            "last": 6158
+          },
+          "HL": {
+            "first": 3537,
+            "last": 6034
+          },
+          "HR": {
+            "first": 3512,
+            "last": 5997
+          },
+          "SG": {
+            "first": 3549,
+            "last": 6046
+          }
+        }
+      },
+      {
+        "start_s": 5.45,
+        "end_s": 5.95,
+        "video_start_s": 5.45,
+        "video_end_s": 5.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.45074937882667754,
+        "uncertainty": 0.5492506211733225,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.32955037270399345,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 4242,
+            "last": 6223
+          },
+          "VR": {
+            "first": 4415,
+            "last": 6400
+          },
+          "HL": {
+            "first": 4294,
+            "last": 6276
+          },
+          "HR": {
+            "first": 4253,
+            "last": 6251
+          },
+          "SG": {
+            "first": 4306,
+            "last": 6287
+          }
+        }
+      },
+      {
+        "start_s": 5.95,
+        "end_s": 6.45,
+        "video_start_s": 5.95,
+        "video_end_s": 6.45,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.33139198245630863,
+        "uncertainty": 0.6686080175436914,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4499999999999997,
+        "diagonal_synchrony": 0.15424940253915229,
+        "movement_rms_mps2": 0.5109522076166285,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 4480,
+            "last": 6461
+          },
+          "VR": {
+            "first": 4653,
+            "last": 6658
+          },
+          "HL": {
+            "first": 4548,
+            "last": 6529
+          },
+          "HR": {
+            "first": 4503,
+            "last": 6484
+          },
+          "SG": {
+            "first": 4544,
+            "last": 6525
+          }
+        }
+      },
+      {
+        "start_s": 6.45,
+        "end_s": 7.95,
+        "video_start_s": 6.45,
+        "video_end_s": 7.95,
+        "duration_s": 1.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.33837817451009083,
+        "uncertainty": 0.6616218254899091,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.999999999999998,
+        "diagonal_synchrony": 0.1292699914346524,
+        "movement_rms_mps2": 0.756355997890067,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 4721,
+            "last": 7218
+          },
+          "VR": {
+            "first": 4918,
+            "last": 7390
+          },
+          "HL": {
+            "first": 4794,
+            "last": 7286
+          },
+          "HR": {
+            "first": 4745,
+            "last": 7233
+          },
+          "SG": {
+            "first": 4810,
+            "last": 7282
+          }
+        }
+      },
+      {
+        "start_s": 7.949999999999999,
+        "end_s": 8.45,
+        "video_start_s": 7.949999999999999,
+        "video_end_s": 8.45,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.3477416185606629,
+        "uncertainty": 0.6522583814393371,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.949999999999998,
+        "diagonal_synchrony": 0.2016678030396018,
+        "movement_rms_mps2": 0.5904034475755267,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 5478,
+            "last": 7460
+          },
+          "VR": {
+            "first": 5667,
+            "last": 7632
+          },
+          "HL": {
+            "first": 5547,
+            "last": 7548
+          },
+          "HR": {
+            "first": 5502,
+            "last": 7483
+          },
+          "SG": {
+            "first": 5543,
+            "last": 7524
+          }
+        }
+      },
+      {
+        "start_s": 8.45,
+        "end_s": 8.95,
+        "video_start_s": 8.45,
+        "video_end_s": 8.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.8116490232683025,
+        "uncertainty": 0.18835097673169754,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.11301058603901852,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 5728,
+            "last": 7701
+          },
+          "VR": {
+            "first": 5901,
+            "last": 7881
+          },
+          "HL": {
+            "first": 5776,
+            "last": 7774
+          },
+          "HR": {
+            "first": 5743,
+            "last": 7725
+          },
+          "SG": {
+            "first": 5792,
+            "last": 7761
+          }
+        }
+      },
+      {
+        "start_s": 8.95,
+        "end_s": 19.95,
+        "video_start_s": 8.95,
+        "video_end_s": 19.95,
+        "duration_s": 11.0,
+        "gait": "STANDING",
+        "confidence": 0.7591439758783682,
+        "uncertainty": 0.24085602412163176,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.14451361447297909,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 5982,
+            "last": 13178
+          },
+          "VR": {
+            "first": 6158,
+            "last": 13340
+          },
+          "HL": {
+            "first": 6034,
+            "last": 13246
+          },
+          "HR": {
+            "first": 5997,
+            "last": 13193
+          },
+          "SG": {
+            "first": 6046,
+            "last": 13242
+          }
+        }
+      },
+      {
+        "start_s": 19.95,
+        "end_s": 20.45,
+        "video_start_s": 19.95,
+        "video_end_s": 20.45,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.3244407114857027,
+        "uncertainty": 0.6755592885142974,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.4053355731085784,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 11442,
+            "last": 13431
+          },
+          "VR": {
+            "first": 11593,
+            "last": 13598
+          },
+          "HL": {
+            "first": 11494,
+            "last": 13480
+          },
+          "HR": {
+            "first": 11441,
+            "last": 13443
+          },
+          "SG": {
+            "first": 11510,
+            "last": 13475
+          }
+        }
+      },
+      {
+        "start_s": 20.45,
+        "end_s": 20.95,
+        "video_start_s": 20.45,
+        "video_end_s": 20.95,
+        "duration_s": 0.5,
+        "gait": "WALK",
+        "confidence": 0.49228937683825524,
+        "uncertainty": 0.5077106231617448,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.0000000000000013,
+        "diagonal_synchrony": -0.023926074610874475,
+        "movement_rms_mps2": 1.309319004568255,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 11688,
+            "last": 13669
+          },
+          "VR": {
+            "first": 11859,
+            "last": 13839
+          },
+          "HL": {
+            "first": 11736,
+            "last": 13717
+          },
+          "HR": {
+            "first": 11715,
+            "last": 13696
+          },
+          "SG": {
+            "first": 11748,
+            "last": 13733
+          }
+        }
+      },
+      {
+        "start_s": 20.95,
+        "end_s": 69.95,
+        "video_start_s": 20.95,
+        "video_end_s": 69.95,
+        "duration_s": 49.0,
+        "gait": "WALK",
+        "confidence": 0.7735504771013213,
+        "uncertainty": 0.2264495228986787,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.257653061224488,
+        "diagonal_synchrony": -0.0018467623942954685,
+        "movement_rms_mps2": 10.651500011048121,
+        "coverage": 0.9997959183673469,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 11929,
+            "last": 38007
+          },
+          "VR": {
+            "first": 12100,
+            "last": 38135
+          },
+          "HL": {
+            "first": 11994,
+            "last": 38056
+          },
+          "HR": {
+            "first": 11953,
+            "last": 38030
+          },
+          "SG": {
+            "first": 11993,
+            "last": 38070
+          }
+        }
+      },
+      {
+        "start_s": 69.95,
+        "end_s": 70.45,
+        "video_start_s": 69.95,
+        "video_end_s": 70.45,
+        "duration_s": 0.5,
+        "gait": "WALK",
+        "confidence": 0.6041102365240041,
+        "uncertainty": 0.3958897634759959,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.050000000000001,
+        "diagonal_synchrony": 0.004207833494525229,
+        "movement_rms_mps2": 9.816318183960652,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 36264,
+            "last": 38245
+          },
+          "VR": {
+            "first": 36391,
+            "last": 38388
+          },
+          "HL": {
+            "first": 36316,
+            "last": 38297
+          },
+          "HR": {
+            "first": 36291,
+            "last": 38272
+          },
+          "SG": {
+            "first": 36326,
+            "last": 38308
+          }
+        }
+      },
+      {
+        "start_s": 70.45,
+        "end_s": 71.45,
+        "video_start_s": 70.45,
+        "video_end_s": 71.45,
+        "duration_s": 1.0,
+        "gait": "WALK",
+        "confidence": 0.5721147390187413,
+        "uncertainty": 0.4278852609812587,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.075000000000001,
+        "diagonal_synchrony": -0.0039449730169411525,
+        "movement_rms_mps2": 5.310529148117038,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 36505,
+            "last": 38752
+          },
+          "VR": {
+            "first": 36645,
+            "last": 38879
+          },
+          "HL": {
+            "first": 36578,
+            "last": 38800
+          },
+          "HR": {
+            "first": 36532,
+            "last": 38763
+          },
+          "SG": {
+            "first": 36568,
+            "last": 38795
+          }
+        }
+      },
+      {
+        "start_s": 71.45,
+        "end_s": 71.95,
+        "video_start_s": 71.45,
+        "video_end_s": 71.95,
+        "duration_s": 0.5,
+        "gait": "WALK",
+        "confidence": 0.5677561706397081,
+        "uncertainty": 0.43224382936029193,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.100000000000001,
+        "diagonal_synchrony": 0.022312701911811384,
+        "movement_rms_mps2": 4.109592287855602,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 37013,
+            "last": 39002
+          },
+          "VR": {
+            "first": 37136,
+            "last": 39121
+          },
+          "HL": {
+            "first": 37057,
+            "last": 39054
+          },
+          "HR": {
+            "first": 37036,
+            "last": 39017
+          },
+          "SG": {
+            "first": 37071,
+            "last": 39037
+          }
+        }
+      },
+      {
+        "start_s": 71.95,
+        "end_s": 72.45,
+        "video_start_s": 71.95,
+        "video_end_s": 72.45,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.24901955201058393,
+        "uncertainty": 0.7509804479894161,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.050000000000001,
+        "diagonal_synchrony": -0.00007967279322967187,
+        "movement_rms_mps2": 1.143638450880532,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 37262,
+            "last": 39244
+          },
+          "VR": {
+            "first": 37402,
+            "last": 39382
+          },
+          "HL": {
+            "first": 37327,
+            "last": 39308
+          },
+          "HR": {
+            "first": 37273,
+            "last": 39271
+          },
+          "SG": {
+            "first": 37313,
+            "last": 39302
+          }
+        }
+      },
+      {
+        "start_s": 72.45,
+        "end_s": 72.95,
+        "video_start_s": 72.45,
+        "video_end_s": 72.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.6824753760275251,
+        "uncertainty": 0.31752462397247494,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.19051477438348496,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 37500,
+            "last": 39481
+          },
+          "VR": {
+            "first": 37643,
+            "last": 39624
+          },
+          "HL": {
+            "first": 37568,
+            "last": 39549
+          },
+          "HR": {
+            "first": 37527,
+            "last": 39508
+          },
+          "SG": {
+            "first": 37563,
+            "last": 39544
+          }
+        }
+      },
+      {
+        "start_s": 72.95,
+        "end_s": 75.45,
+        "video_start_s": 72.95,
+        "video_end_s": 75.45,
+        "duration_s": 2.5,
+        "gait": "STANDING",
+        "confidence": 0.8266438960507572,
+        "uncertainty": 0.17335610394924283,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.10401366236954575,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 37770,
+            "last": 40746
+          },
+          "VR": {
+            "first": 37881,
+            "last": 40860
+          },
+          "HL": {
+            "first": 37814,
+            "last": 40794
+          },
+          "HR": {
+            "first": 37769,
+            "last": 40745
+          },
+          "SG": {
+            "first": 37804,
+            "last": 40776
+          }
+        }
+      },
+      {
+        "start_s": 75.45,
+        "end_s": 75.95,
+        "video_start_s": 75.45,
+        "video_end_s": 75.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.35787044279929237,
+        "uncertainty": 0.6421295572007076,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.38527773432042456,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 39002,
+            "last": 40983
+          },
+          "VR": {
+            "first": 39121,
+            "last": 41110
+          },
+          "HL": {
+            "first": 39054,
+            "last": 41035
+          },
+          "HR": {
+            "first": 39017,
+            "last": 41010
+          },
+          "SG": {
+            "first": 39037,
+            "last": 41046
+          }
+        }
+      },
+      {
+        "start_s": 75.95,
+        "end_s": 76.45,
+        "video_start_s": 75.95,
+        "video_end_s": 76.45,
+        "duration_s": 0.5,
+        "gait": "WALK",
+        "confidence": 0.6227883598390601,
+        "uncertainty": 0.3772116401609399,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4,
+        "diagonal_synchrony": 0.08496077453415217,
+        "movement_rms_mps2": 3.8880530074527337,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 39244,
+            "last": 41221
+          },
+          "VR": {
+            "first": 39382,
+            "last": 41351
+          },
+          "HL": {
+            "first": 39308,
+            "last": 41289
+          },
+          "HR": {
+            "first": 39271,
+            "last": 41252
+          },
+          "SG": {
+            "first": 39302,
+            "last": 41279
+          }
+        }
+      },
+      {
+        "start_s": 76.45,
+        "end_s": 129.45,
+        "video_start_s": 76.45,
+        "video_end_s": 129.45,
+        "duration_s": 52.999999999999986,
+        "gait": "WALK",
+        "confidence": 0.7540002079258924,
+        "uncertainty": 0.2459997920741076,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4273584905660366,
+        "diagonal_synchrony": 0.004928720028607156,
+        "movement_rms_mps2": 14.101954702117569,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 39481,
+            "last": 67540
+          },
+          "VR": {
+            "first": 39624,
+            "last": 67643
+          },
+          "HL": {
+            "first": 39549,
+            "last": 67605
+          },
+          "HR": {
+            "first": 39508,
+            "last": 67567
+          },
+          "SG": {
+            "first": 39544,
+            "last": 67610
+          }
+        }
+      },
+      {
+        "start_s": 129.45,
+        "end_s": 129.95,
+        "video_start_s": 129.45,
+        "video_end_s": 129.95,
+        "duration_s": 0.5,
+        "gait": "WALK",
+        "confidence": 0.7660578657432775,
+        "uncertainty": 0.2339421342567225,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4499999999999997,
+        "diagonal_synchrony": 0.1529908924481362,
+        "movement_rms_mps2": 21.95867292345871,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 65801,
+            "last": 67806
+          },
+          "VR": {
+            "first": 65900,
+            "last": 67880
+          },
+          "HL": {
+            "first": 65869,
+            "last": 67858
+          },
+          "HR": {
+            "first": 65828,
+            "last": 67805
+          },
+          "SG": {
+            "first": 65862,
+            "last": 67843
+          }
+        }
+      },
+      {
+        "start_s": 129.95,
+        "end_s": 130.45,
+        "video_start_s": 129.95,
+        "video_end_s": 130.45,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.8414031174601054,
+        "uncertainty": 0.15859688253989457,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.6499999999999955,
+        "diagonal_synchrony": 0.16395671602427786,
+        "movement_rms_mps2": 17.884705571998108,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 66070,
+            "last": 68052
+          },
+          "VR": {
+            "first": 66137,
+            "last": 68142
+          },
+          "HL": {
+            "first": 66119,
+            "last": 68100
+          },
+          "HR": {
+            "first": 66069,
+            "last": 68071
+          },
+          "SG": {
+            "first": 66096,
+            "last": 68081
+          }
+        }
+      },
+      {
+        "start_s": 130.45,
+        "end_s": 142.95,
+        "video_start_s": 130.45,
+        "video_end_s": 142.95,
+        "duration_s": 12.5,
+        "gait": "TROT",
+        "confidence": 0.7844714033037357,
+        "uncertainty": 0.21552859669626434,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.6639999999999953,
+        "diagonal_synchrony": 0.19186648110151175,
+        "movement_rms_mps2": 22.45719087856752,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 66304,
+            "last": 74245
+          },
+          "VR": {
+            "first": 66403,
+            "last": 74342
+          },
+          "HL": {
+            "first": 66356,
+            "last": 74297
+          },
+          "HR": {
+            "first": 66331,
+            "last": 74272
+          },
+          "SG": {
+            "first": 66337,
+            "last": 74306
+          }
+        }
+      },
+      {
+        "start_s": 142.95,
+        "end_s": 143.45,
+        "video_start_s": 142.95,
+        "video_end_s": 143.45,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.6479647921474743,
+        "uncertainty": 0.35203520785252573,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.8499999999999948,
+        "diagonal_synchrony": 0.12230863125854821,
+        "movement_rms_mps2": 20.78994912746373,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 72530,
+            "last": 74511
+          },
+          "VR": {
+            "first": 72603,
+            "last": 74583
+          },
+          "HL": {
+            "first": 72578,
+            "last": 74559
+          },
+          "HR": {
+            "first": 72528,
+            "last": 74526
+          },
+          "SG": {
+            "first": 72562,
+            "last": 74544
+          }
+        }
+      },
+      {
+        "start_s": 143.45,
+        "end_s": 143.95,
+        "video_start_s": 143.45,
+        "video_end_s": 143.95,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4,
+        "diagonal_synchrony": 0.07380007671750262,
+        "movement_rms_mps2": 21.511585674313913,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 72771,
+            "last": 74752
+          },
+          "VR": {
+            "first": 72840,
+            "last": 74825
+          },
+          "HL": {
+            "first": 72815,
+            "last": 74801
+          },
+          "HR": {
+            "first": 72794,
+            "last": 74775
+          },
+          "SG": {
+            "first": 72804,
+            "last": 74785
+          }
+        }
+      },
+      {
+        "start_s": 143.95,
+        "end_s": 161.45,
+        "video_start_s": 143.95,
+        "video_end_s": 161.45,
+        "duration_s": 17.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.4877688040985359,
+        "uncertainty": 0.512231195901464,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.364285714285715,
+        "diagonal_synchrony": 0.0008807372200707779,
+        "movement_rms_mps2": 12.057023716059017,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 73013,
+            "last": 83450
+          },
+          "VR": {
+            "first": 73102,
+            "last": 83504
+          },
+          "HL": {
+            "first": 73057,
+            "last": 83499
+          },
+          "HR": {
+            "first": 73032,
+            "last": 83449
+          },
+          "SG": {
+            "first": 73050,
+            "last": 83483
+          }
+        }
+      },
+      {
+        "start_s": 161.45,
+        "end_s": 161.95,
+        "video_start_s": 161.45,
+        "video_end_s": 161.95,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.4,
+        "diagonal_synchrony": 0.25165273008637257,
+        "movement_rms_mps2": 22.685294793975814,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 81707,
+            "last": 83692
+          },
+          "VR": {
+            "first": 81765,
+            "last": 83750
+          },
+          "HL": {
+            "first": 81759,
+            "last": 83740
+          },
+          "HR": {
+            "first": 81730,
+            "last": 83711
+          },
+          "SG": {
+            "first": 81735,
+            "last": 83716
+          }
+        }
+      },
+      {
+        "start_s": 161.95,
+        "end_s": 162.45,
+        "video_start_s": 161.95,
+        "video_end_s": 162.45,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.8294097400424532,
+        "uncertainty": 0.17059025995754684,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.5999999999999956,
+        "diagonal_synchrony": 0.2839138263226694,
+        "movement_rms_mps2": 23.913856596339052,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 81944,
+            "last": 83938
+          },
+          "VR": {
+            "first": 82011,
+            "last": 83991
+          },
+          "HL": {
+            "first": 81997,
+            "last": 84006
+          },
+          "HR": {
+            "first": 81971,
+            "last": 83952
+          },
+          "SG": {
+            "first": 81977,
+            "last": 83974
+          }
+        }
+      },
+      {
+        "start_s": 162.45,
+        "end_s": 202.95,
+        "video_start_s": 162.45,
+        "video_end_s": 202.95,
+        "duration_s": 40.5,
+        "gait": "TROT",
+        "confidence": 0.7972868806550674,
+        "uncertainty": 0.20271311934493264,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.5339506172839483,
+        "diagonal_synchrony": 0.2406700029189125,
+        "movement_rms_mps2": 21.058175921883628,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 82210,
+            "last": 104052
+          },
+          "VR": {
+            "first": 82264,
+            "last": 104084
+          },
+          "HL": {
+            "first": 82258,
+            "last": 104100
+          },
+          "HR": {
+            "first": 82209,
+            "last": 104070
+          },
+          "SG": {
+            "first": 82243,
+            "last": 104075
+          }
+        }
+      },
+      {
+        "start_s": 202.95,
+        "end_s": 203.45,
+        "video_start_s": 202.95,
+        "video_end_s": 203.45,
+        "duration_s": 0.5,
+        "gait": "TROT",
+        "confidence": 0.624476206447804,
+        "uncertainty": 0.375523793552196,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.5999999999999956,
+        "diagonal_synchrony": 0.0388821681938937,
+        "movement_rms_mps2": 18.125612582384502,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 102308,
+            "last": 104298
+          },
+          "VR": {
+            "first": 102344,
+            "last": 104325
+          },
+          "HL": {
+            "first": 102360,
+            "last": 104366
+          },
+          "HR": {
+            "first": 102331,
+            "last": 104312
+          },
+          "SG": {
+            "first": 102336,
+            "last": 104317
+          }
+        }
+      },
+      {
+        "start_s": 203.45,
+        "end_s": 203.95,
+        "video_start_s": 203.45,
+        "video_end_s": 203.95,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.4843282711272713,
+        "uncertainty": 0.5156717288727287,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.599999999999999,
+        "diagonal_synchrony": -0.005440464217351462,
+        "movement_rms_mps2": 13.886329786078463,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 102570,
+            "last": 104535
+          },
+          "VR": {
+            "first": 102598,
+            "last": 104583
+          },
+          "HL": {
+            "first": 102618,
+            "last": 104599
+          },
+          "HR": {
+            "first": 102569,
+            "last": 104566
+          },
+          "SG": {
+            "first": 102577,
+            "last": 104575
+          }
+        }
+      },
+      {
+        "start_s": 203.95,
+        "end_s": 207.95,
+        "video_start_s": 203.95,
+        "video_end_s": 207.95,
+        "duration_s": 4.0,
+        "gait": "UNKNOWN",
+        "confidence": 0.4896862471066066,
+        "uncertainty": 0.5103137528933934,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 1.9937500000000008,
+        "diagonal_synchrony": -0.03972823661329754,
+        "movement_rms_mps2": 7.569426560201553,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 102812,
+            "last": 106520
+          },
+          "VR": {
+            "first": 102832,
+            "last": 106559
+          },
+          "HL": {
+            "first": 102860,
+            "last": 106589
+          },
+          "HR": {
+            "first": 102834,
+            "last": 106547
+          },
+          "SG": {
+            "first": 102843,
+            "last": 106552
+          }
+        }
+      },
+      {
+        "start_s": 207.95,
+        "end_s": 208.45,
+        "video_start_s": 207.95,
+        "video_end_s": 208.45,
+        "duration_s": 0.5,
+        "gait": "UNKNOWN",
+        "confidence": 0.34072337286255705,
+        "uncertainty": 0.659276627137443,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 2.2000000000000006,
+        "diagonal_synchrony": -0.09551556602516065,
+        "movement_rms_mps2": 0.3310615984431178,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 104793,
+            "last": 106790
+          },
+          "VR": {
+            "first": 104812,
+            "last": 106801
+          },
+          "HL": {
+            "first": 104841,
+            "last": 106838
+          },
+          "HR": {
+            "first": 104815,
+            "last": 106789
+          },
+          "SG": {
+            "first": 104824,
+            "last": 106797
+          }
+        }
+      },
+      {
+        "start_s": 208.45,
+        "end_s": 208.95,
+        "video_start_s": 208.45,
+        "video_end_s": 208.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.6507094296821436,
+        "uncertainty": 0.3492905703178564,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.20957434219071383,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 105046,
+            "last": 107028
+          },
+          "VR": {
+            "first": 105082,
+            "last": 107063
+          },
+          "HL": {
+            "first": 105099,
+            "last": 107080
+          },
+          "HR": {
+            "first": 105057,
+            "last": 107050
+          },
+          "SG": {
+            "first": 105074,
+            "last": 107055
+          }
+        }
+      },
+      {
+        "start_s": 208.95,
+        "end_s": 221.95,
+        "video_start_s": 208.95,
+        "video_end_s": 221.95,
+        "duration_s": 13.0,
+        "gait": "STANDING",
+        "confidence": 0.889174051535994,
+        "uncertainty": 0.11082594846400595,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.06649556907840347,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 105288,
+            "last": 113491
+          },
+          "VR": {
+            "first": 105323,
+            "last": 113504
+          },
+          "HL": {
+            "first": 105348,
+            "last": 113539
+          },
+          "HR": {
+            "first": 105307,
+            "last": 113489
+          },
+          "SG": {
+            "first": 105316,
+            "last": 113522
+          }
+        }
+      },
+      {
+        "start_s": 221.95,
+        "end_s": 222.45,
+        "video_start_s": 221.95,
+        "video_end_s": 222.45,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.9999999999999942,
+        "diagonal_synchrony": 0.05644742922728532,
+        "movement_rms_mps2": 0.6532249347608846,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 111751,
+            "last": 113732
+          },
+          "VR": {
+            "first": 111761,
+            "last": 113745
+          },
+          "HL": {
+            "first": 111799,
+            "last": 113781
+          },
+          "HR": {
+            "first": 111770,
+            "last": 113751
+          },
+          "SG": {
+            "first": 111774,
+            "last": 113755
+          }
+        }
+      },
+      {
+        "start_s": 222.45,
+        "end_s": 228.95,
+        "video_start_s": 222.45,
+        "video_end_s": 228.95,
+        "duration_s": 6.5,
+        "gait": "STANDING",
+        "confidence": 0.8461417359518305,
+        "uncertainty": 0.1538582640481695,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.09231495842890174,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 111989,
+            "last": 116958
+          },
+          "VR": {
+            "first": 112022,
+            "last": 116982
+          },
+          "HL": {
+            "first": 112041,
+            "last": 117026
+          },
+          "HR": {
+            "first": 112011,
+            "last": 116973
+          },
+          "SG": {
+            "first": 112016,
+            "last": 116977
+          }
+        }
+      },
+      {
+        "start_s": 228.95,
+        "end_s": 229.45,
+        "video_start_s": 228.95,
+        "video_end_s": 229.45,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.7536959509300548,
+        "uncertainty": 0.24630404906994519,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.14778242944196712,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 115230,
+            "last": 117212
+          },
+          "VR": {
+            "first": 115243,
+            "last": 117223
+          },
+          "HL": {
+            "first": 115278,
+            "last": 117260
+          },
+          "HR": {
+            "first": 115229,
+            "last": 117226
+          },
+          "SG": {
+            "first": 115237,
+            "last": 117234
+          }
+        }
+      },
+      {
+        "start_s": 229.45,
+        "end_s": 230.45,
+        "video_start_s": 229.45,
+        "video_end_s": 230.45,
+        "duration_s": 1.0,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.724999999999995,
+        "diagonal_synchrony": 0.10831671772873341,
+        "movement_rms_mps2": 0.9383096193263163,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 115472,
+            "last": 117707
+          },
+          "VR": {
+            "first": 115484,
+            "last": 117711
+          },
+          "HL": {
+            "first": 115520,
+            "last": 117759
+          },
+          "HR": {
+            "first": 115499,
+            "last": 117717
+          },
+          "SG": {
+            "first": 115491,
+            "last": 117734
+          }
+        }
+      },
+      {
+        "start_s": 230.45,
+        "end_s": 230.95,
+        "video_start_s": 230.45,
+        "video_end_s": 230.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.926197137202219,
+        "uncertainty": 0.07380286279778103,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.04428171767866861,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 115963,
+            "last": 117949
+          },
+          "VR": {
+            "first": 115983,
+            "last": 117964
+          },
+          "HL": {
+            "first": 116027,
+            "last": 118009
+          },
+          "HR": {
+            "first": 115986,
+            "last": 117967
+          },
+          "SG": {
+            "first": 115994,
+            "last": 117975
+          }
+        }
+      },
+      {
+        "start_s": 230.95,
+        "end_s": 232.95,
+        "video_start_s": 230.95,
+        "video_end_s": 232.95,
+        "duration_s": 2.0,
+        "gait": "STANDING",
+        "confidence": 0.9311770035663179,
+        "uncertainty": 0.06882299643368206,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.041293797860209244,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 116205,
+            "last": 118943
+          },
+          "VR": {
+            "first": 116225,
+            "last": 118962
+          },
+          "HL": {
+            "first": 116269,
+            "last": 119007
+          },
+          "HR": {
+            "first": 116228,
+            "last": 118966
+          },
+          "SG": {
+            "first": 116236,
+            "last": 118974
+          }
+        }
+      },
+      {
+        "start_s": 232.95,
+        "end_s": 233.45,
+        "video_start_s": 232.95,
+        "video_end_s": 233.45,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.8237923689429938,
+        "uncertainty": 0.1762076310570062,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.10572457863420376,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 117212,
+            "last": 119193
+          },
+          "VR": {
+            "first": 117223,
+            "last": 119204
+          },
+          "HL": {
+            "first": 117260,
+            "last": 119249
+          },
+          "HR": {
+            "first": 117226,
+            "last": 119207
+          },
+          "SG": {
+            "first": 117234,
+            "last": 119216
+          }
+        }
+      },
+      {
+        "start_s": 233.45,
+        "end_s": 234.45,
+        "video_start_s": 233.45,
+        "video_end_s": 234.45,
+        "duration_s": 1.0,
+        "gait": "UNKNOWN",
+        "confidence": 0.49,
+        "uncertainty": 0.51,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": 3.9749999999999943,
+        "diagonal_synchrony": -0.06117831309301923,
+        "movement_rms_mps2": 0.4611037938611662,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": true,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 117453,
+            "last": 119688
+          },
+          "VR": {
+            "first": 117465,
+            "last": 119695
+          },
+          "HL": {
+            "first": 117501,
+            "last": 119740
+          },
+          "HR": {
+            "first": 117480,
+            "last": 119711
+          },
+          "SG": {
+            "first": 117472,
+            "last": 119715
+          }
+        }
+      },
+      {
+        "start_s": 234.45,
+        "end_s": 234.95,
+        "video_start_s": 234.45,
+        "video_end_s": 234.95,
+        "duration_s": 0.5,
+        "gait": "STANDING",
+        "confidence": 0.8784865909759341,
+        "uncertainty": 0.12151340902406593,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.07290804541443954,
+        "coverage": 1.0,
+        "transition": true,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 117949,
+            "last": 119938
+          },
+          "VR": {
+            "first": 117964,
+            "last": 119933
+          },
+          "HL": {
+            "first": 118009,
+            "last": 119998
+          },
+          "HR": {
+            "first": 117967,
+            "last": 119952
+          },
+          "SG": {
+            "first": 117975,
+            "last": 119957
+          }
+        }
+      },
+      {
+        "start_s": 234.95,
+        "end_s": 244.29,
+        "video_start_s": 234.95,
+        "video_end_s": 244.29,
+        "duration_s": 9.340000000000003,
+        "gait": "STANDING",
+        "confidence": 0.806655268741337,
+        "uncertainty": 0.19334473125866303,
+        "uncertainty_definition": "1 - technical classifier confidence",
+        "dominant_leg_frequency_hz": null,
+        "diagonal_synchrony": null,
+        "movement_rms_mps2": 0.11600683875519775,
+        "coverage": 1.0,
+        "transition": false,
+        "turn_candidate": false,
+        "interruption": false,
+        "analyzable": false,
+        "manually_corrected": false,
+        "correction_reasons": [],
+        "source_lines": {
+          "VL": {
+            "first": 118210,
+            "last": 123663
+          },
+          "VR": {
+            "first": 118222,
+            "last": 123661
+          },
+          "HL": {
+            "first": 118258,
+            "last": 123727
+          },
+          "HR": {
+            "first": 118209,
+            "last": 123673
+          },
+          "SG": {
+            "first": 118217,
+            "last": 123677
+          }
+        }
+      }
+    ],
+    "analyzable_segment_count": 0,
+    "issues": [
+      {
+        "code": "upstream_preprocessing_review_required",
+        "observation": "Die Vorverarbeitung verlangt manuelle Prüfung.",
+        "uncertainty": "Zeit- oder Filterunsicherheit wirkt auf die Segmentgrenzen.",
+        "recommendation": "Vorverarbeitungsbericht zusammen mit Video prüfen."
+      },
+      {
+        "code": "uncertain_gait_windows",
+        "observation": "Mindestens ein Bewegungsfenster konnte keiner Gangart hinreichend sicher zugeordnet werden.",
+        "uncertainty": "Frequenzband oder Periodizität war nicht eindeutig.",
+        "recommendation": "UNKNOWN-Abschnitte im Video prüfen und begründet korrigieren oder von der Analyse ausschließen."
+      },
+      {
+        "code": "no_analyzable_segments",
+        "observation": "Kein Abschnitt erfüllt alle technischen Auswahlkriterien.",
+        "uncertainty": "Eine nachgelagerte Ganganalyse wäre für diese Aufnahme nicht belastbar.",
+        "recommendation": "Video, Schwellenkonfiguration und Datenqualität prüfen; keine Ersatzabschnitte erzeugen."
+      }
+    ]
+  }
+}

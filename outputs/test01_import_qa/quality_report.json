@@ -1,0 +1,142 @@
+{
+  "report_version": 1,
+  "recording_id": "test01",
+  "source": {
+    "raw_file": "recordings/test01/raw/20260723203422.txt",
+    "raw_file_sha256": "a4d09daa7338b501bb941044edd55704978e3bb78bb9ebe1144b076bf61e8aa2",
+    "raw_file_bytes": 26538976,
+    "video_file": "recordings/test01/video/IMG_4011.MOV",
+    "video_file_sha256": "d9af9649f34c941c125053df74d7c53e68d9778a377c99503a5872eda57ab9bf",
+    "saddle_girth_photo": "recordings/test01/fotos/Sensor Gurt.HEIC",
+    "saddle_girth_photo_sha256": "c9b4d31565d07f9e69ddef6f22f1cd4bbda28268ae14deb07a937c0b5449c3e5",
+    "saddle_girth_photo_bytes": 1570917,
+    "saddle_girth_axis_evidence": "recordings/test01/evidence/Ausrichtung Achsen.PNG",
+    "saddle_girth_axis_evidence_sha256": "bdeb181e84e3150bc035310d9726145dd386b16260922cfe684d001862cde591",
+    "saddle_girth_axis_evidence_bytes": 1628541,
+    "hind_left_axis_evidence": "recordings/test01/evidence/Ausrichtung Achsen HL.png",
+    "hind_left_axis_evidence_sha256": "7743f7060f1fce20fdeed8fa78730cdb67d888c03f2e2cd35b989efb210b6b0a",
+    "hind_left_axis_evidence_bytes": 870905,
+    "raw_files_modified": false
+  },
+  "format": {
+    "encoding": "UTF-8",
+    "line_endings": "CRLF",
+    "delimiter": "tab",
+    "data_rows": 123784,
+    "header_columns": 27,
+    "timestamp_format": "ISO-8601-like local app timestamp without explicit offset",
+    "units_from_header": {
+      "acceleration": "g",
+      "angular_velocity": "degree_per_second",
+      "angle": "degree",
+      "magnetic_field": "microtesla",
+      "temperature": "degree_celsius",
+      "battery": "percent"
+    },
+    "warnings": [
+      "Header contains SpeedY(mm/s) twice and no SpeedZ(mm/s).",
+      "Trajectory and speed fields are null in the inspected rows.",
+      "Timestamp has no explicit timezone offset."
+    ]
+  },
+  "sensors": [
+    {
+      "label": "VR",
+      "hardware_id": "83FEC4707D1D",
+      "rows": 24760,
+      "duration_s": 249.284,
+      "row_rate_hz": 99.32,
+      "unique_timestamps": 9060,
+      "duplicate_timestamp_rows": 15700,
+      "median_reception_interval_ms": 29,
+      "max_reception_interval_ms": 1682,
+      "reception_gaps_over_100_ms": 48
+    },
+    {
+      "label": "HR",
+      "hardware_id": "657910C7ECB7",
+      "rows": 24756,
+      "duration_s": 249.272,
+      "row_rate_hz": 99.31,
+      "unique_timestamps": 9306,
+      "duplicate_timestamp_rows": 15450,
+      "median_reception_interval_ms": 29,
+      "max_reception_interval_ms": 1743,
+      "reception_gaps_over_100_ms": 48
+    },
+    {
+      "label": "SG",
+      "hardware_id": "C5C720831275",
+      "assignment_status": "confirmed_by_app_screenshot",
+      "rows": 24760,
+      "duration_s": 249.252,
+      "row_rate_hz": 99.33,
+      "unique_timestamps": 9101,
+      "duplicate_timestamp_rows": 15659,
+      "median_reception_interval_ms": 29,
+      "max_reception_interval_ms": 1724,
+      "reception_gaps_over_100_ms": 40
+    },
+    {
+      "label": "HL",
+      "hardware_id": "1792A254366C",
+      "rows": 24752,
+      "duration_s": 249.226,
+      "row_rate_hz": 99.31,
+      "unique_timestamps": 9161,
+      "duplicate_timestamp_rows": 15591,
+      "median_reception_interval_ms": 29,
+      "max_reception_interval_ms": 1782,
+      "reception_gaps_over_100_ms": 44
+    },
+    {
+      "label": "VL",
+      "hardware_id": "1B9D88FD0E8C",
+      "rows": 24756,
+      "duration_s": 249.265,
+      "row_rate_hz": 99.31,
+      "unique_timestamps": 9157,
+      "duplicate_timestamp_rows": 15599,
+      "median_reception_interval_ms": 29,
+      "max_reception_interval_ms": 1713,
+      "reception_gaps_over_100_ms": 49
+    }
+  ],
+  "quality_observations": {
+    "all_five_sensors_present": true,
+    "core_imu_channels_present": true,
+    "balanced_row_counts": true,
+    "signals_not_frozen": true,
+    "nominal_rate_supported_by_row_rate": "approximately 100 Hz",
+    "saddle_girth_mounting_photo_present": true,
+    "saddle_girth_hardware_id_confirmed_by_axis_screenshot": true,
+    "axis_marking_visible_in_saddle_girth_photo": true,
+    "saddle_girth_static_axis_observation_g": {
+      "x": 0.011,
+      "y": -0.009,
+      "z": 0.873
+    },
+    "hind_left_static_axis_observation_g": {
+      "x": 0.0,
+      "y": 0.046,
+      "z": 0.996
+    },
+    "direct_axis_evidence_labels": ["SG", "HL"],
+    "direct_axis_evidence_count": 2,
+    "limb_axis_orientation_user_confirmed_as_HL": ["VL", "VR", "HL", "HR"],
+    "left_right_mounting": "mirrored",
+    "raw_axis_transform_applied": false,
+    "axis_orientation_documented_all_sensors": true,
+    "mirror_transform_empirically_verified": false,
+    "per_sample_time_available": false,
+    "reason": "multiple sequential measurements share a single reception timestamp",
+    "largest_reception_gap_ms": 1782
+  },
+  "assessment": {
+    "status": "QUALITY_ASSESSED_WITH_RESTRICTIONS",
+    "observation": "Five active sensor streams, balanced durations and complete acceleration, angular velocity, angle and magnetic-field channels are present.",
+    "hypothesis": "The app batches multiple sensor samples under reception timestamps while retaining the original sample order.",
+    "uncertainty": "Exact acquisition time of each row is not present; reception gaps up to 1.782 s occur. Limb axes are confirmed as matching HL, but left and right are mounted as mirrors and the exact horizontal sign transform has not been empirically calibrated.",
+    "recommendation": "Preserve row order, reconstruct time only from documented nominal rate, mark reception gaps, validate synchronization against the video, retain raw sensor axes unchanged, and calibrate the horizontal mirror transform before bilateral signal comparison."
+  }
+}

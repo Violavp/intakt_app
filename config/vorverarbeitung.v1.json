@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "low_pass_cutoff_hz": 20.0,
+  "gravity_cutoff_hz": 0.5,
+  "butterworth_order": 4,
+  "hampel_half_window_samples": 3,
+  "hampel_threshold_mad": 4.0,
+  "maximum_outlier_run_samples": 1,
+  "minimum_acceleration_mad_mps2": 0.02,
+  "minimum_angular_velocity_mad_radps": 0.002,
+  "minimum_segment_samples": 20,
+  "orientation_window_seconds": 2.0,
+  "orientation_maximum_gyro_rms_radps": 0.15,
+  "orientation_maximum_gravity_deviation_mps2": 1.5,
+  "standard_gravity_mps2": 9.80665,
+  "comparison_moving_average_window_samples": 5,
+  "minimum_event_peak_retention": 0.75
+}

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <text x="80" y="30" font-family="sans-serif" font-size="20" font-weight="700">Video–IMU-Synchronisationsanker · test01</text>
+  <text x="80" y="50" font-family="sans-serif" font-size="12" fill="#475569">Offset = IMU-Zeit seit Aufnahmebeginn − Videozeit</text>
+  <line x1="80" y1="60" x2="80" y2="420" stroke="#334155"/>
+  <line x1="80" y1="420" x2="880" y2="420" stroke="#334155"/>
+  <g font-family="sans-serif" font-size="11" fill="#475569">
+    <text x="43" y="424">4,80</text>
+    <text x="43" y="304">4,90</text>
+    <text x="43" y="184">5,00</text>
+    <text x="43" y="64">5,10</text>
+    <text x="76" y="440">0</text>
+    <text x="273" y="440">60</text>
+    <text x="468" y="440">120</text>
+    <text x="666" y="440">180</text>
+    <text x="866" y="440">240</text>
+    <text x="430" y="468">Videozeit (s)</text>
+    <text transform="translate(18 300) rotate(-90)">Zeitversatz (s)</text>
+  </g>
+  <g stroke="#e2e8f0">
+    <line x1="80" y1="300" x2="880" y2="300"/>
+    <line x1="80" y1="180" x2="880" y2="180"/>
+    <line x1="280" y1="60" x2="280" y2="420"/>
+    <line x1="480" y1="60" x2="480" y2="420"/>
+    <line x1="680" y1="60" x2="680" y2="420"/>
+    <line x1="880" y1="60" x2="880" y2="420"/>
+  </g>
+  <line x1="80" y1="201.1" x2="880" y2="306.6" stroke="#ef4444" stroke-width="2"/>
+  <g fill="#2563eb" stroke="#ffffff" stroke-width="1.5">
+    <circle data-anchor-id="SG_START_1" cx="101.3" cy="226.1" r="5"/>
+    <circle data-anchor-id="SG_START_2" cx="102.9" cy="128.2" r="5"/>
+    <circle data-anchor-id="SG_START_3" cx="104.4" cy="255.9" r="5"/>
+    <circle data-anchor-id="SG_END" cx="791.1" cy="307.5" r="5"/>
+    <circle data-anchor-id="VR_END_1" cx="804.3" cy="295.2" r="5"/>
+    <circle data-anchor-id="HR_END" cx="821.2" cy="319.4" r="5"/>
+    <circle data-anchor-id="VL_END" cx="846.9" cy="348.2" r="5"/>
+    <circle data-anchor-id="HL_END" cx="859.7" cy="200.1" r="5"/>
+    <circle data-anchor-id="VR_END_2" cx="879.8" cy="334.9" r="5"/>
+  </g>
+  <g
+    font-family="sans-serif"
+    font-size="11"
+    font-weight="700"
+    fill="#1e3a8a"
+    stroke="#ffffff"
+    stroke-width="3"
+    paint-order="stroke"
+    stroke-linejoin="round"
+  >
+    <text data-anchor-label="SG_START_1" x="111" y="222">SG Start 1</text>
+    <text data-anchor-label="SG_START_2" x="112" y="124">SG Start 2</text>
+    <text data-anchor-label="SG_START_3" x="114" y="271">SG Start 3</text>
+    <text data-anchor-label="SG_END" x="778" y="326" text-anchor="end">SG Ende</text>
+    <text data-anchor-label="VR_END_1" x="795" y="282" text-anchor="end">VR 1</text>
+    <text data-anchor-label="HR_END" x="813" y="338" text-anchor="end">HR</text>
+    <text data-anchor-label="VL_END" x="840" y="367" text-anchor="end">VL</text>
+    <text data-anchor-label="HL_END" x="850" y="193" text-anchor="end">HL</text>
+    <text data-anchor-label="VR_END_2" x="870" y="326" text-anchor="end">VR 2</text>
+  </g>
+  <g font-family="sans-serif" font-size="12" fill="#0f172a">
+    <text x="80" y="496">Affines Modell: Offset(t) = 4,982432 s − 366,489 ppm × t</text>
+    <text x="80" y="516">Residual-RMSE: 42,302 ms · maximaler Absolutfehler: 86,546 ms · n = 9</text>
+  </g>
+  <rect x="610" y="72" width="250" height="54" rx="5" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="622" y="92" font-family="sans-serif" font-size="11" fill="#9a3412">Drift ist eine technische Schätzung:</text>
+  <text x="622" y="109" font-family="sans-serif" font-size="11" fill="#9a3412">BLE-Paketzeitstempel sind teils identisch.</text>
+</svg>

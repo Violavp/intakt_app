@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "corrections": [
+    {
+      "start_s": 98.25,
+      "end_s": 139.74,
+      "gait": "WALK",
+      "exclude_from_analysis": false,
+      "reason": "Nutzerbestaetigt: grosser Schrittblock am Aufnahmeende; automatische 2,1-Hz-Zuordnung ist keine korrekte Gangart."
+    }
+  ]
+}

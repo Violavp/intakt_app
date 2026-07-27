@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "smoothing_seconds": 0.05,
+  "minimum_phase_seconds": 0.12,
+  "refinement_seconds": 0.10,
+  "walk_minimum_cycle_seconds": 0.90,
+  "walk_maximum_cycle_seconds": 1.60,
+  "trot_minimum_cycle_seconds": 0.55,
+  "trot_maximum_cycle_seconds": 1.10,
+  "minimum_coverage": 0.90,
+  "minimum_cycle_quality": 0.55,
+  "manual_match_tolerance_seconds": 0.20,
+  "pattern_half_window_seconds": 0.12,
+  "minimum_pattern_examples_per_kind": 2,
+  "minimum_pattern_correlation": 0.45,
+  "same_event_spacing_fraction": 0.65,
+  "phase_search_tolerance_fraction": 0.45,
+  "uncalibrated_quality_factor": 0.65,
+  "required_leg_labels": ["VL", "VR", "HL", "HR"]
+}

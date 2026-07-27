@@ -1,0 +1,265 @@
+{
+  "report_version": 1,
+  "import": {
+    "internal_units": {
+      "acceleration": "m/s^2",
+      "angular_velocity": "rad/s",
+      "magnetic_field": "uT"
+    },
+    "source_units": {
+      "acceleration": "g",
+      "angular_velocity": "degree/s",
+      "magnetic_field": "uT"
+    },
+    "timestamp_uncertainty": "Zeitstempel ohne UTC-Offset werden als lokale Empfangszeit interpretiert. Mehrere aufeinanderfolgende Messwerte können denselben Empfangszeitstempel tragen; eine individuelle Messzeit darf daraus nicht erfunden werden.",
+    "total_rows": 123784,
+    "sensors": [
+      {
+        "label": "VL",
+        "hardware_id": "1B9D88FD0E8C",
+        "position": "lateral_left_metacarpus_midshaft",
+        "required": true,
+        "rows": 24756,
+        "source_files": [
+          "recordings/test01/raw/20260723203422.txt"
+        ],
+        "magnetometer_rows": 24756
+      },
+      {
+        "label": "VR",
+        "hardware_id": "83FEC4707D1D",
+        "position": "lateral_right_metacarpus_midshaft",
+        "required": true,
+        "rows": 24760,
+        "source_files": [
+          "recordings/test01/raw/20260723203422.txt"
+        ],
+        "magnetometer_rows": 24760
+      },
+      {
+        "label": "HL",
+        "hardware_id": "1792A254366C",
+        "position": "lateral_left_metatarsus_midshaft",
+        "required": true,
+        "rows": 24752,
+        "source_files": [
+          "recordings/test01/raw/20260723203422.txt"
+        ],
+        "magnetometer_rows": 24752
+      },
+      {
+        "label": "HR",
+        "hardware_id": "657910C7ECB7",
+        "position": "lateral_right_metatarsus_midshaft",
+        "required": true,
+        "rows": 24756,
+        "source_files": [
+          "recordings/test01/raw/20260723203422.txt"
+        ],
+        "magnetometer_rows": 24756
+      },
+      {
+        "label": "SG",
+        "hardware_id": "C5C720831275",
+        "position": "saddle_girth_center_position_to_be_confirmed_on_site",
+        "required": false,
+        "rows": 24760,
+        "source_files": [
+          "recordings/test01/raw/20260723203422.txt"
+        ],
+        "magnetometer_rows": 24760
+      }
+    ],
+    "import_messages": []
+  },
+  "quality": {
+    "status": "QUALITY_ASSESSED",
+    "ready_for_further_analysis": true,
+    "row_counts_differ": true,
+    "sampling_rates_differ": false,
+    "assumptions": [
+      "Beschleunigung wird nur bei Header-Einheit g mit exakt 9.80665 m/s² pro g nach SI konvertiert.",
+      "Winkelgeschwindigkeit wird nur bei Header-Einheit °/s mit π/180 nach rad/s konvertiert.",
+      "Magnetfeld bleibt bei dokumentierter Einheit µT in µT.",
+      "Zeilen bleiben in Quellreihenfolge; Duplikate und Lücken werden nicht korrigiert oder interpoliert.",
+      "Die Kurzaufnahme-Schwelle von 2.0 s ist eine konfigurierbare technische QA-Annahme.",
+      "Extremwerte werden ohne dokumentierte Sensor-Messbereiche nicht fachlich klassifiziert; nicht-endliche Zahlen werden beim Import abgelehnt."
+    ],
+    "sensors": [
+      {
+        "label": "VL",
+        "hardware_id": "1B9D88FD0E8C",
+        "rows": 24756,
+        "unique_timestamps": 9157,
+        "duplicate_timestamp_rows": 15599,
+        "backward_timestamp_rows": 0,
+        "duration_s": 249.265,
+        "row_rate_hz": 99.31197721300624,
+        "unique_timestamp_rate_hz": 36.73199205664654,
+        "median_positive_interval_ms": 29.0,
+        "max_positive_interval_ms": 1713.0,
+        "adaptive_gap_threshold_ms": 145.0,
+        "gaps_over_adaptive_threshold": 21,
+        "magnetometer_rows": 24756,
+        "constant_channels": []
+      },
+      {
+        "label": "VR",
+        "hardware_id": "83FEC4707D1D",
+        "rows": 24760,
+        "unique_timestamps": 9060,
+        "duplicate_timestamp_rows": 15700,
+        "backward_timestamp_rows": 0,
+        "duration_s": 249.284,
+        "row_rate_hz": 99.32045377962486,
+        "unique_timestamp_rate_hz": 36.3400779833443,
+        "median_positive_interval_ms": 29.0,
+        "max_positive_interval_ms": 1682.0,
+        "adaptive_gap_threshold_ms": 145.0,
+        "gaps_over_adaptive_threshold": 17,
+        "magnetometer_rows": 24760,
+        "constant_channels": []
+      },
+      {
+        "label": "HL",
+        "hardware_id": "1792A254366C",
+        "rows": 24752,
+        "unique_timestamps": 9161,
+        "duplicate_timestamp_rows": 15591,
+        "backward_timestamp_rows": 0,
+        "duration_s": 249.226,
+        "row_rate_hz": 99.311468305875,
+        "unique_timestamp_rate_hz": 36.75378973301341,
+        "median_positive_interval_ms": 29.0,
+        "max_positive_interval_ms": 1782.0,
+        "adaptive_gap_threshold_ms": 145.0,
+        "gaps_over_adaptive_threshold": 17,
+        "magnetometer_rows": 24752,
+        "constant_channels": []
+      },
+      {
+        "label": "HR",
+        "hardware_id": "657910C7ECB7",
+        "rows": 24756,
+        "unique_timestamps": 9306,
+        "duplicate_timestamp_rows": 15450,
+        "backward_timestamp_rows": 0,
+        "duration_s": 249.272,
+        "row_rate_hz": 99.30918835649412,
+        "unique_timestamp_rate_hz": 37.32870117782984,
+        "median_positive_interval_ms": 29.0,
+        "max_positive_interval_ms": 1743.0,
+        "adaptive_gap_threshold_ms": 145.0,
+        "gaps_over_adaptive_threshold": 21,
+        "magnetometer_rows": 24756,
+        "constant_channels": []
+      },
+      {
+        "label": "SG",
+        "hardware_id": "C5C720831275",
+        "rows": 24760,
+        "unique_timestamps": 9101,
+        "duplicate_timestamp_rows": 15659,
+        "backward_timestamp_rows": 0,
+        "duration_s": 249.252,
+        "row_rate_hz": 99.33320494920802,
+        "unique_timestamp_rate_hz": 36.50923563301398,
+        "median_positive_interval_ms": 29.0,
+        "max_positive_interval_ms": 1724.0,
+        "adaptive_gap_threshold_ms": 145.0,
+        "gaps_over_adaptive_threshold": 18,
+        "magnetometer_rows": 24760,
+        "constant_channels": []
+      }
+    ],
+    "issues": [
+      {
+        "code": "duplicate_reception_timestamps",
+        "severity": "warning",
+        "sensor": "VL",
+        "observation": "15599 Zeilen teilen sich einen Zeitstempel mit ihrer Vorgängerzeile.",
+        "uncertainty": "Der Export bildet offenbar Empfangs-/Batchzeiten ab; exakte Einzelabtastzeiten sind nicht belegt.",
+        "recommendation": "Quellreihenfolge bewahren und keine individuellen Zeiten ohne dokumentiertes Rekonstruktionsverfahren erfinden."
+      },
+      {
+        "code": "reception_gaps",
+        "severity": "warning",
+        "sensor": "VL",
+        "observation": "21 positive Zeitabstände überschreiten die adaptive Schwelle von 145.000 ms.",
+        "uncertainty": "Eine Empfangslücke belegt nicht, an welcher Einzelabtastung Daten fehlen.",
+        "recommendation": "Lücken markieren und Synchronisation mit unabhängiger Zeitreferenz prüfen."
+      },
+      {
+        "code": "duplicate_reception_timestamps",
+        "severity": "warning",
+        "sensor": "VR",
+        "observation": "15700 Zeilen teilen sich einen Zeitstempel mit ihrer Vorgängerzeile.",
+        "uncertainty": "Der Export bildet offenbar Empfangs-/Batchzeiten ab; exakte Einzelabtastzeiten sind nicht belegt.",
+        "recommendation": "Quellreihenfolge bewahren und keine individuellen Zeiten ohne dokumentiertes Rekonstruktionsverfahren erfinden."
+      },
+      {
+        "code": "reception_gaps",
+        "severity": "warning",
+        "sensor": "VR",
+        "observation": "17 positive Zeitabstände überschreiten die adaptive Schwelle von 145.000 ms.",
+        "uncertainty": "Eine Empfangslücke belegt nicht, an welcher Einzelabtastung Daten fehlen.",
+        "recommendation": "Lücken markieren und Synchronisation mit unabhängiger Zeitreferenz prüfen."
+      },
+      {
+        "code": "duplicate_reception_timestamps",
+        "severity": "warning",
+        "sensor": "HL",
+        "observation": "15591 Zeilen teilen sich einen Zeitstempel mit ihrer Vorgängerzeile.",
+        "uncertainty": "Der Export bildet offenbar Empfangs-/Batchzeiten ab; exakte Einzelabtastzeiten sind nicht belegt.",
+        "recommendation": "Quellreihenfolge bewahren und keine individuellen Zeiten ohne dokumentiertes Rekonstruktionsverfahren erfinden."
+      },
+      {
+        "code": "reception_gaps",
+        "severity": "warning",
+        "sensor": "HL",
+        "observation": "17 positive Zeitabstände überschreiten die adaptive Schwelle von 145.000 ms.",
+        "uncertainty": "Eine Empfangslücke belegt nicht, an welcher Einzelabtastung Daten fehlen.",
+        "recommendation": "Lücken markieren und Synchronisation mit unabhängiger Zeitreferenz prüfen."
+      },
+      {
+        "code": "duplicate_reception_timestamps",
+        "severity": "warning",
+        "sensor": "HR",
+        "observation": "15450 Zeilen teilen sich einen Zeitstempel mit ihrer Vorgängerzeile.",
+        "uncertainty": "Der Export bildet offenbar Empfangs-/Batchzeiten ab; exakte Einzelabtastzeiten sind nicht belegt.",
+        "recommendation": "Quellreihenfolge bewahren und keine individuellen Zeiten ohne dokumentiertes Rekonstruktionsverfahren erfinden."
+      },
+      {
+        "code": "reception_gaps",
+        "severity": "warning",
+        "sensor": "HR",
+        "observation": "21 positive Zeitabstände überschreiten die adaptive Schwelle von 145.000 ms.",
+        "uncertainty": "Eine Empfangslücke belegt nicht, an welcher Einzelabtastung Daten fehlen.",
+        "recommendation": "Lücken markieren und Synchronisation mit unabhängiger Zeitreferenz prüfen."
+      },
+      {
+        "code": "duplicate_reception_timestamps",
+        "severity": "warning",
+        "sensor": "SG",
+        "observation": "15659 Zeilen teilen sich einen Zeitstempel mit ihrer Vorgängerzeile.",
+        "uncertainty": "Der Export bildet offenbar Empfangs-/Batchzeiten ab; exakte Einzelabtastzeiten sind nicht belegt.",
+        "recommendation": "Quellreihenfolge bewahren und keine individuellen Zeiten ohne dokumentiertes Rekonstruktionsverfahren erfinden."
+      },
+      {
+        "code": "reception_gaps",
+        "severity": "warning",
+        "sensor": "SG",
+        "observation": "18 positive Zeitabstände überschreiten die adaptive Schwelle von 145.000 ms.",
+        "uncertainty": "Eine Empfangslücke belegt nicht, an welcher Einzelabtastung Daten fehlen.",
+        "recommendation": "Lücken markieren und Synchronisation mit unabhängiger Zeitreferenz prüfen."
+      },
+      {
+        "code": "different_file_lengths",
+        "severity": "warning",
+        "observation": "Sensorzeilenzahlen unterscheiden sich: VL=24756, VR=24760, HL=24752, HR=24756, SG=24760.",
+        "uncertainty": "Unterschiedliche Zeilenzahlen können Start-/Endversatz oder verlorene Übertragungen widerspiegeln.",
+        "recommendation": "Zeitliche Überlappung vor gemeinsamer Verarbeitung bestimmen."
+      }
+    ]
+  }
+}

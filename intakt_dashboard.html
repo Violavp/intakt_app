@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InTakt – Dashboard Sensorbasierte Ganganalyse</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --panel:#ffffff;
+      --panel-2:#f9fafb;
+      --text:#172033;
+      --muted:#667085;
+      --line:#e4e7ec;
+      --accent:#315efb;
+      --accent-soft:#eaf0ff;
+      --success:#14804a;
+      --warning:#b54708;
+      --danger:#b42318;
+      --shadow:0 12px 30px rgba(16,24,40,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    button,input,textarea,select{font:inherit}
+    .app{display:grid;grid-template-columns:290px 1fr;min-height:100vh}
+    aside{
+      position:sticky;top:0;height:100vh;
+      padding:24px 18px;
+      background:#101828;color:white;
+      overflow:auto;
+    }
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+    .logo{
+      width:42px;height:42px;border-radius:12px;
+      display:grid;place-items:center;background:linear-gradient(135deg,#315efb,#7a5af8);
+      font-weight:800;box-shadow:0 8px 20px rgba(49,94,251,.35)
+    }
+    .brand h1{font-size:18px;margin:0}.brand p{font-size:12px;margin:2px 0 0;color:#98a2b3}
+    .nav-title{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#667085;margin:24px 8px 8px}
+    .nav a{
+      display:flex;gap:10px;align-items:center;
+      color:#d0d5dd;text-decoration:none;padding:10px 12px;border-radius:10px;
+      margin:3px 0;font-size:14px;
+    }
+    .nav a:hover,.nav a.active{background:#1d2939;color:#fff}
+    .side-card{
+      background:#1d2939;border:1px solid #344054;border-radius:14px;padding:14px;margin-top:22px
+    }
+    .side-card strong{display:block;margin-bottom:6px}
+    .side-card p{font-size:12px;color:#d0d5dd;margin:0}
+    main{padding:28px 34px 60px;max-width:1500px;width:100%}
+    .hero{
+      background:linear-gradient(135deg,#111827,#243b6b 70%,#315efb);
+      color:white;border-radius:24px;padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .hero:after{
+      content:"";position:absolute;width:280px;height:280px;border-radius:50%;
+      right:-80px;top:-90px;background:rgba(255,255,255,.08)
+    }
+    .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#b7c7ff}
+    .hero h2{font-size:36px;line-height:1.1;margin:10px 0 12px;max-width:860px}
+    .hero p{max-width:850px;color:#dbe4ff;margin:0}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;position:relative;z-index:1}
+    .btn{
+      border:0;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:700;
+      display:inline-flex;align-items:center;gap:8px
+    }
+    .btn-primary{background:white;color:#17316f}
+    .btn-secondary{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.22)}
+    .btn-plain{background:var(--accent);color:white}
+    .btn-muted{background:#eef2f6;color:#344054}
+    .btn-danger{background:#fee4e2;color:var(--danger)}
+    .grid{display:grid;gap:18px}
+    .stats{grid-template-columns:repeat(4,minmax(0,1fr));margin:22px 0}
+    .target-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{
+      background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+      padding:20px;box-shadow:0 3px 10px rgba(16,24,40,.03)
+    }
+    .card h4{margin:0 0 8px}
+    .card ul,.card ol{margin:8px 0 0;padding-left:20px}
+    .card li+li{margin-top:5px}
+    .flow-card{position:relative;overflow:hidden}
+    .flow-card:before{
+      content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--accent)
+    }
+    .prototype-gate{
+      margin-top:18px;padding:16px 18px;border:1px solid #b7c7ff;border-radius:14px;
+      background:var(--accent-soft);color:#17316f;font-weight:700
+    }
+    .stat-label{font-size:13px;color:var(--muted)}
+    .stat-value{font-size:30px;font-weight:800;margin-top:5px}
+    .stat-foot{font-size:12px;color:var(--muted);margin-top:2px}
+    .progress{
+      height:10px;background:#eaecf0;border-radius:999px;overflow:hidden;margin-top:12px
+    }
+    .progress > span{display:block;height:100%;width:0;background:linear-gradient(90deg,#315efb,#7a5af8);transition:.3s}
+    .section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin:30px 0 14px}
+    .section-head h3{font-size:24px;margin:0}.section-head p{margin:4px 0 0;color:var(--muted)}
+    .phase-strip{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .phase{
+      padding:16px;border-radius:16px;background:var(--panel);border:1px solid var(--line)
+    }
+    .phase .num{font-size:12px;color:var(--accent);font-weight:800}
+    .phase h4{margin:5px 0;font-size:15px}.phase p{font-size:12px;color:var(--muted);margin:0}
+    .goals{display:grid;gap:12px}
+    details.goal{
+      background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden
+    }
+    details.goal[open]{box-shadow:var(--shadow)}
+    summary{
+      list-style:none;cursor:pointer;padding:18px 20px;display:grid;
+      grid-template-columns:auto 1fr auto;gap:14px;align-items:center
+    }
+    summary::-webkit-details-marker{display:none}
+    .goal-index{
+      width:38px;height:38px;border-radius:12px;background:var(--accent-soft);color:var(--accent);
+      display:grid;place-items:center;font-weight:800
+    }
+    .goal-title{font-weight:800}.goal-sub{font-size:13px;color:var(--muted);margin-top:3px}
+    .status-pill{
+      font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px;background:#f2f4f7;color:#475467
+    }
+    .status-pill.done,.status-pill.accepted{background:#dcfae6;color:var(--success)}
+    .status-pill.limited{background:#fffaeb;color:var(--warning)}
+    .status-pill.rejected{background:#fee4e2;color:var(--danger)}
+    .goal-body{border-top:1px solid var(--line);padding:20px;background:var(--panel-2)}
+    .goal-columns{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .goal-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .chip{
+      display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;
+      background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800
+    }
+    .goal-body h5{margin:0 0 8px;font-size:14px}
+    .goal-body p{margin:0 0 12px;color:#475467}
+    .checklist{display:grid;gap:8px}
+    .check-item{
+      background:white;border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+      display:flex;gap:10px;align-items:flex-start
+    }
+    .check-item input{margin-top:3px;accent-color:var(--accent)}
+    .criteria-list{display:grid;gap:8px;margin-bottom:16px}
+    .criteria-list .check-item{background:#f8fbff}
+    .verification-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .field-label{display:block;font-size:12px;color:var(--muted);font-weight:800;margin:0 0 6px}
+    select{
+      width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+      background:white;color:var(--text)
+    }
+    textarea{
+      width:100%;min-height:150px;border:1px solid var(--line);border-radius:12px;padding:12px;
+      resize:vertical;background:white;color:var(--text)
+    }
+    textarea.compact{min-height:105px}
+    .prompt-box{
+      white-space:pre-wrap;background:#0f172a;color:#dbeafe;border-radius:14px;padding:16px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;max-height:420px;overflow:auto
+    }
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .two-col{grid-template-columns:1fr 1fr}
+    .warning{
+      border-left:4px solid var(--warning);background:#fffaeb;border-radius:12px;padding:14px;color:#7a2e0e
+    }
+    .setup-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+    .setup-table th,.setup-table td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    .setup-table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+    .setup-table code{font-size:12px}
+    .evidence-list{display:grid;gap:8px;margin-top:12px}
+    .evidence-row{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;background:var(--panel-2);border-radius:10px}
+    .evidence-state{font-size:12px;font-weight:800;color:var(--danger);white-space:nowrap}
+    .doc-link{color:var(--accent);font-weight:800}
+    .recording-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .recording-form .full{grid-column:1/-1}
+    .recording-form input[type="text"],.recording-form input[type="date"]{
+      width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:white;color:var(--text)
+    }
+    .file-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .file-field{border:1px dashed #b7c7ff;background:#f8fbff;border-radius:12px;padding:11px}
+    .file-field input{display:block;width:100%;margin-top:6px;font-size:12px}
+    .storage-summary{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+    .storage-badge{background:#f2f4f7;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
+    .recording-list{display:grid;gap:12px;margin-top:14px}
+    .recording-item{border:1px solid var(--line);border-radius:14px;padding:14px;background:white}
+    .recording-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .recording-files{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+    .file-chip{border:0;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 9px;font-size:12px;cursor:pointer}
+    .storage-message{min-height:24px;margin-top:10px;font-size:13px;font-weight:700}
+    .muted{color:var(--muted)}
+    .footer{margin-top:32px;color:var(--muted);font-size:12px;text-align:center}
+    @media(max-width:1100px){
+      .app{grid-template-columns:1fr}
+      aside{position:relative;height:auto}
+      main{padding:22px}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .phase-strip{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:720px){
+      .hero h2{font-size:28px}
+      .stats,.phase-strip,.two-col,.goal-columns,.target-grid,.verification-grid,.recording-form,.file-grid{grid-template-columns:1fr}
+      .recording-form .full{grid-column:auto}
+      summary{grid-template-columns:auto 1fr}
+      .status-pill{grid-column:2}
+      main{padding:16px}
+    }
+    @media print{
+      aside,.hero-actions,.toolbar{display:none!important}
+      .app{display:block}
+      main{padding:0}
+      details.goal{break-inside:avoid}
+      details.goal:not([open]) .goal-body{display:block}
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">
+      <div class="logo">IT</div>
+      <div><h1>InTakt</h1><p>Ganganalyse-Projekt</p></div>
+    </div>
+    <nav class="nav">
+      <div class="nav-title">Navigation</div>
+      <a href="#overview" class="active">Übersicht</a>
+      <a href="#measurement-setup">Messkonfiguration</a>
+      <a href="#recording-storage">Testversuche</a>
+      <a href="#target">Zielbild</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#goals">Goals</a>
+      <a href="#deliverables">Ergebnisse</a>
+      <a href="#codex">Codex-Übergabe</a>
+      <a href="#boundaries">Abgrenzung</a>
+    </nav>
+    <div class="side-card">
+      <strong>Aktueller Meilenstein</strong>
+      <p>Analyse-Prototyp: Aus BitMotion-Exporten belastbare Bewegungsparameter erzeugen.</p>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="eyebrow">Ziel: vollständiger Analyse-Prototyp</div>
+      <h2>Von vier IMU-Exporten zum sicheren KI-gestützten Analysebericht</h2>
+      <p>InTakt verarbeitet BitMotion-Exporte reproduzierbar, bewertet die Datenqualität, synchronisiert und analysiert die Signale und erzeugt aus validierten Parametern eine nachvollziehbare KI-Auswertung mit sichtbaren Unsicherheiten.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openAll()">Alle Goals öffnen</button>
+        <button class="btn btn-secondary" onclick="window.print()">Als PDF drucken</button>
+        <button class="btn btn-secondary" onclick="exportState()">Fortschritt exportieren</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('stateImport').click()">Fortschritt importieren</button>
+        <input id="stateImport" type="file" accept="application/json" hidden>
+      </div>
+    </section>
+
+    <section class="grid stats">
+      <div class="card">
+        <div class="stat-label">Aufgaben &amp; Kriterien</div>
+        <div class="stat-value" id="overallPercent">0%</div>
+        <div class="progress"><span id="overallBar"></span></div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Goals abgenommen</div>
+        <div class="stat-value"><span id="goalsDone">0</span>/<span id="goalsTotal">0</span></div>
+        <div class="stat-foot">Nur „abgenommen“ zählt als abgeschlossen.</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Erfolgskriterien geprüft</div>
+        <div class="stat-value"><span id="criteriaDone">0</span>/<span id="criteriaTotal">0</span></div>
+        <div class="stat-foot">Fortschritt wird lokal gespeichert.</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Aktueller Fokus</div>
+        <div class="stat-value" id="currentFocus" style="font-size:18px">Datengrundlage</div>
+        <div class="stat-foot" id="currentSkill">Nächstes nicht abgenommenes Goal.</div>
+      </div>
+    </section>
+
+    <section id="measurement-setup">
+      <div class="section-head">
+        <div><h3>Aktuelles Goal: Messaufbau und Datengrundlage</h3><p>Fünf Sensoren und Test 1 sind dokumentiert; die Spiegeltransformation bleibt eine bekannte Einschränkung.</p></div>
+      </div>
+      <div class="grid two-col">
+        <div class="card">
+          <div class="goal-meta">
+            <span class="chip">INTAKT-IMU-5S-V2</span>
+            <span class="status-pill limited">Abgenommen mit Einschränkungen</span>
+          </div>
+          <h4>Fünf Sensoren</h4>
+          <table class="setup-table">
+            <thead><tr><th>Kürzel</th><th>Hardware-ID</th><th>Position</th></tr></thead>
+            <tbody>
+              <tr><td><strong>VL</strong></td><td><code>1B9D88FD0E8C</code></td><td>lateral, linkes vorderes Röhrbein</td></tr>
+              <tr><td><strong>VR</strong></td><td><code>83FEC4707D1D</code></td><td>lateral, rechtes vorderes Röhrbein</td></tr>
+              <tr><td><strong>HL</strong></td><td><code>1792A254366C</code></td><td>lateral, linkes hinteres Röhrbein</td></tr>
+              <tr><td><strong>HR</strong></td><td><code>657910C7ECB7</code></td><td>lateral, rechtes hinteres Röhrbein</td></tr>
+              <tr><td><strong>SG</strong></td><td><code>C5C720831275</code>*</td><td>mittig am Sattelgurt</td></tr>
+            </tbody>
+          </table>
+          <p class="muted" style="margin-bottom:0">Lokale Sensorachsen wie bei HL; +Z zeigt in Ruhelage nach oben. Links und rechts sind spiegelbildlich montiert. Rohachsen bleiben unverändert.</p>
+        </div>
+        <div class="card">
+          <h4>Rate, Einheiten und Export</h4>
+          <ul>
+            <li>Sollrate: <strong>100 Hz</strong>, Sollintervall: <strong>10 ms</strong>, verwendete Bandbreite: <strong>44 Hz</strong></li>
+            <li>Beschleunigung: <strong>g</strong>; Drehrate: <strong>°/s</strong>; Lagewinkel: <strong>°</strong></li>
+            <li>App-Unterlage nennt lesbare <strong>.txt</strong>- und binäre <strong>.wplay</strong>-Dateien.</li>
+            <li>Tatsächliche Rate, Spalten und Einheiten werden am unveränderten Originalexport geprüft.</li>
+          </ul>
+          <div class="evidence-list">
+            <div class="evidence-row"><span>Messaufbau und Ablauf dokumentiert</span><span class="evidence-state" style="color:var(--success)">VORHANDEN</span></div>
+            <div class="evidence-row"><span>Vollständiger Originalexport mit 5 Sensoren</span><span class="evidence-state" style="color:var(--success)">TEST 1</span></div>
+            <div class="evidence-row"><span>Passendes Originalvideo</span><span class="evidence-state" style="color:var(--success)">TEST 1</span></div>
+            <div class="evidence-row"><span>Foto des Sattelgurtsensors</span><span class="evidence-state" style="color:var(--success)">TEST 1</span></div>
+            <div class="evidence-row"><span>Achsorientierung dokumentiert</span><span class="evidence-state" style="color:var(--success)">5/5</span></div>
+          </div>
+          <p class="muted">* SG und HL per Screenshot; VL, VR und HR wie HL bestätigt. Links/rechts sind spiegelbildlich montiert.</p>
+          <p style="margin:14px 0 0"><a class="doc-link" href="docs/messaufbau-und-datengrundlage.md">Vollständiges Messprotokoll öffnen</a></p>
+        </div>
+      </div>
+      <div class="warning" style="margin-top:18px">
+        <strong>Abschlussstatus: ABGENOMMEN MIT EINSCHRÄNKUNGEN.</strong> Vor Links-rechts-Berechnungen muss die horizontale Spiegeltransformation noch kalibriert werden.
+      </div>
+    </section>
+
+    <section id="recording-storage">
+      <div class="section-head">
+        <div><h3>Datenablage für Testversuche</h3><p>Originaldateien bleiben unverändert und werden ausschließlich lokal in diesem Browser gespeichert.</p></div>
+      </div>
+      <div class="grid two-col">
+        <div class="card">
+          <h4>Neuen Versuch ablegen</h4>
+          <div class="toolbar" style="margin-bottom:14px">
+            <button class="btn btn-muted" id="chooseRecordingFolder" type="button">InTakt-Ablageordner wählen</button>
+            <span class="storage-badge" id="recordingFolderStatus">Kein Ordner ausgewählt</span>
+          </div>
+          <form id="recordingForm" class="recording-form">
+            <label>
+              <span class="field-label">Aufnahme-ID *</span>
+              <input id="recordingId" type="text" required placeholder="20260723_test01" />
+            </label>
+            <label>
+              <span class="field-label">Aufnahmedatum</span>
+              <input id="recordingDate" type="date" />
+            </label>
+            <label class="full">
+              <span class="field-label">Notiz</span>
+              <textarea id="recordingNote" class="compact" placeholder="Ort, Pferde-Pseudonym, Besonderheiten …"></textarea>
+            </label>
+            <div class="full file-grid">
+              <label class="file-field"><strong>Gemeinsame Sensordatei *</strong><span class="muted">Eine TXT-Datei mit allen fünf Sensoren</span><input id="fileSensorData" type="file" accept=".txt,text/plain" required /></label>
+              <label class="file-field"><strong>Video</strong><input id="fileVideo" type="file" accept="video/*" /></label>
+              <label class="file-field"><strong>Positionsfotos</strong><input id="filePhotos" type="file" accept="image/*" multiple /></label>
+            </div>
+            <div class="full toolbar">
+              <button class="btn btn-plain" type="submit">Versuch lokal speichern</button>
+              <button class="btn btn-muted" type="reset">Formular leeren</button>
+            </div>
+          </form>
+          <div id="storageMessage" class="storage-message" role="status"></div>
+        </div>
+        <div class="card">
+          <h4>Gespeicherte Testversuche</h4>
+          <div class="storage-summary">
+            <span class="storage-badge"><span id="recordingCount">0</span> Versuche</span>
+            <span class="storage-badge" id="recordingBytes">0 B Dateigröße</span>
+          </div>
+          <div class="warning">
+            Wähle den Projektordner <code>/Users/violavanparidon/intakt_app/recordings</code>. Das Dashboard erstellt darin je Aufnahme-ID einen eigenen Ordner und überschreibt keine vorhandenen Versuche.
+          </div>
+          <div id="recordingList" class="recording-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="target">
+      <div class="section-head">
+        <div><h3>Zielbild des fertigen Prototyps</h3><p>Eine vollständig nachvollziehbare Offline-Analysekette – nicht nur ein einzelner Algorithmus.</p></div>
+      </div>
+      <div class="grid target-grid">
+        <div class="card flow-card">
+          <h4>Eingaben</h4>
+          <ul>
+            <li>BitMotion-Export von vier IMU-Sensoren</li>
+            <li>Messkontext und eindeutige Sensorpositionen</li>
+            <li>Einheiten, Achsen und Zeitinformationen</li>
+            <li>Video- oder Expertenmarkierungen zur Validierung</li>
+          </ul>
+        </div>
+        <div class="card flow-card">
+          <h4>Verarbeitung</h4>
+          <ul>
+            <li>Import und Datenqualitätsprüfung</li>
+            <li>Synchronisation und Vorverarbeitung</li>
+            <li>Gangarten, Ereignisse und Gangzyklen</li>
+            <li>Parameter, Unsicherheit, Validierung und Scores</li>
+          </ul>
+        </div>
+        <div class="card flow-card">
+          <h4>Ausgaben</h4>
+          <ul>
+            <li>Dokumentierter interner Datensatz</li>
+            <li>Qualitätsbericht und Visualisierungen</li>
+            <li>Rückverfolgbare Parameter und Teil-Scores</li>
+            <li>Sicherer KI-Bericht und maschinenlesbarer Export</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prototype-gate">Der Prototyp ist erst vollständig, wenn eine neue geeignete Messung ohne manuelle Codeänderung bis zu einem protokollierten, sicheren KI-Bericht verarbeitet und end-to-end abgenommen werden kann.</div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-head">
+        <div><h3>Roadmap des vollständigen Prototyps</h3><p>Die KI ist verpflichtend, bleibt aber hinter geprüften Daten, Parametern und Scores gekapselt.</p></div>
+      </div>
+      <div class="grid phase-strip">
+        <div class="phase"><div class="num">PHASE 1</div><h4>Datengrundlage</h4><p>Messaufbau, Import, Datenmodell und Qualitätsprüfung.</p></div>
+        <div class="phase"><div class="num">PHASE 2</div><h4>Signalverarbeitung</h4><p>Synchronisation, Filterung, Gangarten und Ereignisse.</p></div>
+        <div class="phase"><div class="num">PHASE 3</div><h4>Parameter &amp; Bericht</h4><p>Einzeln definierte Kennwerte, Unsicherheit und Visualisierung.</p></div>
+        <div class="phase"><div class="num">PHASE 4</div><h4>Validierung &amp; Scores</h4><p>Referenzvergleich, Fehlermaße und transparente Bewertung.</p></div>
+        <div class="phase"><div class="num">PHASE 5</div><h4>Pflicht-KI &amp; Abnahme</h4><p>Sichere Interpretation, Protokollierung und End-to-End-Test.</p></div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <div class="section-head">
+        <div><h3>Goals des vollständigen Analyse-Prototyps</h3><p>Aufgaben allein reichen nicht: Erfolgskriterien, Tests, Nachweise und Abnahmestatus gehören zu jedem Goal.</p></div>
+        <button class="btn btn-muted" onclick="resetAll()">Fortschritt zurücksetzen</button>
+      </div>
+      <div class="goals" id="goalContainer"></div>
+    </section>
+
+    <section id="deliverables">
+      <div class="section-head">
+        <div><h3>Verbindliche Ergebnisse</h3><p>Diese Artefakte müssen am Ende reproduzierbar erzeugt werden.</p></div>
+      </div>
+      <div class="grid two-col">
+        <div class="card">
+          <h4>Technische Ergebnisse</h4>
+          <ul>
+            <li>Unveränderte Rohdaten mit Herkunftsnachweis</li>
+            <li>Versionierter, normalisierter Datensatz</li>
+            <li>Datenqualitäts- und Synchronisationsbericht</li>
+            <li>Konfiguration, Parameterdefinitionen und Testprotokoll</li>
+            <li>Maschinenlesbarer Ergebnisexport</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Fachlich lesbare Ergebnisse</h4>
+          <ul>
+            <li>Signal-, Ereignis- und Parameterdarstellungen</li>
+            <li>Parameter mit Einheit, Unsicherheit und Datenbezug</li>
+            <li>Transparente Teil-Scores mit dokumentierten Regeln</li>
+            <li>KI-Bericht mit Beobachtung, Hypothese und Empfehlung</li>
+            <li>Bekannte Grenzen und Hinweise zur fachlichen Abklärung</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="codex">
+      <div class="section-head">
+        <div><h3>Codex-Übergabe</h3><p>Immer nur ein Goal gleichzeitig übergeben. So bleiben Änderungen überprüfbar.</p></div>
+      </div>
+      <div class="grid two-col">
+        <div class="card">
+          <h4>Empfohlene Arbeitsweise</h4>
+          <ol>
+            <li>Vor größeren Umbauten mit <strong>$intakt-code-audit</strong> den vorhandenen Stand prüfen.</li>
+            <li>Das nächste noch nicht abgenommene Goal auswählen.</li>
+            <li>Projektkontext, Rohdaten und vorhandene Dateien ergänzen.</li>
+            <li>Den erzeugten Prompt mit dem zugeordneten Skill an Codex übergeben.</li>
+            <li>Erfolgskriterien, Tests, Nachweise und Risiken dokumentieren.</li>
+            <li>Mit <strong>$intakt-change-verification</strong> einen Abschlussstatus vergeben.</li>
+            <li>Erst nach Abnahme das nächste Goal beginnen.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h4>Globale Leitplanken</h4>
+          <div class="warning">
+            Die KI ist Pflichtbestandteil, erhält aber ausschließlich strukturierte, geprüfte Parameter, Scores und Qualitätswerte. Keine medizinischen Diagnosen behaupten. Beobachtung, Hypothese, Unsicherheit und Empfehlung müssen klar getrennt bleiben.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="boundaries">
+      <div class="section-head"><div><h3>Nicht Bestandteil des ersten Prototyps</h3><p>Diese Punkte werden bewusst auf spätere Meilensteine verschoben.</p></div></div>
+      <div class="card">
+        <div class="grid two-col">
+          <ul>
+            <li>Eigene BLE-Anbindung der vier Sensoren</li>
+            <li>Vollständige Smartphone-App</li>
+            <li>Live-Analyse während des Reitens</li>
+            <li>Cloud-Synchronisation und Kundenkonten</li>
+          </ul>
+          <ul>
+            <li>Medizinische Diagnosen</li>
+            <li>Vollständige wissenschaftliche Validierung</li>
+            <li>Eigenes trainiertes KI-Modell</li>
+            <li>Nicht validierte Aussagen zur Belastung, Lahmheit oder Skala der Ausbildung</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">InTakt Projekt-Dashboard · Daten werden ausschließlich lokal im Browser gespeichert.</div>
+  </main>
+</div>
+
+<script>
+const goals = [
+  {
+    title:"Messaufbau und Datengrundlage definieren",
+    subtitle:"Sensorpositionen, Achsen, Abtastrate und Testdatensatz eindeutig dokumentieren.",
+    objective:"Eine reproduzierbare Messkonfiguration schaffen, bevor Algorithmen entwickelt werden.",
+    tasks:[
+      "Position der fünf Sensoren festlegen",
+      "Sensororientierung und Achsen dokumentieren",
+      "Sensorbezeichnungen definieren",
+      "Abtastrate und Einheiten dokumentieren",
+      "Exportformat der BitMotion-App untersuchen",
+      "Versuchsablauf für Testaufnahmen definieren",
+      "Parallel passende Videoaufnahme erstellen"
+    ],
+    criteria:[
+      "Jeder Sensor ist eindeutig benannt",
+      "Position und Orientierung sind dokumentiert",
+      "Datenformat und Einheiten sind beschrieben",
+      "Eine vollständige Testaufnahme liegt vor",
+      "Eine passende Videoaufnahme ist vorhanden"
+    ]
+  },
+  {
+    title:"Datenimport entwickeln",
+    subtitle:"BitMotion-Exporte automatisch in ein einheitliches Analyseformat überführen.",
+    objective:"Eine robuste Importpipeline für alle vier Sensoren bereitstellen.",
+    tasks:[
+      "Beispieldateien und Spaltenstruktur untersuchen",
+      "Zeitstempel, Beschleunigung und Gyroskopdaten einlesen",
+      "Optional Magnetometerdaten berücksichtigen",
+      "Sensor-IDs korrekt zuordnen",
+      "Einheiten vereinheitlichen",
+      "Fehlende Spalten und fehlerhafte Dateien erkennen",
+      "Importierte Daten grafisch prüfbar machen"
+    ],
+    criteria:[
+      "Alle vier Sensordateien werden erkannt",
+      "Messwerte und Zeitstempel werden korrekt importiert",
+      "Unterschiedliche Dateilängen werden erkannt",
+      "Fehler werden verständlich ausgegeben",
+      "Importierte Daten können visualisiert werden"
+    ]
+  },
+  {
+    title:"Datenqualität prüfen",
+    subtitle:"Lücken, Ausreißer, Signalabbrüche und unplausible Werte automatisch erkennen.",
+    objective:"Jede Aufnahme erhält vor der Analyse einen belastbaren Qualitätsstatus.",
+    tasks:[
+      "Fehlende Datenpunkte erkennen",
+      "Unregelmäßige Abtastintervalle erkennen",
+      "Signalabbrüche und eingefrorene Werte erkennen",
+      "Extreme Ausreißer markieren",
+      "Messdauer bestimmen",
+      "Qualitätsstatus je Sensor berechnen",
+      "Automatischen Qualitätsbericht erzeugen"
+    ],
+    criteria:[
+      "Jeder Sensor erhält einen Qualitätsstatus",
+      "Datenlücken werden zeitlich lokalisiert",
+      "Auffällige Werte werden markiert",
+      "Unbrauchbare Aufnahmen werden erkannt",
+      "Fehlerhafte Daten werden nicht stillschweigend weiterverarbeitet"
+    ]
+  },
+  {
+    title:"Sensoren zeitlich synchronisieren",
+    subtitle:"Alle vier Sensorsignale auf eine gemeinsame Zeitachse bringen.",
+    objective:"Einen synchronisierten Datensatz mit dokumentierter Qualität erzeugen.",
+    tasks:[
+      "Startzeiten der Sensoren vergleichen",
+      "Unterschiedliche Abtastraten behandeln",
+      "Gemeinsames Zeitraster definieren",
+      "Zeitdrift untersuchen",
+      "Synchronisationsqualität berechnen",
+      "Synchronisierte Signale visualisieren"
+    ],
+    criteria:[
+      "Alle Sensoren besitzen dieselbe Zeitbasis",
+      "Das Abtastraster ist definiert",
+      "Zeitverschiebungen sind dokumentiert",
+      "Synchronisation ist grafisch überprüfbar",
+      "Synchronisationsfehler werden ausgewiesen"
+    ]
+  },
+  {
+    title:"Samplezeiten durch Indexierung rekonstruieren",
+    subtitle:"Untergoal der Zeitsynchronisation: eindeutige Analysezeiten aus Reihenfolge und Referenzereignissen ableiten.",
+    parentGoal:"Sensoren zeitlich synchronisieren",
+    objective:"Trotz gebündelter BLE-Empfangszeitstempel einen nachvollziehbaren, indexbasierten Datensatz mit rekonstruierter Zeitbasis und ausgewiesener Unsicherheit erzeugen.",
+    tasks:[
+      "Originalreihenfolge und Sampleindex je Sensor unverändert übernehmen",
+      "Nominale und effektive Abtastrate je Sensor bestimmen",
+      "Doppelte Empfangszeitstempel zu BLE-Paketen gruppieren",
+      "Mögliche Paket- und Sampleverluste erkennen",
+      "Indexbasierte Analysezeit je Sensor rekonstruieren",
+      "Video-IMU-Ereignisse am Anfang und Ende als Zeitanker verwenden",
+      "Offset und linearen Zeitgradienten je Sensor schätzen",
+      "Rekonstruierte Signale auf das gemeinsame Zeitraster abbilden",
+      "Rekonstruktionsunsicherheit und Datenlücken ausweisen",
+      "Indexzeit, Empfangszeit und Videoanker gemeinsam visualisieren"
+    ],
+    criteria:[
+      "Jedes verwendbare Sample besitzt einen eindeutigen Index und eine rekonstruierte Analysezeit",
+      "Rohdaten, Originalreihenfolge und originale Empfangszeitstempel bleiben unverändert",
+      "Nominale und effektive Abtastraten sind je Sensor dokumentiert",
+      "Paket- oder Sampleverluste werden erkannt oder ausdrücklich als nicht bestimmbar markiert",
+      "Die Zuordnung zu den Videoankern ist bis zum Rohdatensatz rückverfolgbar",
+      "Alle Sensoren sind auf ein definiertes gemeinsames Raster abgebildet",
+      "Rekonstruktionsfehler und Unsicherheit werden in Millisekunden ausgewiesen",
+      "Die Zeitrekonstruktion ist grafisch überprüfbar",
+      "Die Ausgabe kennzeichnet die Zeitbasis ausdrücklich als rekonstruiert"
+    ]
+  },
+  {
+    title:"Signale vorverarbeiten",
+    subtitle:"Rauschen reduzieren, ohne relevante Bewegungsereignisse zu zerstören.",
+    objective:"Einen reproduzierbaren und dokumentierten Vorverarbeitungsprozess schaffen.",
+    tasks:[
+      "Rohsignale visualisieren",
+      "Geeignete Filtermethoden vergleichen",
+      "Filterparameter dokumentieren",
+      "Ausreißer behandeln",
+      "Gravitations- und Bewegungsanteile untersuchen",
+      "Sensororientierung berücksichtigen",
+      "Roh- und gefilterte Signale vergleichen"
+    ],
+    criteria:[
+      "Filter und Parameter sind dokumentiert",
+      "Parameter sind zentral konfigurierbar",
+      "Rohdaten bleiben unverändert erhalten",
+      "Roh- und Filterdaten sind vergleichbar",
+      "Relevante Ereignisse bleiben sichtbar"
+    ]
+  },
+  {
+    title:"Gangart und Analyseabschnitte bestimmen",
+    subtitle:"Stillstand, Gangarten, Übergänge und ungeeignete Abschnitte kennzeichnen.",
+    objective:"Nur valide Bewegungsabschnitte in die weitere Analyse übernehmen.",
+    tasks:[
+      "Stillstand erkennen",
+      "Schritt, Trab und optional Galopp unterscheiden",
+      "Übergänge markieren",
+      "Wendungen und Unterbrechungen erkennen",
+      "Analysierbare Abschnitte auswählen",
+      "Manuelle Korrektur ermöglichen",
+      "Unsicherheit der Gangarterkennung ausgeben"
+    ],
+    criteria:[
+      "Stillstand und Bewegung sind getrennt",
+      "Gangartabschnitte sind zeitlich markiert",
+      "Übergänge sind erkannt oder korrigierbar",
+      "Nur geeignete Abschnitte werden analysiert",
+      "Segmentierung ist mit Video prüfbar"
+    ]
+  },
+  {
+    title:"Gangzyklen und Bewegungsereignisse erkennen",
+    subtitle:"Wiederkehrende Bewegungszyklen automatisch segmentieren.",
+    objective:"Eine belastbare Liste erkannter Gangzyklen mit Qualitätswert erzeugen.",
+    tasks:[
+      "Geeignete Sensorsignale auswählen",
+      "Charakteristische Signalereignisse identifizieren",
+      "Schritt- oder Trittzeitpunkte bestimmen",
+      "Gangzyklen segmentieren",
+      "Unplausible Zyklen aussortieren",
+      "Erkannte Ereignisse im Signal darstellen",
+      "Erkennung mit Video vergleichen"
+    ],
+    criteria:[
+      "Gangzyklen werden automatisch erkannt",
+      "Jeder Zyklus besitzt Start- und Endzeit",
+      "Unplausible Zyklen sind gekennzeichnet",
+      "Ergebnisse sind grafisch kontrollierbar",
+      "Erkennung wurde mit mehreren Videos verglichen"
+    ]
+  },
+  {
+    title:"Bewegungsparameter einzeln entwickeln",
+    subtitle:"Jeden Parameter separat definieren, implementieren, testen und validieren.",
+    objective:"Einen rückverfolgbaren Parameterkatalog mit Einheiten, Wertebereichen und Unsicherheiten erzeugen.",
+    tasks:[
+      "Mindestkatalog aus Frequenz, Zyklusdauer, Variabilität, zeitlicher Symmetrie und Phasenbeziehungen festlegen",
+      "Für jeden Parameter fachliche und mathematische Definition dokumentieren",
+      "Benötigte Sensorsignale und Ausschlusskriterien bestimmen",
+      "Jeden Parameter in einem getrennten Entwicklungszyklus implementieren",
+      "Einheiten, Wertebereiche und Konfiguration zentral festlegen",
+      "Mittelwert, Streuung und Unsicherheit bestimmen",
+      "Ungültige Werte ohne Ersatzwert ausdrücklich markieren"
+    ],
+    criteria:[
+      "Jeder Parameter ist schriftlich definiert",
+      "Einheiten sind eindeutig",
+      "Jeder Parameter besitzt eigene automatisierte Tests",
+      "Berechnungen sind reproduzierbar",
+      "Werte sind bis zu Rohdaten zurückverfolgbar",
+      "Unsichere Werte werden gekennzeichnet"
+    ]
+  },
+  {
+    title:"Analyse visualisieren und exportieren",
+    subtitle:"Signale, Ereignisse, Parameter und Qualitätsinformationen als Bericht darstellen.",
+    objective:"Eine übersichtliche Analyseansicht und reproduzierbare Exporte für Fachpersonen schaffen.",
+    tasks:[
+      "Roh- und gefilterte Signale darstellen",
+      "Gangzyklen markieren",
+      "Parameter tabellarisch darstellen",
+      "Zeitliche Entwicklungen visualisieren",
+      "Links-rechts-Vergleiche darstellen",
+      "Mittelwerte und Streuungen zeigen",
+      "Auffällige Abschnitte markieren",
+      "Maschinenlesbaren Ergebnisexport erzeugen",
+      "Vollständigen HTML- oder PDF-Bericht erzeugen"
+    ],
+    criteria:[
+      "Eine vollständige Messung ist übersichtlich betrachtbar",
+      "Auffälligkeiten sind optisch erkennbar",
+      "Werte besitzen Namen und Einheiten",
+      "Diagramme sind nicht irreführend",
+      "Übersicht und Detailansicht sind möglich",
+      "Bericht und Ergebnisdaten sind reproduzierbar exportierbar"
+    ]
+  },
+  {
+    title:"Ergebnisse validieren",
+    subtitle:"Technische, empirische und fachliche Aussagekraft getrennt prüfen.",
+    objective:"Messfehler, Zuverlässigkeit, fachliche Plausibilität und Grenzen der Analyse quantifizieren.",
+    tasks:[
+      "Sensordaten mit Video abgleichen",
+      "Gangereignisse manuell kontrollieren",
+      "Abweichungen dokumentieren",
+      "Mehrere Pferde und Messungen vergleichen",
+      "Wiederholungsmessungen durchführen",
+      "Fachkundige Beurteilung einholen",
+      "Fehlermaße und Akzeptanzgrenzen definieren",
+      "Technische, empirische und fachliche Validierung getrennt dokumentieren"
+    ],
+    criteria:[
+      "Zykluserkennung wurde mit Referenzdaten verglichen",
+      "Fehler und Abweichungen sind quantifiziert",
+      "Bekannte Schwächen sind dokumentiert",
+      "Wiederholungsmessungen sind ausreichend stabil",
+      "Nicht validierte Parameter oder Aussagen sind ausdrücklich markiert",
+      "Erlaubte und nicht erlaubte Aussagen sind klar"
+    ]
+  },
+  {
+    title:"Einfaches Bewertungssystem entwickeln",
+    subtitle:"Validierte Parameter zu transparenten Teilbewertungen zusammenfassen.",
+    objective:"Ein nachvollziehbares, regelbasiertes Score-Modell schaffen.",
+    tasks:[
+      "Geeignete Parameter auswählen",
+      "Vergleichs- oder Normalbereiche definieren",
+      "Parameterwerte normalisieren",
+      "Qualitätsstufen festlegen",
+      "Unsicherheit berücksichtigen",
+      "Teilbewertungen erzeugen",
+      "Score-Berechnung vollständig dokumentieren"
+    ],
+    criteria:[
+      "Jeder Score ist auf konkrete Parameter zurückführbar",
+      "Gewichtungen sind dokumentiert",
+      "Fehlende Daten erzeugen keine erfundenen Werte",
+      "Unsicherheit ist sichtbar",
+      "Score ist unabhängig von einer KI berechenbar"
+    ]
+  },
+  {
+    title:"Erste textliche Interpretation erzeugen",
+    subtitle:"Ergebnisse vorsichtig, verständlich und regelbasiert erklären.",
+    objective:"Einen klar gegliederten Analysebericht ohne unbelegte Diagnosen erzeugen.",
+    tasks:[
+      "Textregeln für typische Ergebnisse entwickeln",
+      "Auffälligkeiten priorisieren",
+      "Positive Beobachtungen ergänzen",
+      "Unsicherheit sprachlich darstellen",
+      "Beobachtung und Erklärung trennen",
+      "Empfehlungen an Datenlage koppeln",
+      "Hinweise auf fachliche Abklärung definieren"
+    ],
+    criteria:[
+      "Keine fehlenden Informationen werden erfunden",
+      "Beobachtung, Interpretation und Empfehlung sind getrennt",
+      "Ursachen werden als Möglichkeiten formuliert",
+      "Keine medizinischen Diagnosen werden behauptet",
+      "Bei Auffälligkeiten wird fachliche Abklärung empfohlen"
+    ]
+  },
+  {
+    title:"Verpflichtende sichere KI-Auswertung anbinden",
+    subtitle:"Geprüfte Parameter und Scores innerhalb fester Leitplanken interpretieren lassen.",
+    objective:"Eine kontrollierte, protokollierte KI-Auswertung schaffen, die nur strukturierte und geprüfte Daten nutzt.",
+    tasks:[
+      "Strukturiertes Eingabeformat definieren",
+      "Systemanweisung für die KI erstellen",
+      "Erlaubte und verbotene Aussagen festlegen",
+      "Antwortformat vorgeben",
+      "Niedrige Datenqualität und widersprüchliche Eingaben behandeln",
+      "Halluzinationen und Widersprüche testen",
+      "Antworten mit Experten prüfen",
+      "Modell, Promptversion, Eingabe und Ausgabe protokollieren",
+      "Ausfälle und ungültige Antworten kontrolliert behandeln"
+    ],
+    criteria:[
+      "KI verwendet nur bereitgestellte Daten",
+      "Beobachtung, Hypothese, Unsicherheit und Empfehlung sind getrennt",
+      "Keine unbelegten Diagnosen",
+      "Datenqualität wird berücksichtigt",
+      "Jede Kernaussage ist auf konkrete Eingabewerte zurückführbar",
+      "Ausfälle erzeugen keinen erfundenen Ersatzbericht",
+      "Empfehlungen folgen dem fachlichen Rahmen",
+      "Kernaussagen sind über definierte Testfälle ausreichend konsistent"
+    ]
+  },
+  {
+    title:"Vollständigen Prototyp end-to-end abnehmen",
+    subtitle:"Eine neue Messung ohne manuelle Codeänderung bis zum sicheren KI-Bericht verarbeiten.",
+    objective:"Nachweisen, dass der gesamte Offline-Analyse-Prototyp reproduzierbar, fehlertolerant und zur Übernahme geeignet ist.",
+    tasks:[
+      "Mindestens eine bisher nicht zur Entwicklung verwendete Messung verarbeiten",
+      "Vollständige Kette vom Rohdatenimport bis zum KI-Bericht ausführen",
+      "Formatierung, Analyse, Typprüfung, Tests und Build ausführen",
+      "Ungültige Eingaben und unzureichende Datenqualität end-to-end testen",
+      "Alle Artefakte und verwendeten Versionen protokollieren",
+      "Öffentliche Schnittstellen und Konfiguration prüfen",
+      "Verbleibende Grenzen und Risiken dokumentieren",
+      "Abschlussstatus mit intakt-change-verification vergeben"
+    ],
+    criteria:[
+      "Eine neue geeignete Messung läuft ohne manuelle Codeänderung vollständig durch",
+      "Rohdaten bleiben unverändert und ihre Herkunft ist nachvollziehbar",
+      "Unzureichende Daten werden sichtbar abgelehnt oder eingeschränkt",
+      "Alle Parameter und KI-Aussagen sind zu Eingaben und Zeitabschnitten rückverfolgbar",
+      "Bericht und maschinenlesbare Ergebnisse werden reproduzierbar exportiert",
+      "Wesentliche automatisierte Tests, Integrationstests und Builds sind erfolgreich",
+      "Der verpflichtende KI-Bericht erfüllt alle Sicherheitsleitplanken",
+      "Das Goal besitzt einen begründeten Abnahmestatus"
+    ]
+  }
+];
+
+const primarySkills = [
+  "$intakt-imu-import",
+  "$intakt-imu-import",
+  "$intakt-imu-import",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-analysis-development",
+  "$intakt-safe-interpretation",
+  "$intakt-safe-interpretation",
+  "$intakt-change-verification"
+];
+
+const statusOptions = [
+  ["not_started","NICHT BEGONNEN"],
+  ["in_progress","IN ARBEIT"],
+  ["review","ZUR PRÜFUNG"],
+  ["accepted","ABGENOMMEN"],
+  ["accepted_limited","ABGENOMMEN MIT EINSCHRÄNKUNGEN"],
+  ["rejected","NICHT ABGENOMMEN"]
+];
+
+const recordingDbName="intakt-testversuche";
+const recordingStoreName="recordings";
+const recordingSettingsStoreName="settings";
+let recordingDirectoryHandle=null;
+
+function openRecordingDb(){
+  return new Promise((resolve,reject)=>{
+    const request=indexedDB.open(recordingDbName,2);
+    request.onupgradeneeded=()=>{
+      const db=request.result;
+      if(!db.objectStoreNames.contains(recordingStoreName)){
+        db.createObjectStore(recordingStoreName,{keyPath:"id"});
+      }
+      if(!db.objectStoreNames.contains(recordingSettingsStoreName)){
+        db.createObjectStore(recordingSettingsStoreName);
+      }
+    };
+    request.onsuccess=()=>resolve(request.result);
+    request.onerror=()=>reject(request.error);
+  });
+}
+
+async function recordingSettingRequest(mode,operation){
+  const db=await openRecordingDb();
+  try{
+    return await new Promise((resolve,reject)=>{
+      const transaction=db.transaction(recordingSettingsStoreName,mode);
+      const request=operation(transaction.objectStore(recordingSettingsStoreName));
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error);
+      transaction.onabort=()=>reject(transaction.error||new Error("Ordnerzugriff abgebrochen."));
+    });
+  }finally{
+    db.close();
+  }
+}
+
+function updateRecordingFolderStatus(message,ready=false){
+  const status=document.getElementById("recordingFolderStatus");
+  status.textContent=message;
+  status.style.color=ready?"var(--success)":"var(--warning)";
+}
+
+async function chooseRecordingDirectory(){
+  if(!window.showDirectoryPicker){
+    setStorageMessage("Direktes Speichern in Ordner wird von diesem Browser nicht unterstützt. Bitte Chrome oder Edge verwenden.",true);
+    return;
+  }
+  try{
+    const handle=await window.showDirectoryPicker({id:"intakt-recordings",mode:"readwrite"});
+    const permission=await handle.requestPermission({mode:"readwrite"});
+    if(permission!=="granted")throw new Error("Schreibzugriff wurde nicht freigegeben.");
+    recordingDirectoryHandle=handle;
+    await recordingSettingRequest("readwrite",store=>store.put(handle,"recordingDirectory"));
+    updateRecordingFolderStatus(`Ordner: ${handle.name}`,true);
+    setStorageMessage("Ablageordner ist bereit.");
+  }catch(error){
+    if(error?.name!=="AbortError")setStorageMessage(error?.message||"Ordner konnte nicht geöffnet werden.",true);
+  }
+}
+
+async function restoreRecordingDirectory(){
+  if(!window.showDirectoryPicker){
+    updateRecordingFolderStatus("Chrome oder Edge erforderlich");
+    return;
+  }
+  try{
+    const handle=await recordingSettingRequest("readonly",store=>store.get("recordingDirectory"));
+    if(!handle)return;
+    const permission=await handle.queryPermission({mode:"readwrite"});
+    if(permission==="granted"){
+      recordingDirectoryHandle=handle;
+      updateRecordingFolderStatus(`Ordner: ${handle.name}`,true);
+    }else{
+      updateRecordingFolderStatus(`Ordner ${handle.name} erneut freigeben`);
+    }
+  }catch(_){
+    updateRecordingFolderStatus("Ablageordner erneut wählen");
+  }
+}
+
+async function recordingStoreRequest(mode,operation){
+  const db=await openRecordingDb();
+  try{
+    return await new Promise((resolve,reject)=>{
+      const transaction=db.transaction(recordingStoreName,mode);
+      const store=transaction.objectStore(recordingStoreName);
+      const request=operation(store);
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error);
+      transaction.onabort=()=>reject(transaction.error||new Error("Speichervorgang abgebrochen."));
+    });
+  }finally{
+    db.close();
+  }
+}
+
+function formatBytes(bytes){
+  if(!bytes)return"0 B";
+  const units=["B","KB","MB","GB"];
+  const index=Math.min(Math.floor(Math.log(bytes)/Math.log(1024)),units.length-1);
+  return`${(bytes/1024**index).toLocaleString("de-DE",{maximumFractionDigits:1})} ${units[index]}`;
+}
+
+function selectedFiles(inputId,role){
+  return Array.from(document.getElementById(inputId).files||[]).map(file=>({
+    role,
+    name:file.name,
+    type:file.type||"application/octet-stream",
+    size:file.size,
+    lastModified:file.lastModified,
+    blob:file
+  }));
+}
+
+async function directoryExists(parent,name){
+  try{
+    await parent.getDirectoryHandle(name);
+    return true;
+  }catch(error){
+    if(error?.name==="NotFoundError")return false;
+    throw error;
+  }
+}
+
+function safeFileName(name){
+  return name.replace(/[\/\\:\0]/g,"_");
+}
+
+async function writeFileCopy(directory,file){
+  const handle=await directory.getFileHandle(safeFileName(file.name),{create:true});
+  const writable=await handle.createWritable();
+  try{
+    await writable.write(file.blob);
+  }finally{
+    await writable.close();
+  }
+}
+
+async function writeRecordingToDirectory(recording){
+  if(!recordingDirectoryHandle)throw new Error("Bitte zuerst den InTakt-Ablageordner auswählen.");
+  const permission=await recordingDirectoryHandle.queryPermission({mode:"readwrite"});
+  if(permission!=="granted")throw new Error("Bitte den InTakt-Ablageordner erneut freigeben.");
+  if(await directoryExists(recordingDirectoryHandle,recording.id)){
+    throw new Error(`Der Ordner „${recording.id}“ existiert bereits und wird nicht überschrieben.`);
+  }
+  const recordingDirectory=await recordingDirectoryHandle.getDirectoryHandle(recording.id,{create:true});
+  const rawDirectory=await recordingDirectory.getDirectoryHandle("raw",{create:true});
+  const videoDirectory=await recordingDirectory.getDirectoryHandle("video",{create:true});
+  const photoDirectory=await recordingDirectory.getDirectoryHandle("fotos",{create:true});
+  for(const file of recording.files){
+    const target=file.role==="SENSORDATEN"?rawDirectory:file.role==="VIDEO"?videoDirectory:photoDirectory;
+    await writeFileCopy(target,file);
+  }
+  const manifest={
+    recording_id:recording.id,
+    recorded_at:recording.date,
+    note:recording.note,
+    configuration_id:recording.configurationId,
+    bandwidth_hz:recording.bandwidthHz,
+    created_at:recording.createdAt,
+    files:recording.files.map(file=>({
+      role:file.role,
+      name:safeFileName(file.name),
+      size_bytes:file.size,
+      last_modified:file.lastModified
+    }))
+  };
+  const manifestHandle=await recordingDirectory.getFileHandle("manifest.json",{create:true});
+  const manifestWritable=await manifestHandle.createWritable();
+  try{
+    await manifestWritable.write(JSON.stringify(manifest,null,2));
+  }finally{
+    await manifestWritable.close();
+  }
+}
+
+function recordingCompleteness(recording){
+  const available=new Set(recording.files.map(file=>file.role));
+  return{
+    sensorData:available.has("SENSORDATEN"),
+    video:available.has("VIDEO"),
+    complete:available.has("SENSORDATEN")
+  };
+}
+
+function setStorageMessage(message,isError=false){
+  const element=document.getElementById("storageMessage");
+  element.textContent=message;
+  element.style.color=isError?"var(--danger)":"var(--success)";
+}
+
+async function saveRecording(event){
+  event.preventDefault();
+  const id=document.getElementById("recordingId").value.trim();
+  if(!id){
+    setStorageMessage("Bitte eine Aufnahme-ID eintragen.",true);
+    return;
+  }
+  if(!/^[A-Za-z0-9_-]+$/.test(id)){
+    setStorageMessage("Die Aufnahme-ID darf nur Buchstaben, Zahlen, Bindestriche und Unterstriche enthalten.",true);
+    return;
+  }
+  const existing=await recordingStoreRequest("readonly",store=>store.get(id));
+  if(existing){
+    setStorageMessage("Diese Aufnahme-ID existiert bereits. Bitte eine andere ID verwenden.",true);
+    return;
+  }
+  const files=[
+    ...selectedFiles("fileSensorData","SENSORDATEN"),
+    ...selectedFiles("fileVideo","VIDEO"),
+    ...selectedFiles("filePhotos","FOTO")
+  ];
+  const recording={
+    id,
+    date:document.getElementById("recordingDate").value||null,
+    note:document.getElementById("recordingNote").value.trim(),
+    configurationId:"INTAKT-IMU-5S-V2",
+    bandwidthHz:44,
+    createdAt:new Date().toISOString(),
+    files
+  };
+  const bytes=files.reduce((sum,file)=>sum+file.size,0);
+  setStorageMessage(`Schreibe ${formatBytes(bytes)} in den InTakt-Ordner …`);
+  try{
+    await writeRecordingToDirectory(recording);
+    const metadata={
+      ...recording,
+      files:recording.files.map(({blob,...file})=>file)
+    };
+    await recordingStoreRequest("readwrite",store=>store.add(metadata));
+    document.getElementById("recordingForm").reset();
+    setStorageMessage(`Versuch „${id}“ wurde im InTakt-Ordner gespeichert.`);
+    await renderRecordings();
+  }catch(error){
+    setStorageMessage(`Speichern fehlgeschlagen: ${error?.message||"lokaler Speicher nicht verfügbar"}`,true);
+  }
+}
+
+function downloadRecordingFile(file){
+  if(!file.blob)return;
+  const url=URL.createObjectURL(file.blob);
+  const anchor=document.createElement("a");
+  anchor.href=url;
+  anchor.download=file.name;
+  anchor.click();
+  setTimeout(()=>URL.revokeObjectURL(url),0);
+}
+
+async function deleteRecording(id){
+  if(!confirm(`Testversuch „${id}“ aus der Dashboard-Liste entfernen? Der Ordner und seine Originaldateien bleiben erhalten.`))return;
+  await recordingStoreRequest("readwrite",store=>store.delete(id));
+  setStorageMessage(`Versuch „${id}“ wurde aus der Dashboard-Liste entfernt. Der Projektordner bleibt erhalten.`);
+  await renderRecordings();
+}
+
+async function renderRecordings(){
+  const root=document.getElementById("recordingList");
+  if(!root)return;
+  try{
+    const recordings=await recordingStoreRequest("readonly",store=>store.getAll());
+    recordings.sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));
+    root.replaceChildren();
+    let totalBytes=0;
+    recordings.forEach(recording=>{
+      totalBytes+=recording.files.reduce((sum,file)=>sum+file.size,0);
+      const completeness=recordingCompleteness(recording);
+      const item=document.createElement("article");
+      item.className="recording-item";
+
+      const head=document.createElement("div");
+      head.className="recording-head";
+      const title=document.createElement("div");
+      const heading=document.createElement("strong");
+      heading.textContent=recording.id;
+      const meta=document.createElement("div");
+      meta.className="muted";
+      meta.textContent=`${recording.date||"Datum offen"} · ${completeness.sensorData?"TXT vorhanden":"TXT fehlt"} · ${completeness.video?"Video vorhanden":"Video fehlt"}`;
+      title.append(heading,meta);
+      const status=document.createElement("span");
+      status.className=`status-pill ${completeness.complete?"accepted":"limited"}`;
+      status.textContent=completeness.complete?"VOLLSTÄNDIG":"ENTWURF";
+      head.append(title,status);
+      item.appendChild(head);
+
+      if(recording.note){
+        const note=document.createElement("p");
+        note.className="muted";
+        note.textContent=recording.note;
+        item.appendChild(note);
+      }
+
+      const fileList=document.createElement("div");
+      fileList.className="recording-files";
+      recording.files.forEach(file=>{
+        const element=document.createElement(file.blob?"button":"span");
+        if(file.blob)element.type="button";
+        element.className="file-chip";
+        element.textContent=`${file.role}: ${file.name} · ${formatBytes(file.size)}`;
+        if(file.blob)element.addEventListener("click",()=>downloadRecordingFile(file));
+        fileList.appendChild(element);
+      });
+      if(!recording.files.length){
+        const empty=document.createElement("span");
+        empty.className="muted";
+        empty.textContent="Noch keine Dateien abgelegt.";
+        fileList.appendChild(empty);
+      }
+      item.appendChild(fileList);
+
+      const toolbar=document.createElement("div");
+      toolbar.className="toolbar";
+      const remove=document.createElement("button");
+      remove.type="button";
+      remove.className="btn btn-danger";
+      remove.textContent="Aus Liste entfernen";
+      remove.addEventListener("click",()=>deleteRecording(recording.id));
+      toolbar.appendChild(remove);
+      item.appendChild(toolbar);
+      root.appendChild(item);
+    });
+    if(!recordings.length){
+      const empty=document.createElement("p");
+      empty.className="muted";
+      empty.textContent="Noch keine Testversuche gespeichert.";
+      root.appendChild(empty);
+    }
+    document.getElementById("recordingCount").textContent=recordings.length;
+    document.getElementById("recordingBytes").textContent=`${formatBytes(totalBytes)} Dateigröße`;
+  }catch(error){
+    root.textContent="Die lokale Datenablage ist in diesem Browser nicht verfügbar.";
+    setStorageMessage(error?.message||"IndexedDB nicht verfügbar",true);
+  }
+}
+
+function taskKey(g,t){ return `intakt_g${g}_t${t}`; }
+function criterionKey(g,c){ return `intakt_criterion_${g}_${c}`; }
+function noteKey(g){ return `intakt_note_${g}`; }
+function evidenceKey(g){ return `intakt_evidence_${g}`; }
+function riskKey(g){ return `intakt_risk_${g}`; }
+function goalStatusKey(g){ return `intakt_status_${g}`; }
+function getGoalStatus(g){ return localStorage.getItem(goalStatusKey(g))||"not_started"; }
+function isAccepted(status){ return status==="accepted"||status==="accepted_limited"; }
+function statusLabel(status){ return statusOptions.find(([value])=>value===status)?.[1]||"NICHT BEGONNEN"; }
+
+function migrateGoalStorageForIndexingSubgoal(){
+  const schemaKey="intakt_goal_schema_version";
+  const currentVersion=Number(localStorage.getItem(schemaKey)||"2");
+  if(currentVersion>=3)return;
+
+  // Version 3 fügt das Indexierungs-Untergoal an Position 5 ein. Bereits
+  // gespeicherte Werte der bisherigen Goals 5–14 werden von hinten nach vorn
+  // verschoben, damit keine Quelle vor dem Kopieren überschrieben wird.
+  for(let oldIndex=13;oldIndex>=4;oldIndex--){
+    const newIndex=oldIndex+1;
+    const movedGoal=goals[newIndex];
+    const keyPairs=[
+      [goalStatusKey(oldIndex),goalStatusKey(newIndex)],
+      [noteKey(oldIndex),noteKey(newIndex)],
+      [evidenceKey(oldIndex),evidenceKey(newIndex)],
+      [riskKey(oldIndex),riskKey(newIndex)]
+    ];
+    movedGoal.tasks.forEach((_,taskIndex)=>
+      keyPairs.push([taskKey(oldIndex,taskIndex),taskKey(newIndex,taskIndex)])
+    );
+    movedGoal.criteria.forEach((_,criterionIndex)=>
+      keyPairs.push([criterionKey(oldIndex,criterionIndex),criterionKey(newIndex,criterionIndex)])
+    );
+    keyPairs.forEach(([source,target])=>{
+      const value=localStorage.getItem(source);
+      if(value!==null)localStorage.setItem(target,value);
+      localStorage.removeItem(source);
+    });
+  }
+  localStorage.setItem(schemaKey,"3");
+}
+
+function goalChecks(gi){
+  const goal=goals[gi];
+  const tasksDone=goal.tasks.filter((_,ti)=>localStorage.getItem(taskKey(gi,ti))==="1").length;
+  const criteriaDone=goal.criteria.filter((_,ci)=>localStorage.getItem(criterionKey(gi,ci))==="1").length;
+  return {
+    tasksDone,
+    criteriaDone,
+    done:tasksDone+criteriaDone,
+    total:goal.tasks.length+goal.criteria.length,
+    complete:tasksDone===goal.tasks.length&&criteriaDone===goal.criteria.length
+  };
+}
+
+function goalPrompt(goal,gi){
+  const primarySkill=primarySkills[gi];
+  const parentGoal=goal.parentGoal?`\nUNTERGOAL VON:\n${goal.parentGoal}\n`:"";
+  return `Du arbeitest am Projekt „InTakt – sensorbasierte Ganganalyse beim Pferd“.
+
+VERWENDE:
+${primarySkill}
+${parentGoal}
+
+AKTUELLES GOAL:
+${goal.title}
+
+ZIEL:
+${goal.objective}
+
+AUFGABEN:
+${goal.tasks.map((task,index)=>`${index+1}. ${task}`).join("\n")}
+
+ERFOLGSKRITERIEN:
+${goal.criteria.map((criterion,index)=>`${index+1}. ${criterion}`).join("\n")}
+
+LEITPLANKEN:
+- Arbeite ausschließlich an diesem Goal.
+- Lies AGENTS.md und vorhandenen Code, bevor du neue Strukturen erstellst.
+- Verändere keine fachfremden Komponenten und überschreibe keine Rohdaten.
+- Trenne Import, Qualitätsprüfung, Vorverarbeitung, Ereigniserkennung, Parameter, Scoring und Interpretation.
+- Dokumentiere Annahmen, Einheiten, Unsicherheiten und technische Entscheidungen.
+- Schreibe oder aktualisiere automatisierte Tests.
+- Erfinde keine Messwerte, Referenzbereiche oder medizinischen Aussagen.
+- Trenne Beobachtung, Hypothese, Unsicherheit und Empfehlung.
+
+ABSCHLUSSPRÜFUNG:
+Nutze $intakt-change-verification. Prüfe alle Erfolgskriterien, den vollständigen Git-Diff, Tests, Builds, Seiteneffekte und verbleibende Risiken. Vergib nur einen zulässigen Abschlussstatus.`;
+}
+
+function renderGoals(){
+  const root=document.getElementById("goalContainer");
+  root.innerHTML="";
+  goals.forEach((goal,gi)=>{
+    const details=document.createElement("details");
+    details.className="goal";
+    details.id=`goal-${gi+1}`;
+
+    const summary=document.createElement("summary");
+    summary.innerHTML=`
+      <div class="goal-index">${gi+1}</div>
+      <div>
+        <div class="goal-title">${goal.title}</div>
+        <div class="goal-sub">${goal.subtitle}</div>
+      </div>
+      <span class="status-pill" id="status-pill-${gi}">0 %</span>`;
+    details.appendChild(summary);
+
+    const taskHtml=goal.tasks.map((task,ti)=>`
+      <label class="check-item">
+        <input type="checkbox" data-kind="task" data-g="${gi}" data-i="${ti}" ${localStorage.getItem(taskKey(gi,ti))==="1"?"checked":""}>
+        <span>${task}</span>
+      </label>`).join("");
+    const criteriaHtml=goal.criteria.map((criterion,ci)=>`
+      <label class="check-item">
+        <input type="checkbox" data-kind="criterion" data-g="${gi}" data-i="${ci}" ${localStorage.getItem(criterionKey(gi,ci))==="1"?"checked":""}>
+        <span>${criterion}</span>
+      </label>`).join("");
+    const currentStatus=getGoalStatus(gi);
+    const statusHtml=statusOptions.map(([value,label])=>
+      `<option value="${value}" ${value===currentStatus?"selected":""}>${label}</option>`
+    ).join("");
+
+    const body=document.createElement("div");
+    body.className="goal-body";
+    body.innerHTML=`
+      <div class="goal-meta">
+        <span class="chip">Primärer Skill: ${primarySkills[gi]}</span>
+        ${goal.parentGoal?`<span class="chip">Untergoal von: ${goal.parentGoal}</span>`:""}
+        <span class="chip">Abnahme: $intakt-change-verification</span>
+      </div>
+      <div class="goal-columns">
+        <div>
+          <h5>Ziel</h5>
+          <p>${goal.objective}</p>
+          <h5>Aufgaben</h5>
+          <div class="checklist">${taskHtml}</div>
+        </div>
+        <div>
+          <h5>Geprüfte Erfolgskriterien</h5>
+          <div class="criteria-list">${criteriaHtml}</div>
+          <label class="field-label" for="goal-status-${gi}">Abschlussstatus</label>
+          <select id="goal-status-${gi}" data-status="${gi}">${statusHtml}</select>
+          <label class="field-label" for="goal-note-${gi}" style="margin-top:12px">Notizen und Entscheidungen</label>
+          <textarea class="compact" id="goal-note-${gi}" data-store="${noteKey(gi)}" placeholder="Annahmen, Entscheidungen und offene Fragen …"></textarea>
+        </div>
+      </div>
+      <div class="verification-grid" style="margin-top:16px">
+        <div>
+          <label class="field-label" for="goal-evidence-${gi}">Nachweise und ausgeführte Tests</label>
+          <textarea class="compact" id="goal-evidence-${gi}" data-store="${evidenceKey(gi)}" placeholder="Dateien, Befehle, Testergebnisse, Referenzvergleiche …"></textarea>
+        </div>
+        <div>
+          <label class="field-label" for="goal-risk-${gi}">Grenzen und verbleibende Risiken</label>
+          <textarea class="compact" id="goal-risk-${gi}" data-store="${riskKey(gi)}" placeholder="Einschränkungen, nicht geprüfte Fälle, fachliche Grenzen …"></textarea>
+        </div>
+      </div>
+      <div style="margin-top:18px">
+        <h5>Codex-Prompt</h5>
+        <div class="prompt-box" id="prompt-${gi}"></div>
+        <div class="toolbar">
+          <button class="btn btn-plain" onclick="copyPrompt(${gi})">Prompt kopieren</button>
+          <button class="btn btn-muted" onclick="moveToReview(${gi})">Zur Prüfung markieren</button>
+        </div>
+      </div>`;
+    details.appendChild(body);
+    root.appendChild(details);
+    document.getElementById(`prompt-${gi}`).textContent=goalPrompt(goal,gi);
+  });
+
+  document.querySelectorAll('input[data-kind]').forEach(input=>{
+    input.addEventListener("change",event=>{
+      const target=event.target;
+      const key=target.dataset.kind==="task"
+        ?taskKey(target.dataset.g,target.dataset.i)
+        :criterionKey(target.dataset.g,target.dataset.i);
+      localStorage.setItem(key,target.checked?"1":"0");
+      updateProgress();
+    });
+  });
+  document.querySelectorAll("textarea[data-store]").forEach(textarea=>{
+    textarea.value=localStorage.getItem(textarea.dataset.store)||"";
+    textarea.addEventListener("input",event=>localStorage.setItem(event.target.dataset.store,event.target.value));
+  });
+  document.querySelectorAll("select[data-status]").forEach(select=>{
+    select.addEventListener("change",event=>{
+      const gi=Number(event.target.dataset.status);
+      const nextStatus=event.target.value;
+      if(isAccepted(nextStatus)&&!goalChecks(gi).complete){
+        alert("Ein Goal kann erst abgenommen werden, wenn alle Aufgaben und Erfolgskriterien geprüft sind.");
+        event.target.value="review";
+        localStorage.setItem(goalStatusKey(gi),"review");
+      }else{
+        localStorage.setItem(goalStatusKey(gi),nextStatus);
+      }
+      updateProgress();
+    });
+  });
+  updateProgress();
+}
+
+function updateProgress(){
+  let total=0,done=0,criteriaTotal=0,criteriaDone=0,goalsDone=0;
+  goals.forEach((goal,gi)=>{
+    const checks=goalChecks(gi);
+    total+=checks.total;
+    done+=checks.done;
+    criteriaTotal+=goal.criteria.length;
+    criteriaDone+=checks.criteriaDone;
+    const state=getGoalStatus(gi);
+    if(isAccepted(state))goalsDone++;
+    const pct=checks.total?Math.round(checks.done/checks.total*100):0;
+    const pill=document.getElementById(`status-pill-${gi}`);
+    if(pill){
+      pill.textContent=`${pct} % · ${statusLabel(state)}`;
+      pill.className="status-pill";
+      if(state==="accepted")pill.classList.add("accepted");
+      if(state==="accepted_limited")pill.classList.add("limited");
+      if(state==="rejected")pill.classList.add("rejected");
+    }
+  });
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById("overallPercent").textContent=`${pct}%`;
+  document.getElementById("overallBar").style.width=`${pct}%`;
+  document.getElementById("goalsDone").textContent=goalsDone;
+  document.getElementById("goalsTotal").textContent=goals.length;
+  document.getElementById("criteriaDone").textContent=criteriaDone;
+  document.getElementById("criteriaTotal").textContent=criteriaTotal;
+
+  const focusIndex=goals.findIndex((_,gi)=>!isAccepted(getGoalStatus(gi)));
+  if(focusIndex===-1){
+    document.getElementById("currentFocus").textContent="Prototyp vollständig abgenommen";
+    document.getElementById("currentSkill").textContent="$intakt-change-verification";
+  }else{
+    document.getElementById("currentFocus").textContent=`${focusIndex+1}. ${goals[focusIndex].title}`;
+    document.getElementById("currentSkill").textContent=`Primärer Skill: ${primarySkills[focusIndex]}`;
+  }
+}
+
+function moveToReview(gi){
+  localStorage.setItem(goalStatusKey(gi),"review");
+  const select=document.getElementById(`goal-status-${gi}`);
+  if(select)select.value="review";
+  updateProgress();
+  document.getElementById(`goal-${gi+1}`).open=true;
+}
+
+async function copyPrompt(gi){
+  const text=document.getElementById(`prompt-${gi}`).textContent;
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch(_){
+    const fallback=document.createElement("textarea");
+    fallback.value=text;
+    fallback.style.position="fixed";
+    fallback.style.opacity="0";
+    document.body.appendChild(fallback);
+    fallback.select();
+    document.execCommand("copy");
+    fallback.remove();
+  }
+  alert("Codex-Prompt wurde kopiert.");
+}
+
+function openAll(){ document.querySelectorAll("details.goal").forEach(details=>details.open=true); }
+
+function resetAll(){
+  if(!confirm("Möchtest du wirklich alle Häkchen, Statuswerte, Nachweise und Notizen löschen?"))return;
+  Object.keys(localStorage).filter(key=>key.startsWith("intakt_")).forEach(key=>localStorage.removeItem(key));
+  localStorage.setItem("intakt_goal_schema_version","3");
+  renderGoals();
+}
+
+function exportState(){
+  const state={
+    version:2,
+    exportedAt:new Date().toISOString(),
+    prototypeGoal:"Vollständige Offline-Analysekette von vier IMU-Exporten bis zum sicheren KI-Bericht",
+    goals:goals.map((goal,gi)=>({
+      title:goal.title,
+      primarySkill:primarySkills[gi],
+      status:getGoalStatus(gi),
+      tasks:goal.tasks.map((task,ti)=>({task,done:localStorage.getItem(taskKey(gi,ti))==="1"})),
+      criteria:goal.criteria.map((criterion,ci)=>({criterion,checked:localStorage.getItem(criterionKey(gi,ci))==="1"})),
+      notes:localStorage.getItem(noteKey(gi))||"",
+      evidence:localStorage.getItem(evidenceKey(gi))||"",
+      risks:localStorage.getItem(riskKey(gi))||""
+    }))
+  };
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const anchor=document.createElement("a");
+  anchor.href=url;
+  anchor.download="intakt-dashboard-fortschritt-v2.json";
+  anchor.click();
+  setTimeout(()=>URL.revokeObjectURL(url),0);
+}
+
+async function importState(file){
+  const parsed=JSON.parse(await file.text());
+  if(parsed.version!==2||!Array.isArray(parsed.goals))throw new Error("Nicht unterstütztes Dashboard-Format.");
+  if(!confirm("Soll der aktuell lokal gespeicherte Fortschritt durch diese Datei ersetzt werden?"))return;
+  Object.keys(localStorage).filter(key=>key.startsWith("intakt_")).forEach(key=>localStorage.removeItem(key));
+  localStorage.setItem("intakt_goal_schema_version","3");
+  parsed.goals.forEach(imported=>{
+    const gi=goals.findIndex(goal=>goal.title===imported.title);
+    if(gi<0)return;
+    (imported.tasks||[]).forEach(item=>{
+      const ti=goals[gi].tasks.indexOf(item.task);
+      if(ti>=0&&item.done)localStorage.setItem(taskKey(gi,ti),"1");
+    });
+    (imported.criteria||[]).forEach(item=>{
+      const ci=goals[gi].criteria.indexOf(item.criterion);
+      if(ci>=0&&item.checked)localStorage.setItem(criterionKey(gi,ci),"1");
+    });
+    let allowedStatus=statusOptions.some(([value])=>value===imported.status)?imported.status:"not_started";
+    if(isAccepted(allowedStatus)&&!goalChecks(gi).complete)allowedStatus="review";
+    localStorage.setItem(goalStatusKey(gi),allowedStatus);
+    localStorage.setItem(noteKey(gi),String(imported.notes||""));
+    localStorage.setItem(evidenceKey(gi),String(imported.evidence||""));
+    localStorage.setItem(riskKey(gi),String(imported.risks||""));
+  });
+  renderGoals();
+}
+
+document.getElementById("stateImport").addEventListener("change",async event=>{
+  const [file]=event.target.files;
+  if(!file)return;
+  try{
+    await importState(file);
+  }catch(error){
+    alert(`Import fehlgeschlagen: ${error.message}`);
+  }finally{
+    event.target.value="";
+  }
+});
+
+document.getElementById("recordingForm").addEventListener("submit",saveRecording);
+document.getElementById("chooseRecordingFolder").addEventListener("click",chooseRecordingDirectory);
+migrateGoalStorageForIndexingSubgoal();
+renderGoals();
+renderRecordings();
+restoreRecordingDirectory();
+</script>
+</body>
+</html>

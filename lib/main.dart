@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'pages/main_page.dart';
-import 'pages/takt_detail.dart';
-import 'pages/symmetrie_detail.dart';
-import 'pages/lastaufnahme_detail.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,17 +29,17 @@ void main() {
       allowWifiLock: true,
     ),
   );
-  runApp(const InTaktApp());
+  runApp(const HorseTrackApp());
 }
 
-class InTaktApp extends StatelessWidget {
-  const InTaktApp({super.key});
+class HorseTrackApp extends StatelessWidget {
+  const HorseTrackApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return WithForegroundTask(
       child: MaterialApp(
-        title: "InTakt – Live Training",
+        title: "HorseTrack – Live Training",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: const Color(0xFF0D1612),
@@ -50,12 +47,7 @@ class InTaktApp extends StatelessWidget {
             bodyMedium: TextStyle(color: Colors.white),
           ),
         ),
-        routes: {
-          "/": (context) => const MainPage(),
-          "/takt": (context) => const TaktDetailPage(),
-          "/symmetrie": (context) => const SymmetrieDetailPage(),
-          "/last": (context) => const LastaufnahmeDetailPage(),
-        },
+        home: const MainPage(),
       ),
     );
   }

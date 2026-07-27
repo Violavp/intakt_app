@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200.0" height="260.0" viewBox="0 0 1200.0 260.0">
+<rect width="100%" height="100%" fill="#fbfaf7"/><text x="90.0" y="26" font-family="sans-serif" font-size="18" font-weight="bold">Gangart- und Analyseabschnitte – Videozeit</text>
+<rect x="90.0" y="50.0" width="63.76127093173034" height="74.0" fill="#aeb7c2" opacity="0.88"/>
+<title>STANDING: 0.00–8.25 s; Richtung UNKNOWN; AngleZ-Trend ungültig °/s; Unsicherheit 0.09</title>
+<path d="M 90.0 50.0 l 63.76127093173034 74.0 M 90.0 124.0 l 63.76127093173034 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="153.76127093173034" y="50.0" width="3.8643194504078906" height="74.0" fill="#aeb7c2" opacity="0.88"/>
+<title>STANDING: 8.25–8.75 s; Richtung UNKNOWN; AngleZ-Trend ungültig °/s; Unsicherheit 0.23</title>
+<path d="M 153.76127093173034 50.0 l 3.8643194504078906 74.0 M 153.76127093173034 124.0 l 3.8643194504078906 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="156.76127093173034" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="157.62559038213823" y="50.0" width="3.864319450407919" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 8.75–9.25 s; Richtung UNKNOWN; AngleZ-Trend ungültig °/s; Unsicherheit 0.71</title>
+<path d="M 157.62559038213823 50.0 l 3.864319450407919 74.0 M 157.62559038213823 124.0 l 3.864319450407919 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="160.62559038213823" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="161.48990983254615" y="50.0" width="11.5929583512237" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 9.25–10.75 s; Richtung UNKNOWN; AngleZ-Trend ungültig °/s; Unsicherheit 0.66</title>
+<path d="M 161.48990983254615 50.0 l 11.5929583512237 74.0 M 161.48990983254615 124.0 l 11.5929583512237 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="173.08286818376985" y="50.0" width="3.8643194504078906" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 10.75–11.25 s; Richtung UNKNOWN; AngleZ-Trend ungültig °/s; Unsicherheit 0.55</title>
+<path d="M 173.08286818376985 50.0 l 3.8643194504078906 74.0 M 173.08286818376985 124.0 l 3.8643194504078906 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="176.08286818376985" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="176.94718763417774" y="50.0" width="3.8643194504078906" height="74.0" fill="#69b578" opacity="0.88"/>
+<title>WALK: 11.25–11.75 s; Richtung RIGHT; AngleZ-Trend -4.33 °/s; Unsicherheit 0.51</title>
+<path d="M 176.94718763417774 50.0 l 3.8643194504078906 74.0 M 176.94718763417774 124.0 l 3.8643194504078906 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="179.94718763417774" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="180.81150708458563" y="50.0" width="81.15070845856593" height="74.0" fill="#69b578" opacity="0.88"/>
+<title>WALK: 11.75–22.25 s; Richtung RIGHT; AngleZ-Trend -10.65 °/s; Unsicherheit 0.34</title>
+<rect x="261.96221554315156" y="50.0" width="3.8643194504078906" height="74.0" fill="#69b578" opacity="0.88"/>
+<title>WALK: 22.25–22.75 s; Richtung RIGHT; AngleZ-Trend -13.97 °/s; Unsicherheit 0.41</title>
+<path d="M 261.96221554315156 50.0 l 3.8643194504078906 74.0 M 261.96221554315156 124.0 l 3.8643194504078906 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="264.96221554315156" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="265.82653499355945" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 22.75–23.25 s; Richtung RIGHT; AngleZ-Trend -13.99 °/s; Unsicherheit 0.22</title>
+<path d="M 265.82653499355945 50.0 l 3.8643194504079474 74.0 M 265.82653499355945 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="268.82653499355945" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="269.6908544439674" y="50.0" width="69.55775010734214" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 23.25–32.25 s; Richtung RIGHT; AngleZ-Trend -20.17 °/s; Unsicherheit 0.36</title>
+<rect x="339.24860455130954" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 32.25–32.75 s; Richtung RIGHT; AngleZ-Trend -30.57 °/s; Unsicherheit 0.33</title>
+<path d="M 339.24860455130954 50.0 l 3.8643194504079474 74.0 M 339.24860455130954 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="342.24860455130954" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="343.1129240017175" y="50.0" width="3.8643194504078906" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 32.75–33.25 s; Richtung RIGHT; AngleZ-Trend -31.53 °/s; Unsicherheit 0.51</title>
+<path d="M 343.1129240017175 50.0 l 3.8643194504078906 74.0 M 343.1129240017175 124.0 l 3.8643194504078906 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="346.1129240017175" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="346.9772434521254" y="50.0" width="11.592958351223672" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 33.25–34.75 s; Richtung RIGHT; AngleZ-Trend -32.95 °/s; Unsicherheit 0.51</title>
+<path d="M 346.9772434521254 50.0 l 11.592958351223672 74.0 M 346.9772434521254 124.0 l 11.592958351223672 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="358.57020180334905" y="50.0" width="3.8643194504079474" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 34.75–35.25 s; Richtung RIGHT; AngleZ-Trend -33.80 °/s; Unsicherheit 0.51</title>
+<path d="M 358.57020180334905 50.0 l 3.8643194504079474 74.0 M 358.57020180334905 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="361.57020180334905" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="362.434521253757" y="50.0" width="3.8643194504078338" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 35.25–35.75 s; Richtung RIGHT; AngleZ-Trend -34.04 °/s; Unsicherheit 0.30</title>
+<path d="M 362.434521253757 50.0 l 3.8643194504078338 74.0 M 362.434521253757 124.0 l 3.8643194504078338 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="365.434521253757" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="366.29884070416483" y="50.0" width="23.1859167024474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 35.75–38.75 s; Richtung RIGHT; AngleZ-Trend -33.45 °/s; Unsicherheit 0.26</title>
+<rect x="389.48475740661223" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 38.75–39.25 s; Richtung RIGHT; AngleZ-Trend -31.92 °/s; Unsicherheit 0.34</title>
+<path d="M 389.48475740661223 50.0 l 3.8643194504079474 74.0 M 389.48475740661223 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="392.48475740661223" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="393.3490768570202" y="50.0" width="3.8643194504078906" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 39.25–39.75 s; Richtung RIGHT; AngleZ-Trend -31.34 °/s; Unsicherheit 0.51</title>
+<path d="M 393.3490768570202 50.0 l 3.8643194504078906 74.0 M 393.3490768570202 124.0 l 3.8643194504078906 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="396.3490768570202" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="397.21339630742807" y="50.0" width="7.728638900815781" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 39.75–40.75 s; Richtung RIGHT; AngleZ-Trend -30.77 °/s; Unsicherheit 0.51</title>
+<path d="M 397.21339630742807 50.0 l 7.728638900815781 74.0 M 397.21339630742807 124.0 l 7.728638900815781 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="404.94203520824385" y="50.0" width="3.8643194504079474" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 40.75–41.25 s; Richtung RIGHT; AngleZ-Trend -30.20 °/s; Unsicherheit 0.51</title>
+<path d="M 404.94203520824385 50.0 l 3.8643194504079474 74.0 M 404.94203520824385 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="407.94203520824385" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="408.8063546586518" y="50.0" width="3.8643194504078338" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 41.25–41.75 s; Richtung RIGHT; AngleZ-Trend -29.89 °/s; Unsicherheit 0.31</title>
+<path d="M 408.8063546586518 50.0 l 3.8643194504078338 74.0 M 408.8063546586518 124.0 l 3.8643194504078338 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="411.8063546586518" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="412.67067410905963" y="50.0" width="115.92958351223695" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 41.75–56.75 s; Richtung RIGHT; AngleZ-Trend -26.92 °/s; Unsicherheit 0.26</title>
+<rect x="528.6002576212966" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 56.75–57.25 s; Richtung RIGHT; AngleZ-Trend -29.70 °/s; Unsicherheit 0.50</title>
+<path d="M 528.6002576212966 50.0 l 3.8643194504079474 74.0 M 528.6002576212966 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="531.6002576212966" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="532.4645770717045" y="50.0" width="3.8643194504079474" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 57.25–57.75 s; Richtung RIGHT; AngleZ-Trend -30.09 °/s; Unsicherheit 0.52</title>
+<path d="M 532.4645770717045 50.0 l 3.8643194504079474 74.0 M 532.4645770717045 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="535.4645770717045" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="536.3288965221125" y="50.0" width="42.50751395448697" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 57.75–63.25 s; Richtung RIGHT; AngleZ-Trend -20.97 °/s; Unsicherheit 0.51</title>
+<path d="M 536.3288965221125 50.0 l 42.50751395448697 74.0 M 536.3288965221125 124.0 l 42.50751395448697 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="578.8364104765994" y="50.0" width="3.8643194504078338" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 63.25–63.75 s; Richtung RIGHT; AngleZ-Trend -4.46 °/s; Unsicherheit 0.51</title>
+<path d="M 578.8364104765994 50.0 l 3.8643194504078338 74.0 M 578.8364104765994 124.0 l 3.8643194504078338 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="581.8364104765994" y="67.0" font-family="sans-serif" font-size="12" fill="#111">W</text>
+<rect x="582.7007299270073" y="50.0" width="7.728638900815781" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 63.75–64.75 s; Richtung UNKNOWN; AngleZ-Trend ungültig °/s; Unsicherheit 0.51</title>
+<path d="M 582.7007299270073 50.0 l 7.728638900815781 74.0 M 582.7007299270073 124.0 l 7.728638900815781 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="590.429368827823" y="50.0" width="3.8643194504079474" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 64.75–65.25 s; Richtung LEFT; AngleZ-Trend 7.65 °/s; Unsicherheit 0.51</title>
+<path d="M 590.429368827823 50.0 l 3.8643194504079474 74.0 M 590.429368827823 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="593.429368827823" y="67.0" font-family="sans-serif" font-size="12" fill="#111">W</text>
+<rect x="594.293688278231" y="50.0" width="11.592958351223615" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 65.25–66.75 s; Richtung LEFT; AngleZ-Trend 16.09 °/s; Unsicherheit 0.51</title>
+<path d="M 594.293688278231 50.0 l 11.592958351223615 74.0 M 594.293688278231 124.0 l 11.592958351223615 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="605.8866466294546" y="50.0" width="3.8643194504079474" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 66.75–67.25 s; Richtung LEFT; AngleZ-Trend 23.40 °/s; Unsicherheit 0.51</title>
+<path d="M 605.8866466294546 50.0 l 3.8643194504079474 74.0 M 605.8866466294546 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="608.8866466294546" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="609.7509660798626" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 67.25–67.75 s; Richtung LEFT; AngleZ-Trend 26.34 °/s; Unsicherheit 0.51</title>
+<path d="M 609.7509660798626 50.0 l 3.8643194504079474 74.0 M 609.7509660798626 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="612.7509660798626" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="613.6152855302705" y="50.0" width="208.67325032202655" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 67.75–94.75 s; Richtung LEFT; AngleZ-Trend 32.60 °/s; Unsicherheit 0.30</title>
+<rect x="822.2885358522971" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 94.75–95.25 s; Richtung LEFT; AngleZ-Trend 20.72 °/s; Unsicherheit 0.53</title>
+<path d="M 822.2885358522971 50.0 l 3.8643194504079474 74.0 M 822.2885358522971 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="825.2885358522971" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="826.152855302705" y="50.0" width="3.8643194504078338" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 95.25–95.75 s; Richtung LEFT; AngleZ-Trend 19.30 °/s; Unsicherheit 0.54</title>
+<path d="M 826.152855302705 50.0 l 3.8643194504078338 74.0 M 826.152855302705 124.0 l 3.8643194504078338 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="829.152855302705" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="830.0171747531128" y="50.0" width="3.8643194504079474" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 95.75–96.25 s; Richtung LEFT; AngleZ-Trend 17.95 °/s; Unsicherheit 0.51</title>
+<path d="M 830.0171747531128 50.0 l 3.8643194504079474 74.0 M 830.0171747531128 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="833.8814942035208" y="50.0" width="3.8643194504078338" height="74.0" fill="#d89b45" opacity="0.88"/>
+<title>UNKNOWN: 96.25–96.75 s; Richtung LEFT; AngleZ-Trend 16.54 °/s; Unsicherheit 0.51</title>
+<path d="M 833.8814942035208 50.0 l 3.8643194504078338 74.0 M 833.8814942035208 124.0 l 3.8643194504078338 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="836.8814942035208" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="837.7458136539286" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 96.75–97.25 s; Richtung LEFT; AngleZ-Trend 15.25 °/s; Unsicherheit 0.45</title>
+<path d="M 837.7458136539286 50.0 l 3.8643194504079474 74.0 M 837.7458136539286 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="840.7458136539286" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="841.6101331043366" y="50.0" width="3.8643194504079474" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 97.25–97.75 s; Richtung LEFT; AngleZ-Trend 13.98 °/s; Unsicherheit 0.48</title>
+<path d="M 841.6101331043366 50.0 l 3.8643194504079474 74.0 M 841.6101331043366 124.0 l 3.8643194504079474 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<rect x="845.4744525547445" y="50.0" width="3.8643194504078338" height="74.0" fill="#4f86c6" opacity="0.88"/>
+<title>TROT: 97.75–98.25 s; Richtung LEFT; AngleZ-Trend 12.69 °/s; Unsicherheit 0.68</title>
+<path d="M 845.4744525547445 50.0 l 3.8643194504078338 74.0 M 845.4744525547445 124.0 l 3.8643194504078338 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="848.4744525547445" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="849.3387720051524" y="50.0" width="3.8643194504078338" height="74.0" fill="#69b578" opacity="0.88"/>
+<title>WALK: 98.25–98.75 s; Richtung LEFT; AngleZ-Trend 11.69 °/s; Unsicherheit 0.65</title>
+<path d="M 849.3387720051524 50.0 l 3.8643194504078338 74.0 M 849.3387720051524 124.0 l 3.8643194504078338 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<text x="852.3387720051524" y="67.0" font-family="sans-serif" font-size="12" fill="#111">Ü</text>
+<rect x="853.2030914555602" y="50.0" width="316.7969085444398" height="74.0" fill="#69b578" opacity="0.88"/>
+<title>WALK: 98.75–139.74 s; Richtung LEFT; AngleZ-Trend 8.45 °/s; Unsicherheit 0.59</title>
+<path d="M 853.2030914555602 50.0 l 316.7969085444398 74.0 M 853.2030914555602 124.0 l 316.7969085444398 -74.0" stroke="#692c2c" stroke-width="1" opacity="0.45"/>
+<line x1="90.0" y1="124.0" x2="90.0" y2="131.0" stroke="#333"/><text x="90.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">0.0 s</text>
+<line x1="198.0" y1="124.0" x2="198.0" y2="131.0" stroke="#333"/><text x="198.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">14.0 s</text>
+<line x1="306.0" y1="124.0" x2="306.0" y2="131.0" stroke="#333"/><text x="306.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">27.9 s</text>
+<line x1="414.0" y1="124.0" x2="414.0" y2="131.0" stroke="#333"/><text x="414.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">41.9 s</text>
+<line x1="522.0" y1="124.0" x2="522.0" y2="131.0" stroke="#333"/><text x="522.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">55.9 s</text>
+<line x1="630.0" y1="124.0" x2="630.0" y2="131.0" stroke="#333"/><text x="630.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">69.9 s</text>
+<line x1="738.0" y1="124.0" x2="738.0" y2="131.0" stroke="#333"/><text x="738.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">83.8 s</text>
+<line x1="846.0000000000001" y1="124.0" x2="846.0000000000001" y2="131.0" stroke="#333"/><text x="846.0000000000001" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">97.8 s</text>
+<line x1="953.9999999999999" y1="124.0" x2="953.9999999999999" y2="131.0" stroke="#333"/><text x="953.9999999999999" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">111.8 s</text>
+<line x1="1062.0" y1="124.0" x2="1062.0" y2="131.0" stroke="#333"/><text x="1062.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">125.8 s</text>
+<line x1="1170.0" y1="124.0" x2="1170.0" y2="131.0" stroke="#333"/><text x="1170.0" y="147.0" text-anchor="middle" font-family="sans-serif" font-size="11">139.7 s</text>
+<text x="90.0" y="178" font-family="sans-serif" font-size="12">Ohne Kreuz = analysierbar; Kreuz = ausgeschlossen. Ü Übergang · W Wendungskandidat · U Unterbrechung.</text>
+<text x="90.0" y="200" font-family="sans-serif" font-size="12">Farben: Grau Stillstand · Grün Schritt · Blau Trab · Violett Galopp · Orange unsicher.</text>
+<text x="90.0" y="226" font-family="sans-serif" font-size="11" fill="#555">Segmentgrenzen verwenden analysis_time_s = video_time_s aus der Video-IMU-Zeitrekonstruktion.</text>
+</svg>

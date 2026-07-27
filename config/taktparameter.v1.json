@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "minimum_window_seconds": 10.0,
+  "maximum_window_seconds": 20.0,
+  "step_seconds": 1.0,
+  "minimum_valid_cycles_per_leg": 6,
+  "confidence_interval_multiplier": 1.96,
+  "required_leg_labels": ["VL", "VR", "HL", "HR"]
+}

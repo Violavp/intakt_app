@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "recording_id": "test01",
+  "purpose": "Externe technische Prüfung der gemeinsamen Video- und IMU-Zeitbasis",
+  "inputs": {
+    "video": {
+      "path": "../video/IMG_4012.MOV",
+      "sha256": "117874daadd8872de2bedd0b79038a15bf11072336f24e209d6c0dcf92807391",
+      "duration_seconds": 241.085,
+      "audio_sample_rate_hz": 48000,
+      "video_frame_rate_fps": 29.989
+    },
+    "imu": {
+      "path": "../raw/20260723203422.txt",
+      "sha256": "a4d09daa7338b501bb941044edd55704978e3bb78bb9ebe1144b076bf61e8aa2",
+      "first_timestamp": "2026-07-23T20:34:22.689",
+      "timestamp_semantics": "BitMotion/BLE-Empfangszeit; mehrere Samples können denselben Zeitstempel tragen"
+    }
+  },
+  "method": {
+    "video_event_time": "Zeit des betragsmäßig größten PCM-Audiosamples im visuell bestätigten Klopffenster",
+    "imu_event_time": "Zeitstempel des größten Winkelgeschwindigkeitsbetrags im zugeordneten Sensor-Ereigniscluster",
+    "model": "imu_elapsed_s = intercept_s + slope * video_time_s",
+    "residual": "imu_elapsed_s - (intercept_s + slope * video_time_s)",
+    "units": {
+      "time": "s",
+      "angular_velocity": "deg/s",
+      "residual": "ms",
+      "drift": "ppm"
+    }
+  },
+  "sensor_mapping": {
+    "SG": "C5C720831275",
+    "VL": "1B9D88FD0E8C",
+    "VR": "83FEC4707D1D",
+    "HL": "1792A254366C",
+    "HR": "657910C7ECB7"
+  },
+  "anchors": [
+    {
+      "id": "SG_START_1",
+      "sensor": "SG",
+      "video_time_s": 6.392458,
+      "imu_timestamp": "2026-07-23T20:34:34.043",
+      "imu_elapsed_s": 11.354,
+      "raw_source_line": 5631,
+      "offset_s": 4.961542,
+      "fit_residual_ms": -18.547,
+      "assignment": "Gurtposition sichtbar; erster Klopfer der Dreierfolge"
+    },
+    {
+      "id": "SG_START_2",
+      "sensor": "SG",
+      "video_time_s": 6.882854,
+      "imu_timestamp": "2026-07-23T20:34:34.615",
+      "imu_elapsed_s": 11.926,
+      "raw_source_line": 5926,
+      "offset_s": 5.043146,
+      "fit_residual_ms": 63.236,
+      "assignment": "Gurtposition sichtbar; zweiter Klopfer der Dreierfolge"
+    },
+    {
+      "id": "SG_START_3",
+      "sensor": "SG",
+      "video_time_s": 7.328229,
+      "imu_timestamp": "2026-07-23T20:34:34.954",
+      "imu_elapsed_s": 12.265,
+      "raw_source_line": 6091,
+      "offset_s": 4.936771,
+      "fit_residual_ms": -42.975,
+      "assignment": "Gurtposition sichtbar; dritter Klopfer der Dreierfolge"
+    },
+    {
+      "id": "SG_END",
+      "sensor": "SG",
+      "video_time_s": 213.333229,
+      "imu_timestamp": "2026-07-23T20:38:00.916",
+      "imu_elapsed_s": 218.227,
+      "raw_source_line": 108357,
+      "offset_s": 4.893771,
+      "fit_residual_ms": -10.477,
+      "assignment": "Gurtposition und Ereignisfenster sichtbar"
+    },
+    {
+      "id": "VR_END_1",
+      "sensor": "VR",
+      "video_time_s": 217.295021,
+      "imu_timestamp": "2026-07-23T20:38:04.888",
+      "imu_elapsed_s": 222.199,
+      "raw_source_line": 110325,
+      "offset_s": 4.903979,
+      "fit_residual_ms": 1.183,
+      "assignment": "Sensorbeschriftung VR im Video lesbar"
+    },
+    {
+      "id": "HR_END",
+      "sensor": "HR",
+      "video_time_s": 222.362188,
+      "imu_timestamp": "2026-07-23T20:38:09.935",
+      "imu_elapsed_s": 227.246,
+      "raw_source_line": 112833,
+      "offset_s": 4.883812,
+      "fit_residual_ms": -17.127,
+      "assignment": "Zuordnung aus sichtbarer Position, Reihenfolge und isoliertem Sensorsignal"
+    },
+    {
+      "id": "VL_END",
+      "sensor": "VL",
+      "video_time_s": 230.071167,
+      "imu_timestamp": "2026-07-23T20:38:17.620",
+      "imu_elapsed_s": 234.931,
+      "raw_source_line": 116652,
+      "offset_s": 4.859833,
+      "fit_residual_ms": -38.281,
+      "assignment": "Zuordnung aus sichtbarer Position, Reihenfolge und isoliertem Sensorsignal"
+    },
+    {
+      "id": "HL_END",
+      "sensor": "HL",
+      "video_time_s": 233.91675,
+      "imu_timestamp": "2026-07-23T20:38:21.589",
+      "imu_elapsed_s": 238.9,
+      "raw_source_line": 118618,
+      "offset_s": 4.98325,
+      "fit_residual_ms": 86.546,
+      "assignment": "Sensorbeschriftung HL im Video lesbar"
+    },
+    {
+      "id": "VR_END_2",
+      "sensor": "VR",
+      "video_time_s": 239.944063,
+      "imu_timestamp": "2026-07-23T20:38:27.504",
+      "imu_elapsed_s": 244.815,
+      "raw_source_line": 121559,
+      "offset_s": 4.870937,
+      "fit_residual_ms": -23.558,
+      "assignment": "Sensorbeschriftung VR im Video lesbar; wiederholtes Kontrollereignis"
+    }
+  ],
+  "fit": {
+    "intercept_s": 4.982432114,
+    "slope": 0.999633511,
+    "estimated_drift_ppm": -366.489,
+    "model_only_drift_standard_error_ppm": 154.25,
+    "residual_rmse_ms": 42.302,
+    "maximum_absolute_residual_ms": 86.546,
+    "anchor_count": 9
+  },
+  "assessment": {
+    "observation": "Die neun Ereignisse folgen über die gesamte Aufnahme einer gemeinsamen affinen Video-IMU-Zeitbeziehung. Der konstante Anfangsversatz liegt modelliert bei 4.982 s.",
+    "hypothesis": "Der negative Modellgradient kann aus Clock-Drift, BLE-/App-Paketierung oder der manuellen Wahl des Ereignismaximums entstehen.",
+    "uncertainty": "Identische Empfangszeitstempel innerhalb von BLE-Paketen begrenzen die Zuordnung einzelner Samples. Die Standardfehlerrechnung berücksichtigt weder diese Abhängigkeit noch die manuelle Ereigniswahl vollständig.",
+    "recommendation": "Die affine Schätzung zur Qualitätskontrolle verwenden, aber keine individuellen Abtastzeiten aus den Paketzeitstempeln erfinden. Für eine freigabefähige reale Synchronisation pro Sample sind monotone Sensorzeitstempel oder ein gemeinsamer Hardware-Trigger erforderlich.",
+    "status": "REVIEW_REQUIRED"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "recording_id": "test01",
+  "recorded_at": "2026-07-23",
+  "note": "Longierplatz, Deli, \nKloppfen auf Gurt sensor \n10 sec stehen \n1 Runde Schritt rechts rum \n1 Runde Schritt links rum \n1 Runde Trab rechts rum \n1 Runde Trab links rum \n10 sec stehen \nKlopfen auf Gurt sensor \nKlopfen auf alle vier Beine",
+  "configuration_id": "INTAKT-IMU-5S-V2",
+  "bandwidth_hz": 44,
+  "created_at": "2026-07-23T19:31:52.141Z",
+  "files": [
+    {
+      "role": "SENSORDATEN",
+      "name": "20260723203422.txt",
+      "size_bytes": 26538976,
+      "last_modified": 1784831911000,
+      "sha256": "a4d09daa7338b501bb941044edd55704978e3bb78bb9ebe1144b076bf61e8aa2"
+    },
+    {
+      "role": "VIDEO_REFERENZ",
+      "name": "IMG_4012.MOV",
+      "size_bytes": 687365838,
+      "last_modified": 1784885375000,
+      "sha256": "117874daadd8872de2bedd0b79038a15bf11072336f24e209d6c0dcf92807391",
+      "duration_seconds": 241.085,
+      "observation": "Korrektes Aufnahmevideo mit sicht- und hörbaren Klopfereignissen am Anfang und Ende."
+    },
+    {
+      "role": "FOTO",
+      "name": "Sensor HR.HEIC",
+      "size_bytes": 1799640,
+      "last_modified": 1784831481000
+    },
+    {
+      "role": "FOTO",
+      "name": "Sensor VL.HEIC",
+      "size_bytes": 2609182,
+      "last_modified": 1784831470000
+    },
+    {
+      "role": "FOTO",
+      "name": "Sensor HL.HEIC",
+      "size_bytes": 1933497,
+      "last_modified": 1784831464000
+    },
+    {
+      "role": "FOTO",
+      "name": "Sensor_VR.HEIC",
+      "size_bytes": 1932171,
+      "last_modified": 1784831477000
+    },
+    {
+      "role": "FOTO",
+      "name": "Sensor Gurt.HEIC",
+      "size_bytes": 1570917
+    }
+  ],
+  "evidence": [
+    {
+      "role": "ACHSEN_NACHWEIS_SG",
+      "name": "Ausrichtung Achsen.PNG",
+      "size_bytes": 1628541,
+      "sha256": "bdeb181e84e3150bc035310d9726145dd386b16260922cfe684d001862cde591",
+      "observation": "App screenshot identifies WT901BLE68(C5C720831275); AccX 0.011 g, AccY -0.009 g, AccZ 0.873 g in documented rest orientation."
+    },
+    {
+      "role": "ACHSEN_NACHWEIS_HL",
+      "name": "Ausrichtung Achsen HL.png",
+      "size_bytes": 870905,
+      "sha256": "7743f7060f1fce20fdeed8fa78730cdb67d888c03f2e2cd35b989efb210b6b0a",
+      "observation": "App screenshot identifies WT901BLE67(1792A254366C); AccX 0.000 g, AccY 0.046 g, AccZ 0.996 g in documented rest orientation."
+    },
+    {
+      "role": "MONTAGEBESTAETIGUNG_BEINSENSOREN",
+      "source": "user_confirmation",
+      "observation": "VL, VR and HR use the same device-axis orientation as HL. Left and right sides are mounted as mirrors.",
+      "raw_axis_transform_applied": false,
+      "remaining_uncertainty": "Exact horizontal sign transform for bilateral analysis requires directional calibration."
+    },
+    {
+      "role": "VIDEO_IMU_SYNCHRONISATIONSNACHWEIS",
+      "name": "video_imu_synchronisation.json",
+      "visualization": "video_imu_synchronisation.svg",
+      "observation": "Neun audiovisuelle Klopfanker wurden Ereignissen in den IMU-Rohdaten zugeordnet.",
+      "quality": {
+        "affine_residual_rmse_ms": 42.302,
+        "maximum_absolute_residual_ms": 86.546,
+        "estimated_drift_ppm": -366.489
+      },
+      "remaining_uncertainty": "Die BitMotion-Datei enthält gebündelte, teilweise identische Empfangszeitstempel. Die Drift ist daher nur eine technische Schätzung; einzelne Sensorabtastzeitpunkte werden nicht rekonstruiert."
+    },
+    {
+      "role": "AUSGESCHLOSSENES_VIDEO",
+      "name": "IMG_4011.MOV",
+      "observation": "Vom Benutzer als falsches Video identifiziert; nicht zur Synchronisationsbewertung verwendet."
+    }
+  ]
+}

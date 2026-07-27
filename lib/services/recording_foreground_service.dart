@@ -1,10 +1,18 @@
 import 'dart:io';
 import 'dart:isolate';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 
 class RecordingForegroundService {
+  static const MethodChannel _iosChannel =
+      MethodChannel('intakt_app/recording_background');
+
   static Future<void> start() async {
+    if (Platform.isIOS) {
+      await _iosChannel.invokeMethod('startRecordingBackgroundTask');
+      return;
+    }
     if (!Platform.isAndroid) return;
     if (await FlutterForegroundTask.isRunningService) return;
     await FlutterForegroundTask.startService(
@@ -15,6 +23,10 @@ class RecordingForegroundService {
   }
 
   static Future<void> stop() async {
+    if (Platform.isIOS) {
+      await _iosChannel.invokeMethod('stopRecordingBackgroundTask');
+      return;
+    }
     if (!Platform.isAndroid) return;
     if (!await FlutterForegroundTask.isRunningService) return;
     await FlutterForegroundTask.stopService();
