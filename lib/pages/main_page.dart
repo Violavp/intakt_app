@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import '../core_metrics/takt_metric.dart';
 import '../widgets/analysis_metric_tile.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+  const MainPage({super.key, this.taktPresentation});
+
+  final TaktTilePresentation? taktPresentation;
 
   @override
   Widget build(BuildContext context) {
+    final takt = taktPresentation ?? TaktTilePresentation.empty();
     return Scaffold(
       backgroundColor: const Color(0xFFF2F2F7),
       body: SafeArea(
@@ -40,7 +44,7 @@ class MainPage extends StatelessWidget {
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
               childAspectRatio: 0.87,
-              children: const [
+              children: [
                 AnalysisMetricTile(
                   title: 'Takt',
                   subtitle: 'Rhythmus, Fußfolge und Stabilität',
@@ -56,12 +60,13 @@ class MainPage extends StatelessWidget {
                     'Stabilisierung des Rhythmus nach Übergängen',
                     'Wiederholbarkeit aufeinanderfolgender Zyklen',
                   ],
-                  evidenceText:
-                      'Diese Kachel kann mit den vier Beinsensoren vergleichsweise direkt aufgebaut werden, sobald TD/LO und die Vierbein-Synchronisation ausreichend stabil sind.',
+                  evidenceText: takt.evidenceText,
+                  resultLabel: takt.resultLabel,
+                  resultDetails: takt.details,
                   limitationText:
                       'Ein einzelner Timing-Parameter ist kein vollständiger Takt-Score. Tempoänderung, Übergänge und fehlerhafte Ereigniserkennung müssen getrennt berücksichtigt werden.',
                 ),
-                AnalysisMetricTile(
+                const AnalysisMetricTile(
                   title: 'Losgelassenheit',
                   subtitle: 'Fluss, Glätte und Lockerwerden',
                   icon: Icons.air_rounded,
@@ -81,7 +86,7 @@ class MainPage extends StatelessWidget {
                   limitationText:
                       'SPARC, Jerk oder Regelmäßigkeit allein beweisen keine Losgelassenheit. Rückenaktivität, Schmerz und mentale Entspannung werden mit den vier Beinsensoren nicht direkt gemessen.',
                 ),
-                AnalysisMetricTile(
+                const AnalysisMetricTile(
                   title: 'Symmetrie',
                   subtitle: 'Links/rechts und handabhängige Muster',
                   icon: Icons.compare_arrows_rounded,
@@ -101,7 +106,7 @@ class MainPage extends StatelessWidget {
                   limitationText:
                       'Symmetrie ist nicht automatisch Geraderichtung und keine Lahmheitsdiagnose. Kurvenradius, Tempo, Boden, natürliche Seitigkeit und Sensorlage müssen mitgedacht werden.',
                 ),
-                AnalysisMetricTile(
+                const AnalysisMetricTile(
                   title: 'Gewichtsverschiebung',
                   subtitle: 'Hinweis auf mehr Hinterhandbeteiligung',
                   icon: Icons.balance_rounded,
