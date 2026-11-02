@@ -12,6 +12,8 @@ class AnalysisMetricTile extends StatelessWidget {
     required this.features,
     required this.evidenceText,
     required this.limitationText,
+    this.resultLabel = 'Noch keine Auswertung',
+    this.resultDetails = const [],
   });
 
   final String title;
@@ -23,6 +25,8 @@ class AnalysisMetricTile extends StatelessWidget {
   final List<String> features;
   final String evidenceText;
   final String limitationText;
+  final String resultLabel;
+  final List<String> resultDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +100,7 @@ class AnalysisMetricTile extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Noch keine Auswertung',
+                    resultLabel,
                     style: TextStyle(
                       color: accentColor,
                       fontSize: 12,
@@ -232,6 +236,43 @@ class AnalysisMetricTile extends StatelessWidget {
                         ],
                       ),
                     ),
+                  if (resultDetails.isNotEmpty) ...[
+                    const SizedBox(height: 18),
+                    const Text(
+                      'Gemessene Werte',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    for (final detail in resultDetails)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Icon(
+                              Icons.chevron_right_rounded,
+                              size: 18,
+                              color: Color(0xFF8E8E93),
+                            ),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                detail,
+                                style: const TextStyle(
+                                  color: Color(0xFF3A3A3C),
+                                  fontSize: 13,
+                                  height: 1.4,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
                   const SizedBox(height: 18),
                   _InfoBox(
                     title: 'Aktuelle Aussagekraft',
