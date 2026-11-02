@@ -48,7 +48,7 @@ class AnalysisMetricTile extends StatelessWidget {
                     width: 42,
                     height: 42,
                     decoration: BoxDecoration(
-                      color: accentColor.withValues(alpha: 0.10),
+                      color: accentColor.withOpacity(0.10),
                       borderRadius: BorderRadius.circular(13),
                     ),
                     child: Icon(icon, color: accentColor, size: 23),
@@ -154,7 +154,7 @@ class AnalysisMetricTile extends StatelessWidget {
                         width: 46,
                         height: 46,
                         decoration: BoxDecoration(
-                          color: accentColor.withValues(alpha: 0.10),
+                          color: accentColor.withOpacity(0.10),
                           borderRadius: BorderRadius.circular(14),
                         ),
                         child: Icon(icon, color: accentColor, size: 25),
